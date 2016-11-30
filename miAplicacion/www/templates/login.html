@@ -1,0 +1,48 @@
+﻿
+<ion-view view-title="Login">
+
+    <ion-content style="background: url(img/newaccount.jpg) no-repeat center; background-size:cover; background-attachment:fixed;">
+        <br>
+
+        <div align="center">
+            <img align="center" src="img/geofinderico.png" >
+            <h5>GeoFinder</h5>
+        </div>
+
+    <div class="row">
+      <div class="col col-10"></div>
+      <div class="col col-80">
+
+        <label  class="item  item-input ">
+          <input type="text" style="color: limegreen" placeholder="Nombre de usuario" ng-model="user.username">
+        </label>
+        <br>
+        <label  class="item  item-input">
+          <input type="password" style="color: limegreen" placeholder="Contraseña" ng-model="user.password">
+        </label>
+
+      </div>
+      <div class="col col-10"></div>
+
+    </div>
+
+
+    <br>
+    <div class="text-center">
+      <button style="width: 80%" class="button  button-balanced" ng-click="login()">Login</button>
+      <br>
+      <br><br>
+
+      <label style="color: black" class="text-center">O entra con</label><br>
+      <button style="width: 80%" class="button  button-positive" ng-click="main()"> <i class="icon ion-social-facebook"></i></button>
+      <br>
+      <br>
+      <button style="width: 80%" class="button  button-calm" ng-click="main()"> <i class="icon ion-social-twitter"></i></button>
+      <br><br>
+      <label style="color: black" class="text-center">Aún no tienes una cuenta?</label>
+      <button style="width: 80%" class="button  button-energized" ng-click="Register()">Crear Cuenta</button>
+
+    </div>
+    </ion-content>
+
+</ion-view>

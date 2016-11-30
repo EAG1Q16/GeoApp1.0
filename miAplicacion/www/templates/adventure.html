@@ -1,0 +1,47 @@
+<ion-view  no-shadow view-title="Aventura" >
+  <ion-nav-view></ion-nav-view>
+
+
+  <ion-header >
+
+  </ion-header>
+  <ion-content>
+    <div align="center">
+
+      <h3>{{AdventureProfile.name}}</h3>
+      <img class="image-avatar" src={{AventureProfile.image}} >
+      <p>MAPA?? o debajo de la info? o aqui foto y debajo mapa?</p>
+    </div>
+    <div>
+      <h3>Descripción</h3>
+      <h4>{{AdventureProfile.description}}</h4>
+      <br>
+      <h3>Dificultad</h3>
+      <h4>{{AdventureProfile.difficulty}}</h4>
+      <br>
+      <h3>Comentarios</h3>
+
+      <div class="row">
+      <div class="col">
+        <label class="item item-input text">
+          <textarea placeholder="Escriba un omentario" rows="1" ng-model = "NewComment.text"></textarea>
+        </label>
+        <button style="width: 50%" class="button  sexy-blue" ng-click="PostComment()">Comentar</button>
+      </div>
+    </div>
+
+
+      <div class="list">
+        <a ng-repeat="comment in comments" class="item item-thumbnail-left">
+          <img ng-src="{{ comment.user.photo }}">
+          <p><b>{{ comment.user.name }}</b></p>
+          <p>{{ comment.text }}</p>
+          <span class="date">{{comment.commentdate}}</span>
+        </a>
+      </div>
+    </div>
+
+  </ion-content>
+</ion-view>
+
+

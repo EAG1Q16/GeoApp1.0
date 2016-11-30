@@ -1,0 +1,56 @@
+<ion-view view-title="Perfil">
+  <ion-content>
+    <span class="list">
+    <br>
+      <ion-row>
+    <ion-col width-50>
+
+        <div align="center">
+              <img class="image-avatar" src={{UserProfileInfo.photo}}>
+        </div>
+    <h4 class="padding gotham-medium  text-center" style="color: limegreen">{{UserProfileInfo.username}}</h4>
+      </ion-col>
+        <ion-col width-50>
+        </ion-col>
+      </ion-row>
+      </span>
+    <label class="item item-input">
+      <span class="input-label" style="color: black">Nombre</span>
+      <input type="text" style="color: black" placeholder="{{UserProfileInfo.name}}" ng-model="UpdatedUser.name">
+    </label>
+
+    <label class="item item-input">
+      <span class="input-label" style="color: black"> Email</span>
+      <input type="text" style="color: black" placeholder="{{UserProfileInfo.email}}" ng-model="UpdatedUser.email">
+    </label>
+
+    <label class="item item-input">
+      <span class="input-label" style="color: black"> Descripción</span>
+      <input type="text" style="color: black" placeholder="{{UserProfileInfo.description}}" ng-model="UpdatedUser.description">
+    </label>
+
+
+    <ion-item>
+      <ion-icon name="logo-twitter" item-left></ion-icon>
+      Seguidores
+      <ion-badge color="secondary" item-right>{{UserProfileInfo.followers.length}}</ion-badge>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="logo-twitter" item-left></ion-icon>
+      Seguidos
+      <ion-badge color="secondary" item-right>{{UserProfileInfo.following.length}}</ion-badge>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="logo-twitter" item-left></ion-icon>
+      Partidas jugadas
+      <ion-badge color="secondary" item-right>{{UserProfileInfo.adventures.played.length}}</ion-badge>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="logo-twitter" item-left></ion-icon>
+      Partidas Creadas
+      <ion-badge color="secondary" item-right>{{UserProfileInfo.adventures.created.length}}</ion-badge>
+    </ion-item>
+    </div>
+  </ion-content>
+</ion-view>
+

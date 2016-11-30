@@ -1,0 +1,44 @@
+﻿<ion-side-menus enable-menu-with-back-views="false" no-shadow>
+    <ion-side-menu-content no-shadow class="sexy-blue">
+        <ion-nav-bar class="sexy-blue" no-shadow>
+
+          <ion-nav-buttons side="left">
+            <button class="button button-icon button-clear ion-navicon" menu-toggle="left" style="color: white"></button>
+          </ion-nav-buttons>
+          <ion-nav-back-button>
+          </ion-nav-back-button>
+        </ion-nav-bar>
+
+        <ion-nav-view name="menuContent"></ion-nav-view>
+    </ion-side-menu-content>
+
+    <ion-side-menu side="left">
+
+        <ion-header-bar no-shadow class="expanded user-header">
+            <div  class="profile" align="center" class="user-header" >
+              <img class="image-avatar" src={{user.photo}} >
+                <h5 style="color: white">{{user.username}}</h5>
+            </div>
+        </ion-header-bar>
+        <ion-content class="sexy-blue has-expanded-header">
+            <ion-list>
+              <br>
+              <br>
+              <ion-item></ion-item>
+                <ion-item nav-clear menu-close class="letra" style="color: white" href="#/app/main">
+                   <i class="ion-bonfire"></i>  Explorar
+                </ion-item>
+                <ion-item nav-clear menu-close class="letra" style="color: white" href="#/app/myadventures">
+                  <i class="ion-android-compass"></i>  Mis Aventuras
+                </ion-item>
+                <ion-item nav-clear menu-close class="letra" style="color: white" href="#/app/user">
+                  <i class="ion-person"></i> Perfil
+                </ion-item>
+                <ion-item nav-clear menu-close class="letra" style="color: white" href="#/app/userprofile">
+                  <i class="ion-person"></i> Perfil publico
+                </ion-item>
+
+            </ion-list>
+        </ion-content>
+    </ion-side-menu>
+</ion-side-menus>
