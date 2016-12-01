@@ -2,18 +2,16 @@
   <ion-content>
     <span class="list">
     <br>
-      <ion-row>
-    <ion-col width-50>
-
-        <div align="center">
-              <img class="image-avatar" src={{UserProfileInfo.photo}}>
+        <div align="center" class="item item-avatar" style="align-content: center" href="#">
+              <img src={{UserProfileInfo.photo}}>
         </div>
-    <h4 class="padding gotham-medium  text-center" style="color: limegreen">{{UserProfileInfo.username}}</h4>
-      </ion-col>
-        <ion-col width-50>
-        </ion-col>
-      </ion-row>
-      </span>
+        <h4 class="padding gotham-medium  text-center" style="color: limegreen">{{UserProfileInfo.username}}</h4>
+
+    </span>
+    <label class="item item-input">
+      <span class="input-label" style="color: black">Nombre</span>
+      <input type="text" style="color: black" placeholder="{{UserProfileInfo.name}}" ng-model="UpdatedUser.name">
+    </label>
     <label class="item item-input">
       <span class="input-label" style="color: black">Nombre</span>
       <input type="text" style="color: black" placeholder="{{UserProfileInfo.name}}" ng-model="UpdatedUser.name">
@@ -21,7 +19,7 @@
 
     <label class="item item-input">
       <span class="input-label" style="color: black"> Email</span>
-      <input type="text" style="color: black" placeholder="{{UserProfileInfo.email}}" ng-model="UpdatedUser.email">
+      <input type="email" style="color: black" placeholder="{{UserProfileInfo.email}}" ng-model="UpdatedUser.email">
     </label>
 
     <label class="item item-input">
@@ -29,8 +27,7 @@
       <input type="text" style="color: black" placeholder="{{UserProfileInfo.description}}" ng-model="UpdatedUser.description">
     </label>
 
-    <button ion-button color="light">Light</button>
-    <ion-item>
+    <!--<ion-item>
       <ion-icon name="logo-twitter" item-left></ion-icon>
       Seguidores
       <ion-badge item-right color="secondary">{{UserProfileInfo.followers.length}}</ion-badge>
@@ -49,8 +46,7 @@
       <ion-icon name="logo-twitter" item-left></ion-icon>
       Partidas Creadas
       <ion-badge color="secondary" item-right>{{UserProfileInfo.adventures.created.length}}</ion-badge>
-    </ion-item>
-    </div>
+    </ion-item>-->
   </ion-content>
 </ion-view>
 

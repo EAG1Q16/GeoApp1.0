@@ -1,7 +1,9 @@
 ﻿var base_url = "http://localhost:3000";
 app.controller('AppCtrl', function ($scope, $state, $http, $ionicModal, $rootScope, $ionicPopover, $timeout, $ionicPopup) {
     // Form data for the login modal
-    $scope.loginData = {};
+
+  
+  $scope.loginData = {};
     console.log('AppCtrl');
     var navIcons = document.getElementsByClassName('ion-navicon');
     for (var i = 0; i < navIcons.length; i++) {
