@@ -3,50 +3,43 @@
     <span class="list">
     <br>
         <div align="center" class="item item-avatar" style="align-content: center" href="#">
-              <img src={{UserProfileInfo.photo}}>
+              <img ng-src="{{ UserProfileInfo.photo}}">
+          <h1 class="padding gotham-medium  text-center" style="color: limegreen">{{UserProfileInfo.username}}</h1>
         </div>
-        <h4 class="padding gotham-medium  text-center" style="color: limegreen">{{UserProfileInfo.username}}</h4>
-
     </span>
-    <label class="item item-input">
-      <span class="input-label" style="color: black">Nombre</span>
-      <input type="text" style="color: black" placeholder="{{UserProfileInfo.name}}" ng-model="UpdatedUser.name">
-    </label>
-    <label class="item item-input">
-      <span class="input-label" style="color: black">Nombre</span>
-      <input type="text" style="color: black" placeholder="{{UserProfileInfo.name}}" ng-model="UpdatedUser.name">
-    </label>
 
-    <label class="item item-input">
-      <span class="input-label" style="color: black"> Email</span>
-      <input type="email" style="color: black" placeholder="{{UserProfileInfo.email}}" ng-model="UpdatedUser.email">
-    </label>
+    <ion-item class="item-icon-right">
+      <label><b>Nombre de usuario: </b></label><h2 class="text-right">{{UserProfileInfo.username}}</h2>
+      <label><b>Descripción: </b></label> <h2 class="text-right">{{UserProfileInfo.description}}</h2>
+    </ion-item>
 
-    <label class="item item-input">
-      <span class="input-label" style="color: black"> Descripción</span>
-      <input type="text" style="color: black" placeholder="{{UserProfileInfo.description}}" ng-model="UpdatedUser.description">
-    </label>
-
-    <!--<ion-item>
-      <ion-icon name="logo-twitter" item-left></ion-icon>
+    <ion-item class="item item-icon-left" href="#/app/usersfollowers">
+      <i class="icon ion-person-stalker"></i>
       Seguidores
-      <ion-badge item-right color="secondary">{{UserProfileInfo.followers.length}}</ion-badge>
+      <span class="badge badge-positive">{{UserProfileInfo.followers.length}}</span>
     </ion-item>
-    <ion-item>
-      <ion-icon name="logo-twitter" item-left></ion-icon>
+    <ion-item class="item item-icon-left" href="#">
+      <i class="icon ion-person"></i>
       Seguidos
-      <ion-badge color="secondary" item-right>{{UserProfileInfo.following.length}}</ion-badge>
+      <span class="badge badge-positive">{{UserProfileInfo.following.length}}</span>
     </ion-item>
-    <ion-item>
-      <ion-icon name="logo-twitter" item-left></ion-icon>
-      Partidas jugadas
-      <ion-badge color="secondary" item-right>{{UserProfileInfo.adventures.played.length}}</ion-badge>
+    <ion-item class="item item-icon-left" href="#">
+      <i class="icon ion-map"></i>
+      Aventuras creadas
+      <span class="badge badge-positive">{{UserProfileInfo.adventures.played.length}}</span>
     </ion-item>
-    <ion-item>
-      <ion-icon name="logo-twitter" item-left></ion-icon>
-      Partidas Creadas
-      <ion-badge color="secondary" item-right>{{UserProfileInfo.adventures.created.length}}</ion-badge>
-    </ion-item>-->
+    <ion-item class="item item-icon-left" href="#">
+      <i class="icon ion-play"></i>
+      Aventuras jugadas
+      <span class="badge badge-positive">{{UserProfileInfo.adventures.created.length}}</span>
+    </ion-item>
+    <br>
+    <div class="col-100" align="center">
+      <button ng-if="UserProfileInfo._id != UserID && isfollowing == 'false'" class="button button-calm" ng-click="followUser()"><b>Seguir</b></button>
+      <button ng-if="UserProfileInfo._id != UserID && isfollowing == 'true'" class="button button-assertive" ng-click="stopfollowUser()"><b>Dejar de Seguir</b></button>
+      <button ng-if="UserProfileInfo._id == UserID" class="button button-stable" href="#/app/user">Edita tu perfil</button>
+    </div>
   </ion-content>
 </ion-view>
+
 

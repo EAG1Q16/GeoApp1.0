@@ -1,0 +1,18 @@
+<ion-view view-title="Aventureros">
+  <ion-content>
+    <ion-list>
+      <ion-item ng-repeat="user in users"  href=#/app/userprofile/{{user._id}} class="item item-thumbnail-left">
+
+        <img ng-src={{user.photo}}>
+        <br>
+        <h2>{{ user.name }}</h2>
+        <h4>{{ user.description }}</h4>
+        <br>
+
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
+
+
+<!--| filter:busqueda-->

@@ -43,4 +43,26 @@ app.controller('MainCtrl', function ($scope, $ionicPopup, $http, $rootScope, $st
 
   }
 
+  $http.get(base_url + '/user/sessionid')
+    .success(function(data) {
+      $rootScope.UserSessionId = data;
+      $rootScope.UserSessionUri = data._id;
+      $scope.UserHome = data;
+      console.log("la dataaaa");
+      console.log(data);
+
+      // is logges in get users following adventures
+      $http.get(base_url + '/user/recomendedadv/' + $rootScope.UserSessionUri)
+        .success(function(data) {
+          $scope.FollowingAdvs = data.following;
+          console.log($scope.FollowingAdvs);
+        })
+        .error(function(data) {
+          console.log('not logged');
+        });
+    })
+    .error(function(data) {
+      console.log('not logged');
+    });
+
 });

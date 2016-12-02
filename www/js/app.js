@@ -67,7 +67,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
       }
     })
     .state('app.userprofile', {
-      url: '/userprofile',
+      url: '/userprofile/:id',
       views: {
         'menuContent': {
           templateUrl: 'templates/userprofile.html',
@@ -75,6 +75,29 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
         }
       }
     })
+
+    .state('app.usersfollowers', {
+      url: '/usersfollowers',
+      cache: false,
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/usersfollowers.html',
+          controller: 'UsersfollowersCtrl'
+        }
+      }
+    })
+
+    .state('app.allusers', {
+      url: '/allusers',
+      cache: false,
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/allusers.html',
+          controller: 'AllusersCtrl'
+        }
+      }
+    })
+
     .state('login', {
       url: '/login',
       cache: false,
@@ -87,8 +110,10 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
       cache: false,
       templateUrl: 'templates/register.html',
       controller: 'RegisterCtrl'
-    })
+    });
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/login');
 });
+
+

@@ -59,38 +59,3 @@
 </ion-view>
 
 
-    <br>
-    <label class="item item-input">
-      <span class="input-label">Sexo</span>
-      <select ng-model="user.gender">
-        <option>Hombre</option>
-        <option>Mujer</option>
-      </select>
-    </label>
-
-    <label class="item item-input">
-      <span class="input-label" style="color: black">Contraseña</span>
-      <input type="password" style="color: black" placeholder="*****" ng-model="user.password">
-    </label>
-
-    <label class="item item-input">
-      <span class="input-label" style="color: black">Nueva Contraseña</span>
-      <input type="password" style="color: black" ng-model="user.newpassword">
-    </label>
-
-    <label class="item item-input">
-      <span class="input-label" style="color: black">Repetir contraseña</span>
-      <input type="password" style="color: black" ng-model="user.repnewpassword">
-    </label>
-    </div>
-    <div align="center">
-      <h7 class="text-center">Usuario desde {{user.registerdate}}</h7>
-    </div>
-    <br>
-    <div align="center">
-      <button style="width: 80%" class="button  sexy-blue" ng-click="EditProfile()">Guardar</button>
-    </div>
-
-
-  </ion-content>
-</ion-view>
