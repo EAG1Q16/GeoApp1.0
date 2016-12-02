@@ -2,15 +2,27 @@
   <ion-nav-view></ion-nav-view>
 
 
-  <ion-header >
-
-  </ion-header>
   <ion-content>
+    <div class="list card">
+
+      <div class="item item-avatar">
+        <h2>{{AdventureProfile.name}}</h2>
+      </div>
+
+      <div class="item item-body">
+        <img class="image-adventure" src={{AdventureProfile.image}}>
+        <p>{{AdventureProfile.description}}</p>
+        <p>
+          <a href="#" class="subdued">1 Like</a>
+          <a href="#" class="subdued">5 Comments</a>
+        </p>
+      </div>
+
+    </div>
     <div align="center">
 
-      <h3>{{AdventureProfile.name}}</h3>
-      <img class="image-avatar" src={{AventureProfile.image}} >
-      <p>MAPA?? o debajo de la info? o aqui foto y debajo mapa?</p>
+      <h1>{{AdventureProfile.name}}</h1>
+      <img class="image-adventure" src={{AdventureProfile.image}} >
     </div>
     <div>
       <h3>Descripción</h3>
@@ -23,10 +35,9 @@
 
       <div class="row">
       <div class="col">
-        <label class="item item-input text">
-          <textarea placeholder="Escriba un omentario" rows="1" ng-model = "NewComment.text"></textarea>
-        </label>
-        <button style="width: 50%" class="button  sexy-blue" ng-click="PostComment()">Comentar</button>
+        <textarea class="textarea" placeholder="Escriba un comentario" rows="1" ng-model = "NewComment.text"></textarea>
+        <br>
+        <button style="width: 40%" class="button  ion-compose" ng-click="PostComment()">  Comentar</button>
       </div>
     </div>
 

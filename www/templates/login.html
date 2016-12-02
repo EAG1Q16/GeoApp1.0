@@ -1,7 +1,7 @@
 ﻿
 <ion-view view-title="Login">
 
-    <ion-content style="background: url(img/newaccount.jpg) no-repeat center; background-size:cover; background-attachment:fixed;">
+    <ion-content style="background: url(img/splash.png) no-repeat center; background-size:cover; background-attachment:fixed;">
         <br>
 
         <div align="center">
@@ -14,11 +14,13 @@
       <div class="col col-80">
 
         <label  class="item  item-input ">
-          <input type="text" style="color: limegreen" placeholder="Nombre de usuario" ng-model="user.username">
+          <i class="icon ion-person"></i>
+          <input type="text" style="color: black; padding-left: 1em" placeholder="Nombre de usuario" ng-model="user.username">
         </label>
         <br>
         <label  class="item  item-input">
-          <input type="password" style="color: limegreen" placeholder="Contraseña" ng-model="user.password">
+          <i class="icon ion-locked" ></i>
+          <input type="password" style="color: black; padding-left: 1em" placeholder="Contraseña" ng-model="user.password">
         </label>
 
       </div>
