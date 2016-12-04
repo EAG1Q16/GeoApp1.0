@@ -1,45 +1,66 @@
-<ion-view  no-shadow view-title="Aventura" >
+<ion-view  no-shadow view-title="Aventura" style="color: black" >
   <ion-nav-view></ion-nav-view>
 
 
-  <ion-header >
-
-  </ion-header>
   <ion-content>
-    <div align="center">
+    <div class="list card">
 
-      <h3>{{AdventureProfile.name}}</h3>
-      <img class="image-avatar" src={{AventureProfile.image}} >
-      <p>MAPA?? o debajo de la info? o aqui foto y debajo mapa?</p>
-    </div>
-    <div>
-      <h3>Descripción</h3>
-      <h4>{{AdventureProfile.description}}</h4>
-      <br>
-      <h3>Dificultad</h3>
-      <h4>{{AdventureProfile.difficulty}}</h4>
-      <br>
-      <h3>Comentarios</h3>
-
-      <div class="row">
-      <div class="col">
-        <label class="item item-input text">
-          <textarea placeholder="Escriba un omentario" rows="1" ng-model = "NewComment.text"></textarea>
-        </label>
-        <button style="width: 50%" class="button  sexy-blue" ng-click="PostComment()">Comentar</button>
+      <div align="center">
+        <h1>{{AdventureProfile.name}}</h1>
+        <p>Dificultad: {{AdventureProfile.difficulty}}</p>
       </div>
+
+
+      <div class="item item-body">
+        <img class="image-adventure" src={{AdventureProfile.image}}>
+        <p>{{AdventureProfile.description}}</p>
+        <div class="row">
+          <div class="col">
+              <p>{{AdventureProfile.favs}}<small>        Favoritos </small></p>
+
+              <p >{{AdventureProfile.comments.length}}<small>      Comentarios</small> </p>
+          </div>
+            <div class="col" ng-show="isfav">
+              <button style="color: grey;" class="button icon ion-ios-heart" ng-click="FavAdventure()">
+              </button>
+            </div>
+            <div class="col" ng-show="!isfav">
+              <button style="color: red;"  class="button icon ion-ios-heart" ng-click="UnfavAdventure()">
+              </button>
+            </div>
+          <div class="col">
+            <button class="button button-positive ion-social-twitter" ng-click="AddTweet()"> Tweet
+            </button>
+          </div>
+          </div>
+        <button class="button button-block button-energized">JUGAR</button>
+        </div>
     </div>
 
+      <div>
+        <h4 style="padding-left: 1em">Comentarios</h4>
+        <div class="row">
+          <div class="col">
+            <textarea class="textarea" placeholder="Escriba un comentario" rows="1" ng-model = "NewComment.text"></textarea>
+            <br>
 
-      <div class="list">
-        <a ng-repeat="comment in comments" class="item item-thumbnail-left">
-          <img ng-src="{{ comment.user.photo }}">
-          <p><b>{{ comment.user.name }}</b></p>
-          <p>{{ comment.text }}</p>
-          <span class="date">{{comment.commentdate}}</span>
-        </a>
+            <button style="width: 30%" class="button button-dark button-small ion-compose" ng-click="PostComment()">      Comentar</button>
+          </div>
+        </div>
+
+        <ion-list>
+          <ion-item ng-repeat="comment in comments" class="item item-thumbnail-left">
+              <img ng-src="{{ comment.user.photo }}">
+              <p><b>{{ comment.user.name }}</b></p>
+              <p>{{ comment.text }}</p>
+              <br>
+              <p><small>{{comment.commentdate}}</small></p>
+              <p><small>{{comdate}}</small></p>
+              <button style="width: 30%" class="button button-assertive button-small ion-android-cancel" ng-show=(UserID==comment.user._id) ng-click="deletecomment(comment._id)"> Eliminar</button>
+
+          </ion-item>
+        </ion-list>
       </div>
-    </div>
 
   </ion-content>
 </ion-view>

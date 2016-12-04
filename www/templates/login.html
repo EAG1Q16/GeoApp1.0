@@ -1,7 +1,7 @@
 ﻿
 <ion-view view-title="Login">
 
-    <ion-content style="background: url(img/newaccount.jpg) no-repeat center; background-size:cover; background-attachment:fixed;">
+    <ion-content style="background: url(img/splash.png) no-repeat center; background-size:cover; background-attachment:fixed;">
         <br>
 
         <div align="center">
@@ -14,11 +14,13 @@
       <div class="col col-80">
 
         <label  class="item  item-input ">
-          <input type="text" style="color: limegreen" placeholder="Nombre de usuario" ng-model="user.username">
+          <i class="icon ion-person"></i>
+          <input type="text" style="color: black; padding-left: 1em" placeholder="Nombre de usuario" ng-model="user.username">
         </label>
         <br>
         <label  class="item  item-input">
-          <input type="password" style="color: limegreen" placeholder="Contraseña" ng-model="user.password">
+          <i class="icon ion-locked" ></i>
+          <input type="password" style="color: black; padding-left: 1em" placeholder="Contraseña" ng-model="user.password">
         </label>
 
       </div>
@@ -31,16 +33,16 @@
     <div class="text-center">
       <button style="width: 80%" class="button  button-balanced" ng-click="login()">Login</button>
       <br>
-      <br><br>
+      <br>
 
-      <label style="color: black" class="text-center">O entra con</label><br>
+      <label style="color: whitesmoke" class="text-center">O entra con</label><br>
       <button style="width: 80%" class="button  button-positive" ng-click="main()"> <i class="icon ion-social-facebook"></i></button>
       <br>
       <br>
       <button style="width: 80%" class="button  button-calm" ng-click="main()"> <i class="icon ion-social-twitter"></i></button>
       <br><br>
-      <label style="color: black" class="text-center">Aún no tienes una cuenta?</label>
-      <button style="width: 80%" class="button  button-energized" ng-click="Register()">Crear Cuenta</button>
+      <label style="color: whitesmoke" class="text-center">Aún no tienes una cuenta?</label>
+      <button style="width: 80%" class="button  button-energized" ng-click="Register()">Regístrate</button>
 
     </div>
     </ion-content>

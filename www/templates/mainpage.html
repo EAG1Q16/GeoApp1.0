@@ -1,38 +1,20 @@
-<ion-view  no-shadow view-title="Explorar" >
 
-  <ion-content class="padding">
-    <div class="bar bar-header item-input-inset">
-      <label class="item-input-wrapper">
-        <i class="icon ion-ios-search placeholder-icon"></i>
-        <input type="search" ng-model="busqueda" placeholder="Buscar una aventura">
-      <button class="button button-clear" ng-click="busequeda = null">
-        <i class="ion-ios-close-outline" style="color: dimgrey"></i>
-      </button>
-      </label>
-    </div>
+<ion-view view-title="Explorar" >
 
+  <ion-content>
     <ion-list>
-      <ion-item ng-repeat="item in items | filter:busqueda" href="#/app/adventures/{{item._id}}" class="item item-thumbnail-left">
+      <ion-item ng-repeat="item in items | filter:busqueda" href="#/app/adventures/{{item._id}}" class=" item-thumbnail-left">
 
           <img ng-src={{item.image}}>
           <br>
           <h2>{{ item.name }}</h2>
-          <h4>{{ item.description }}</h4>
+          <h3>{{ item.description }}</h3>
+          <h4>Dificultad: {{item.difficulty}}</h4>
           <br>
 
       </ion-item>
     </ion-list>
-    <!--<div class="list">
-      <div>
-        <a ng-repeat="item in items | filter:busqueda" href="#/app/adventures/{{item._id}}" class="item item-thumbnail-left">
-          <img ng-src={{item.image}}>
-          <br>
-          <h2>{{ item.name }}</h2>
-          <h4>{{ item.description }}</h4>
-          <br>
-        </a>
-      </div>
-    </div>-->
+
   </ion-content>
   <div style="position: absolute; bottom: 0px; width: 100%" class="button-bar">
     <button class="button icon ion-ios-location" ng-click="showNear()">

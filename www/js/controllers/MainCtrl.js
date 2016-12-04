@@ -16,10 +16,6 @@ app.controller('MainCtrl', function ($scope, $ionicPopup, $http, $rootScope, $st
       console.log('Error: '+data);
     });
 
-  $scope.clear = function(){
-    $scope.busqueda = null;
-  };
-
   $scope.showNear = function(){
 
   }
@@ -43,7 +39,7 @@ app.controller('MainCtrl', function ($scope, $ionicPopup, $http, $rootScope, $st
 
   }
 
-  $http.get(base_url + '/user/sessionid')
+  /*$http.get(base_url + '/user/sessionid')
     .success(function(data) {
       $rootScope.UserSessionId = data;
       $rootScope.UserSessionUri = data._id;
@@ -63,6 +59,6 @@ app.controller('MainCtrl', function ($scope, $ionicPopup, $http, $rootScope, $st
     })
     .error(function(data) {
       console.log('not logged');
-    });
+    });*/
 
 });
