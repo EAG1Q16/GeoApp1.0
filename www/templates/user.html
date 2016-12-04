@@ -3,15 +3,15 @@
     <span class="list">
     <br>
         <div align="center">
-              <img class="image-avatar" src={{UserProfileInfo.photo}}>
+              <img class="image-avatar" height="65px" width="65px" src={{UserProfileInfo.photo}}>
         </div>
- <h4 class="padding gotham-medium  text-center" style="color: limegreen">{{UserProfileInfo.username}}</h4>
+        <h4 class="padding gotham-medium text-center" style="color: black">{{UserProfileInfo.username}}</h4>
     </span>
 
 
           <label class="item item-input">
             <span class="input-label" style="color: black">Nombre</span>
-            <ion-item type="text" style="color: black">{{UserProfileInfo.name}}
+            <input type="text" style="color: black" placeholder=" {{UserProfileInfo.name}}" ng-model="UpdatedUser.name">
           </label>
 
           <label class="item item-input">

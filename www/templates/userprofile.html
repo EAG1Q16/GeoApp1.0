@@ -1,28 +1,52 @@
 <ion-view view-title="Perfil">
   <ion-content>
-    <span class="list">
-    <br>
-        <div align="center" class="item item-avatar" style="align-content: center" href="#">
-              <img ng-src="{{ UserProfileInfo.photo}}">
-          <h1 class="padding gotham-medium  text-center" style="color: limegreen">{{UserProfileInfo.username}}</h1>
-        </div>
-    </span>
+    <div class="list card">
+      <div class="item">
+        <div class="col-33"><img class="img-responsive icon-left" height="65px" width="65px" src="{{ UserProfileInfo.photo}}"></div>
+        <div class="col-33"><h3 class="icon-center">{{UserProfileInfo.username}}</h3></div>
+        <div class="col-33"><img class="icon-right" height="65px" width="65px" src="../img/CAmpista.png"></div>
+      </div>
+
+      <!--<div class="item">
+        <img class="img-responsive" height="70px" width="70px" src="{{ UserProfileInfo.photo}}">
+        <h2 style="color: black">{{UserProfileInfo.username}}</h2>
+        <img ng-if="AdventuresLength >=0 && AdventuresLength <3" class="img-responsive" height="70px" width="70px" src="../img/CAmpista.png">
+        <img ng-if="AdventuresLength >= 3 && AdventuresLength <10" class="img-responsive center-block" height="65px" width="65px" src="../img/Navegante.png">
+        <img ng-if="AdventuresLength >= 10 && AdventuresLength<20" class="img-responsive center-block" height="65px" width="65px" src="../img/Montañero.png">
+        <img ng-if="AdventuresLength >= 20 " class="img-responsive center-block" height="65px" width="65px" src="../img/Aventurero.png">
+      </div>-->
+    </div>
+
 
     <ion-item class="item-icon-right">
       <label><b>Nombre de usuario: </b></label><h2 class="text-right">{{UserProfileInfo.username}}</h2>
       <label><b>Descripción: </b></label> <h2 class="text-right">{{UserProfileInfo.description}}</h2>
     </ion-item>
 
-    <ion-item class="item item-icon-left" href="#/app/usersfollowers">
+    <ion-item ng-if="UserProfileInfo._id == UserID" class="item item-icon-left" href="#/app/usersfollowers">
       <i class="icon ion-person-stalker"></i>
       Seguidores
       <span class="badge badge-positive">{{UserProfileInfo.followers.length}}</span>
     </ion-item>
-    <ion-item class="item item-icon-left" href="#">
+    <ion-item ng-if="UserProfileInfo._id != UserID" class="item item-icon-left" href="#/app/followers">
+      <i class="icon ion-person-stalker"></i>
+      Seguidores
+      <span class="badge badge-positive">{{UserProfileInfo.followers.length}}</span>
+    </ion-item>
+
+
+    <ion-item ng-if="UserProfileInfo._id == UserID" class="item item-icon-left" href="#/app/usersfollowing">
       <i class="icon ion-person"></i>
       Seguidos
       <span class="badge badge-positive">{{UserProfileInfo.following.length}}</span>
     </ion-item>
+    <ion-item ng-if="UserProfileInfo._id != UserID" class="item item-icon-left" href="#/app/usersfollowing">
+      <i class="icon ion-person"></i>
+      Seguidos
+      <span class="badge badge-positive">{{UserProfileInfo.following.length}}</span>
+    </ion-item>
+
+
     <ion-item class="item item-icon-left" href="#">
       <i class="icon ion-map"></i>
       Aventuras creadas
@@ -33,11 +57,14 @@
       Aventuras jugadas
       <span class="badge badge-positive">{{UserProfileInfo.adventures.created.length}}</span>
     </ion-item>
+
+
+
     <br>
     <div class="col-100" align="center">
       <button ng-if="UserProfileInfo._id != UserID && isfollowing == 'false'" class="button button-calm" ng-click="followUser()"><b>Seguir</b></button>
       <button ng-if="UserProfileInfo._id != UserID && isfollowing == 'true'" class="button button-assertive" ng-click="stopfollowUser()"><b>Dejar de Seguir</b></button>
-      <button ng-if="UserProfileInfo._id == UserID" class="button button-stable" href="#/app/user">Edita tu perfil</button>
+      <a href="#/app/user"><button ng-if="UserProfileInfo._id == UserID" class="button button-stable">Edita tu perfil</button></a>
     </div>
   </ion-content>
 </ion-view>

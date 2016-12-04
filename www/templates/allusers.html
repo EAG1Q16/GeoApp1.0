@@ -1,7 +1,18 @@
 <ion-view view-title="Aventureros">
   <ion-content>
+
+    <div class="bar bar-header item-input-inset">
+      <label class="item-input-wrapper">
+        <i class="icon ion-ios-search placeholder-icon"></i>
+        <input type="search" ng-model="busqueda" placeholder="Buscar un usuario">
+        <button class="button button-clear" ng-click="busqueda = null">
+          <i class="ion-ios-close-outline" style="color: dimgrey"></i>
+        </button>
+      </label>
+    </div>
+
     <ion-list>
-      <ion-item ng-repeat="user in users"  href=#/app/userprofile/{{user._id}} class="item item-thumbnail-left">
+      <ion-item ng-repeat="user in users | filter:busqueda | orderBy:user.followers.length"  href=#/app/userprofile/{{user._id}} class="item item-thumbnail-left">
 
         <img ng-src={{user.photo}}>
         <br>

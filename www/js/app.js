@@ -98,6 +98,39 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
       }
     })
 
+    .state('app.usersfollowing', {
+      url: '/usersfollowing',
+      cache: false,
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/usersfollowing.html',
+          controller: 'UsersfollowingCtrl'
+        }
+      }
+    })
+
+    .state('app.following', {
+      url: '/following',
+      cache: false,
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/following.html',
+          controller: 'FollowingCtrl'
+        }
+      }
+    })
+
+    .state('app.followers', {
+      url: '/followers',
+      cache: false,
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/followers.html',
+          controller: 'FollowersCtrl'
+        }
+      }
+    })
+
     .state('login', {
       url: '/login',
       cache: false,

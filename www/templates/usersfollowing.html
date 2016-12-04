@@ -1,0 +1,16 @@
+<ion-view view-title="Seguidos">
+  <ion-content>
+    <ion-list>
+      <ion-item ng-repeat="following in following | filter:busqueda" href="#/app/userprofile/{{following._id}}" class="item item-thumbnail-left">
+
+        <img ng-src={{following.photo}}>
+        <br>
+        <h2>{{ following.name }}</h2>
+        <h4>{{ following.description }}</h4>
+        <br>
+
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
+

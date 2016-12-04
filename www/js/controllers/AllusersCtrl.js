@@ -9,15 +9,15 @@ app.controller('AllusersCtrl', function ($scope, $http ,$rootScope, $ionicPopup,
     .success(function(data) {
       $scope.users = data;
       console.log(data);
-      
+
 
     })
     .error(function(data) {
       console.log('Error: ' + data);
     });
 
-  $scope.usuId = function (id) {
-    $rootScope.serched = $scope.id;
-  }
+  $scope.clear = function(){
+    $scope.busqueda = null;
+  };
   
 });

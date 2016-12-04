@@ -15,7 +15,9 @@ app.controller('UserProfileCtrl', function ($scope, $http ,$rootScope, $ionicPop
         //$scope.FollowingUsers = data.following;
         console.log($scope.UserProfileInfo);
         console.log($scope.UserProfileInfo.username);
-
+        $rootScope.searched = $scope.UserProfileInfo._id;
+        $scope.CreatedAdventures = data.adventures.created;
+        $scope.AdventuresLength = data.adventures.created.length;
       })
       .error(function(data) {
         console.log('Error: ' + data);
