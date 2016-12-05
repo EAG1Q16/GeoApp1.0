@@ -106,6 +106,17 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
       }
     })
 
+    .state('app.position', {
+      url: '/position',
+      cache: false,
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/position.html',
+          controller: 'PositionCtrl'
+        }
+      }
+    })
+
     .state('app.allusers', {
       url: '/allusers',
       cache: false,
