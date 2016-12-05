@@ -85,12 +85,34 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
     })
 
     .state('app.usersfollowers', {
-      url: '/usersfollowers',
+      url: '/usersfollowers/:id',
       cache: false,
       views: {
         'menuContent': {
           templateUrl: 'templates/usersfollowers.html',
           controller: 'UsersfollowersCtrl'
+        }
+      }
+    })
+
+    .state('app.usersfollowing', {
+      url: '/usersfollowing/:id',
+      cache: false,
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/usersfollowing.html',
+          controller: 'UsersfollowingCtrl'
+        }
+      }
+    })
+
+    .state('app.position', {
+      url: '/position',
+      cache: false,
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/position.html',
+          controller: 'PositionCtrl'
         }
       }
     })
@@ -106,38 +128,6 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
       }
     })
 
-    .state('app.usersfollowing', {
-      url: '/usersfollowing',
-      cache: false,
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/usersfollowing.html',
-          controller: 'UsersfollowingCtrl'
-        }
-      }
-    })
-
-    .state('app.following', {
-      url: '/following',
-      cache: false,
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/following.html',
-          controller: 'FollowingCtrl'
-        }
-      }
-    })
-
-    .state('app.followers', {
-      url: '/followers',
-      cache: false,
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/followers.html',
-          controller: 'FollowersCtrl'
-        }
-      }
-    })
 
     .state('login', {
       url: '/login',
