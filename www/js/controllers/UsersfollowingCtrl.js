@@ -5,7 +5,9 @@
 
 app.controller('UsersfollowingCtrl', function ($scope, $http ,$rootScope, $ionicPopup, $stateParams, $state, $timeout) {
 
-    $http.get(base_url + '/user/my/' + $rootScope.UserID)
+  var puserID = window.location.href.split("/").pop();
+
+    $http.get(base_url + '/user/my/' + puserID)
       .success(function(data) {
         console.log("entro en el iiiifff my perfil");
         console.log(data.following)

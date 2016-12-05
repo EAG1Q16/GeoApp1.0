@@ -3,7 +3,7 @@
  */
 
 //var base_url = "http://localhost:3000";
-var base_url="http:192.168.56.1//:3000";
+var base_url="http://10.192.137.219:3000";
 
 
 app.controller('MainCtrl', function ($scope, $ionicPopup, $http, $rootScope, $stateParams, $timeout, $state){
