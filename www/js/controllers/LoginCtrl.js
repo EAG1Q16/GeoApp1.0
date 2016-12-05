@@ -1,5 +1,4 @@
-﻿var base_url_local="http://localhost:3000";
-
+﻿
 app.controller('LoginCtrl',function ($scope, $http, $ionicPopup, $stateParams, $rootScope, $timeout, $state) {
 
   $scope.user = {};
@@ -9,7 +8,7 @@ app.controller('LoginCtrl',function ($scope, $http, $ionicPopup, $stateParams, $
     console.log('username: ' + $scope.user.username);
     console.log('pass: ' + $scope.user.password);
 
-      $http.post(base_url_local + '/user/login', $scope.user)
+      $http.post(base_url + '/user/login', $scope.user)
         .success(function (response) {
           console.log(response);
           $rootScope.UserID = response._id;

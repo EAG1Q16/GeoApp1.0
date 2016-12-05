@@ -1,6 +1,10 @@
 /**
  * Created by Andrea on 04/12/2016.
  */
+
+
+
+
 app.controller('FollowersCtrl', function ($scope, $http ,$rootScope, $ionicPopup, $stateParams, $state, $timeout) {
   
 

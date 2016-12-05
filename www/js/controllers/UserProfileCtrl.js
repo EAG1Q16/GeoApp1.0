@@ -1,7 +1,8 @@
 /**
  * Created by Andrea on 30/11/2016.
  */
-var base_url_local="http://localhost:3000";
+
+
 
 app.controller('UserProfileCtrl', function ($scope, $http ,$rootScope, $ionicPopup, $stateParams, $state, $timeout) {
 

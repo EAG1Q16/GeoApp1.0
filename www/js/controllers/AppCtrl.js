@@ -1,4 +1,8 @@
-﻿var base_url = "http://localhost:3000";
+﻿//var base_url = "http://localhost:3000";
+
+
+
+
 app.controller('AppCtrl', function ($scope, $state, $http, $ionicModal, $rootScope, $ionicPopover, $timeout, $ionicPopup) {
     // Form data for the login modal
 

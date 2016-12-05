@@ -2,7 +2,10 @@
  * Created by Marta_ on 28/11/2016.
  */
 
-var base_url = "http://localhost:3000";
+
+
+
+
 
 app.controller('EditUserCtrl', function ($scope, $rootScope, $ionicPopup, $http, $stateParams, $timeout, $state) {
 

@@ -1,7 +1,10 @@
 /**
  * Created by Marta_ on 28/11/2016.
  */
-var base_url = "http://localhost:3000";
+
+
+
+
 app.controller('AdventureCtrl', function ($scope, $ionicPopup, $http, $rootScope, $stateParams, $timeout, $state){
   console.log("rootscope: "+$rootScope.UserID);
   var adventureID = window.location.href.split("/").pop();

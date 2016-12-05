@@ -2,7 +2,10 @@
  * Created by Marta_ on 28/11/2016.
  */
 
-var base_url = "http://localhost:3000";
+//var base_url = "http://localhost:3000";
+var base_url="http:192.168.56.1//:3000";
+
+
 app.controller('MainCtrl', function ($scope, $ionicPopup, $http, $rootScope, $stateParams, $timeout, $state){
   console.log("mainctrl");
   console.log("rootscope: "+$rootScope.UserID);

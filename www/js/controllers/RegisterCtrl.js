@@ -1,4 +1,5 @@
-﻿var base_url = "http://localhost:3000";
+﻿
+
 
 app.controller('RegisterCtrl', function ($scope, $http, $ionicPopup, $stateParams, $state, $timeout) {
   $scope.NewUser = {};
