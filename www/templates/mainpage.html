@@ -2,6 +2,7 @@
 <ion-view view-title="Explorar" >
 
   <ion-content>
+
     <ion-list>
       <ion-item ng-repeat="item in items | filter:busqueda" href="#/app/adventures/{{item._id}}" class=" item-thumbnail-left">
 
@@ -16,7 +17,7 @@
     </ion-list>
 
   </ion-content>
-  <div style="position: absolute; bottom: 0px; width: 100%" class="button-bar">
+  <div style="position: absolute; top: 0px; width: 100%" class="button-bar">
     <button class="button icon ion-ios-location" ng-click="showNear()">
     </button>
     <button class="button icon ion-earth" ng-click="showAll()">

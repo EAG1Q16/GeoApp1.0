@@ -39,7 +39,7 @@ app.controller('AdventureCtrl', function ($scope, $ionicPopup, $http, $rootScope
 
   //FAV y UNFAV
   $scope.FavAdventure = function () {
-      $http.post(base_url+'/user/afavadv/' + adventureID, $rootScope.UserID)
+      $http.post(base_url+'/user/afavadv/' + adventureID, $rootScope.User)
         .success(function(data){
           $scope.AdventureProfile = data;
           $http.get(base_url+'/user/isadvfav/' + adventureID +'/'+ $rootScope.UserID)
