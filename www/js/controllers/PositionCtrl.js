@@ -33,6 +33,6 @@ app.controller('PositionCtrl', function ($scope, $http,$rootScope, $ionicPopup, 
       'message: ' + error.message + '\n');
   }
 
-  
+
 
 });
