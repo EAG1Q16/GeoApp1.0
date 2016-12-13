@@ -35,9 +35,10 @@ app.controller('AppCtrl', function ($scope, $state, $http, $ionicModal, $rootSco
         $scope.popover.remove();
     });
 
-
-    $scope.SearchView = function(){
+    $scope.SearchView = function () {
+      console.log("Search view Click");
       $state.go('app.search')
-    }
+    };
+
 })
 

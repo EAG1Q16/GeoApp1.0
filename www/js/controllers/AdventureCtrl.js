@@ -115,7 +115,7 @@ app.controller('AdventureCtrl', function ($scope, $ionicPopup, $http, $rootScope
   //Eliminar un comentario
   $scope.deletecomment = function (cmd_id) {
     var ConfirmPopup = $ionicPopup.confirm({
-      title: 'Esta seguro que quiere eliminar este comentario?'
+      title: 'Está seguro que quiere eliminar este comentario?'
     });
     ConfirmPopup.then(function (res) {
       if(res){

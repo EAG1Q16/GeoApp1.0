@@ -4,7 +4,7 @@
 
 //var base_url = "http://localhost:3000";
 
-var base_url="http://10.192.137.219:3000";
+var base_url="http://localhost:3000";
 
 
 
@@ -22,7 +22,7 @@ app.controller('MainCtrl', function ($scope, $ionicPopup, $http, $rootScope, $st
     });
 
   $scope.showNear = function(){
-
+    $scope.items = {};
   }
 
   $scope.AdvProfile = function(id){
@@ -39,9 +39,21 @@ app.controller('MainCtrl', function ($scope, $ionicPopup, $http, $rootScope, $st
         console.log(response);
       })
       .error(function(data) {
-        console.log('Error: '+data);
+        console.log("Error: "+data);
       })
 
+  }
+
+  $scope.showFriends = function () {
+    $http.get(base_url+'/user/recomendedadv/' + $rootScope.UserID)
+      .success(function (response) {
+        console.log("Muestra las aventuras de tus amigos");
+        $scope.FollowingAdvs = response;
+        $scope.items = response.adventures.created;
+      })
+      .error(function (data) {
+        console.log("Error");
+      })
   }
 
   /*$http.get(base_url + '/user/sessionid')
