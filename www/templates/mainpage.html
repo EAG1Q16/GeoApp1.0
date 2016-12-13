@@ -4,7 +4,7 @@
   <ion-content>
 
     <ion-list>
-      <ion-item ng-repeat="item in items | filter:busqueda" href="#/app/adventures/{{item._id}}" class=" item-thumbnail-left">
+      <ion-item ng-repeat="item in items" href="#/app/adventures/{{item._id}}" class=" item-thumbnail-left">
 
           <img ng-src={{item.image}}>
           <br>
