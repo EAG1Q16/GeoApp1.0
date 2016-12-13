@@ -3,7 +3,7 @@
 
   <ion-content>
 
-    <ion-list>
+    <ion-list ng-if="Bfriends=='false'">
       <ion-item ng-repeat="item in items" href="#/app/adventures/{{item._id}}" class=" item-thumbnail-left">
 
           <img ng-src={{item.image}}>
@@ -16,15 +16,45 @@
       </ion-item>
     </ion-list>
 
+    <ion-list ng-if="Bfriends=='true'">
+      <div ng-repeat="FollowAdv in FollowAdvs">
+        <ion-item ng-repeat="item in FollowAdv.adventures.created" href="#/app/adventures/{{item._id}}" class=" item-thumbnail-left">
+
+          <img ng-src={{item.image}}>
+          <br>
+          <h2>{{ item.name }}</h2>
+          <h3>{{ item.description }}</h3>
+          <h4>Dificultad: {{item.difficulty}}</h4>
+          <br>
+
+        </ion-item>
+      </div>
+    </ion-list>
+
+    <div ng-if="items.length == 0">
+      <div class="row" style="padding-top: 3em">
+        <div class="col text-center">
+          <h4 style = "color: dimgrey"> No hay aventuras para mostrar </h4>
+        </div>
+      </div>
+    </div>
+
+
   </ion-content>
   <div style="position: absolute; bottom: 0px; width: 100%" class="button-bar">
-    <button class="button icon ion-ios-location" ng-click="showNear()">
+    <button class="button icon ion-ios-location" ng-if="Bnear=='false'" ng-click="showNear()">
     </button>
-    <button class="button icon ion-earth" ng-click="showAll()">
+    <button class="button icon ion-ios-location" ng-if="Bnear=='true'" style="color: dodgerblue">
     </button>
+    <button class="button icon ion-earth" ng-if="Ball=='false'" ng-click="showAll()">
     </button>
-    <button class="button icon ion-android-contacts" ng-click="showFriends()">
+    <button class="button icon ion-earth" ng-if="Ball=='true'" style="color: dodgerblue">
+    </button>
+    <button class="button icon ion-android-contacts" ng-if="Bfriends=='false'" ng-click="showFriends()">
+    </button>
+    <button class="button icon ion-android-contacts" ng-if="Bfriends=='true'" style="color: dodgerblue">
     </button>
   </div>
+
 </ion-view>
 

@@ -2,13 +2,11 @@
   <ion-content>
 
     <div class="bar bar-header item-input-inset">
-      <label class="item-input-wrapper">
-        <i class="icon ion-ios-search placeholder-icon"></i>
-        <input type="search" ng-model="busqueda" placeholder="Buscar un usuario">
-        <button class="button button-clear" ng-click="busqueda = null">
-          <i class="ion-ios-close-outline" style="color: dimgrey"></i>
-        </button>
-      </label>
+      <i class="icon ion-ios-search placeholder-icon"></i>
+      <input type="search" style="width: 100%" ng-model="busqueda.username" placeholder="Buscar una aventura">
+      <button class="button button-clear button-icon" style="alignment: right" ng-click="busequeda = null">
+        <i class="ion-close-round" style="color: dimgrey"></i>
+      </button>
     </div>
 
     <ion-list>
@@ -25,5 +23,3 @@
   </ion-content>
 </ion-view>
 
-
-<!--| filter:busqueda-->

@@ -9,13 +9,15 @@ var base_url="http://localhost:3000";
 
 
 app.controller('MainCtrl', function ($scope, $ionicPopup, $http, $rootScope, $stateParams, $timeout, $state){
-  console.log("mainctrl");
-  console.log("rootscope: "+$rootScope.UserID);
+
+  $scope.Ball = 'true';
+  $scope.Bnear = 'false';
+  $scope.Bfriends = 'false';
+
+  //Mostrar todas las aventuras
   $http.get(base_url+'/adventures')
     .success(function (response) {
-      console.log("aventuriiiis");
       $scope.items = response;
-      console.log(response);
     })
     .error(function(data) {
       console.log('Error: '+data);
@@ -23,20 +25,20 @@ app.controller('MainCtrl', function ($scope, $ionicPopup, $http, $rootScope, $st
 
   $scope.showNear = function(){
     $scope.items = {};
+    $scope.Ball = 'false';
+    $scope.Bnear = 'true';
+    $scope.Bfriends = 'false';
   }
-
-  $scope.AdvProfile = function(id){
-    console.log("click")
-    $state.go("app.adventures"+'/'+ id);
-  };
-
 
   $scope.showAll = function(){
     $http.get(base_url+'/adventures')
       .success(function (response) {
         console.log("todas las aventuras");
-        $scope.items = response;
         console.log(response);
+        $scope.items = response;
+        $scope.Ball = 'true';
+        $scope.Bnear = 'false';
+        $scope.Bfriends = 'false';
       })
       .error(function(data) {
         console.log("Error: "+data);
@@ -48,13 +50,21 @@ app.controller('MainCtrl', function ($scope, $ionicPopup, $http, $rootScope, $st
     $http.get(base_url+'/user/recomendedadv/' + $rootScope.UserID)
       .success(function (response) {
         console.log("Muestra las aventuras de tus amigos");
-        $scope.FollowingAdvs = response;
-        $scope.items = response.adventures.created;
+        console.log(response);
+        $scope.FollowAdvs = response.following;
+        $scope.Ball = 'false';
+        $scope.Bnear = 'false';
+        $scope.Bfriends = 'true';
       })
       .error(function (data) {
         console.log("Error");
       })
   }
+
+  $scope.AdvProfile = function(id){
+    console.log("click")
+    $state.go("app.adventures"+'/'+ id);
+  };
 
   /*$http.get(base_url + '/user/sessionid')
     .success(function(data) {
