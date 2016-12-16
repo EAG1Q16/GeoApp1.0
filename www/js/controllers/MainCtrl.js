@@ -6,8 +6,6 @@
 
 var base_url="http://localhost:3000";
 
-
-
 app.controller('MainCtrl', function ($scope, $ionicPopup, $http, $rootScope, $stateParams, $timeout, $state){
 
   $scope.Ball = 'true';

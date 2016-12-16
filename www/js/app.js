@@ -69,7 +69,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
       url: '/user',
       views: {
         'menuContent': {
-          templateUrl: 'templates/user.html',
+          templateUrl: 'templates/edituser.html',
           controller: 'EditUserCtrl'
         }
       }
