@@ -12,8 +12,6 @@ app.controller('AllusersCtrl', function ($scope, $http ,$rootScope, $ionicPopup,
     .success(function(data) {
       $scope.users = data;
       console.log(data);
-
-
     })
     .error(function(data) {
       console.log('Error: ' + data);
@@ -22,5 +20,5 @@ app.controller('AllusersCtrl', function ($scope, $http ,$rootScope, $ionicPopup,
   $scope.clear = function(){
     $scope.busqueda = null;
   };
-  
+
 });
