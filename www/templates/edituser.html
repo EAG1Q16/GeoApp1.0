@@ -1,0 +1,72 @@
+<ion-view view-title="Editar Perfil">
+  <ion-content >
+
+    <div style="padding-top: 3em">
+      <div align="center">
+        <img class="image-avatar" style="height:75px; width:75px" src={{UserProfileInfo.photo}}>
+
+      </div>
+      <div align="center">
+        <button class="button button-clear button-positive button-small">Cambiar foto</button>
+      </div>
+
+    </div>
+    <br>
+
+
+
+
+    <div class="row">
+      <div class="col col-5"></div>
+      <div class="col col-90">
+        <div class="list" ng-init="load()">
+            <label  class="item  item-input">
+              <i class="icon ion-person" ></i>
+              <input type="text" style="color: black; padding-left: 1em" ng-model="UpdatedUser.name">
+            </label>
+
+          <label  class="item  item-input ">
+            <i class="icon ion-at" ></i>
+            <input type="text" style="color: black; padding-left: 1em" ng-model="UpdatedUser.username">
+          </label>
+
+          <label  class="item  item-input ">
+            <i class="icon ion-email" ></i>
+            <input type="text" style="color: black; padding-left: 1em" placeholder="{{UserProfileInfo.email}}" ng-model="UpdatedUser.email">
+          </label>
+
+          <label class="item item-input">
+            <i class="icon ion-quote" ></i>
+            <input type="text" style="color: black; padding-left: 1em" placeholder="{{UserProfileInfo.description}}" ng-model="UpdatedUser.description">
+          </label>
+
+          <label  class="item  item-input">
+            <i class="icon ion-locked" ></i>
+            <input type="password" style="color: black; padding-left: 1em" placeholder="Nueva contraseña" ng-model="NewUser.password">
+          </label>
+
+          <label  class="item  item-input">
+            <i class="icon ion-locked" ></i>
+            <input type="password" style="color: black; padding-left: 1em" placeholder="Repetir la contraseña"  ng-model="NewUser.repeat">
+          </label>
+        </div>
+
+
+      </div>
+      <div class="col col-5"></div>
+
+    </div>
+
+          <div align="center" style="padding-top: 3em">
+            <p class="text-center"style="color: black"><small>Registered {{UserProfileInfo.registerdate}}</small></p>
+          </div>
+          <br>
+          <div align="center">
+            <button style="width: 80%" class="button" ng-click="EditUser()">Guardar</button>
+          </div>
+
+
+    </ion-content>
+</ion-view>
+
+
