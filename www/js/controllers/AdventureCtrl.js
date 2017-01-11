@@ -1,10 +1,6 @@
 /**
  * Created by Marta_ on 28/11/2016.
  */
-
-
-
-
 app.controller('AdventureCtrl', function ($scope, $ionicPopup, $http, $rootScope, $stateParams, $timeout, $state){
   console.log("rootscope: "+$rootScope.UserID);
   var adventureID = window.location.href.split("/").pop();
@@ -37,7 +33,7 @@ app.controller('AdventureCtrl', function ($scope, $ionicPopup, $http, $rootScope
       console.log('Error: ' + data);
     });
 
-  //FAV y UNFAV
+  //FAV
   $scope.FavAdventure = function () {
       $http.post(base_url+'/user/afavadv/' + adventureID, $rootScope.User)
         .success(function(data){
@@ -58,6 +54,7 @@ app.controller('AdventureCtrl', function ($scope, $ionicPopup, $http, $rootScope
         });
   };
 
+  //UNFAV
   $scope.UnfavAdventure = function () {
     $http.delete(base_url+'/user/uafavadv/' + adventureID +'/'+ $rootScope.UserID)
       .success(function(data){
@@ -80,8 +77,8 @@ app.controller('AdventureCtrl', function ($scope, $ionicPopup, $http, $rootScope
 
   //Tweet
   $scope.AddTweet = function () {
-
   };
+
 
   //Comentar una aventura
   $scope.NewComment={};

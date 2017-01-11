@@ -1,7 +1,6 @@
 <ion-view  no-shadow view-title="Aventura" style="color: black" >
   <ion-nav-view></ion-nav-view>
 
-
   <ion-content>
     <div class="list card">
 
@@ -32,7 +31,7 @@
           </div>
         <button class="button button-block button-energized">JUGAR</button>
         </div>
-    </div>
+      </div>
 
       <div>
         <h4 style="padding-left: 1em">Comentarios</h4>
@@ -61,7 +60,7 @@
                 </div>
               </div>
             <div class="col col-25 col-top">
-              <button class="button button-clear button-assertive" ng-show=(UserID==comment.user._id) ng-click="deletecomment(comment._id)"><i class="icon ion-close-round"></i></button>
+              <button class="button button-clear button-small button-dark" ng-show=(UserID==comment.user._id) ng-click="deletecomment(comment._id)"><i class="icon ion-close-round"></i></button>
             </div>
             </div>
           </ion-item>

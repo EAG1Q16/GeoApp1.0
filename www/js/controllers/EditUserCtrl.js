@@ -2,11 +2,10 @@
  * Created by Marta_ on 28/11/2016.
  */
 
-app.controller('EditUserCtrl', function ($scope, $rootScope, $ionicPopup, $http, $stateParams, $timeout, $state) {
+app.controller('EditUserCtrl', function ($scope, $rootScope, $ionicModal, $ionicPopup, $http, $stateParams, $timeout, $state) {
 
 // when landing on the page get user
   $scope.load = function() {
-
     $http.get(base_url + '/user/my/' + $rootScope.UserID)
       .success(function(data) {
         $scope.UserProfileInfo = data;
@@ -89,7 +88,7 @@ app.controller('EditUserCtrl', function ($scope, $rootScope, $ionicPopup, $http,
         $scope.UpdatedUser = {};
       });
 
-
+/*
     console.log($scope.UpdatedUser);
     if ($scope.UpdatedUser.password == $scope.UpdatedUser.repnewpassword) {
       $http.put(base_url + '/user/update/password/' + $rootScope.UserID, $scope.UpdatedUser)
@@ -107,7 +106,7 @@ app.controller('EditUserCtrl', function ($scope, $rootScope, $ionicPopup, $http,
       var errorPopup = $ionicPopup.alert({
         title: 'Las contraseñas no coinciden'
       })
-    }
+    }*/
 };
 /*
     console.log('Entra en el controller EditUserCtrl');
@@ -130,7 +129,38 @@ app.controller('EditUserCtrl', function ($scope, $rootScope, $ionicPopup, $http,
 
     });*/
 
+  $ionicModal.fromTemplateUrl('templates/newpassword.html', {
+    scope: $scope
+  }).then(function(modal) {
+    $scope.modal = modal;
+  });
 
+  $scope.changePassword = function(password) {
+    console.log("HOLIIII CHANGE PASSWORD");
+    if(password.pass == password.repetir){
+      $scope.UpdatedUser.password = password.pass;
+      console.log($scope.password);
+      $http.put(base_url + '/user/update/password/' + $rootScope.UserID, $scope.UpdatedUser)
+        .success(function (data) {
+          console.log("success");
+          console.log(data);
+        })
+        .error(function (data) {
+          console.log('Error' + data);
+          $ionicPopup.alert({
+            title: 'Error',
+            template: 'No se ha podido modificar la contraseña'
+          })
+        })
+      $scope.modal.hide();
+    }
+    else{
+      $ionicPopup.alert({
+        title: 'Error',
+        template: 'Las contraseñas no coinciden'
+      })
+    }
+  };
 
 
 });

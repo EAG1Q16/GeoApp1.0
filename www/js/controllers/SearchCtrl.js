@@ -6,6 +6,7 @@ app.controller('SearchCtrl',function ($scope, $http, $ionicPopup, $stateParams, 
 
   //Para borrar el input hay que tratar el ng-model con objetos.
   $scope.input = {busqueda : '' };
+  $scope.dificultad = {difficulty : ''};
 
   $http.get(base_url+'/adventures')
     .success(function (response) {
@@ -21,5 +22,13 @@ app.controller('SearchCtrl',function ($scope, $http, $ionicPopup, $stateParams, 
     $scope.input = {busqueda : '' };
   };
 
-
+  $scope.Facil = function () {
+    $scope.dificultad = {difficulty: 'Fácil'};
+  };
+  $scope.Media = function () {
+    $scope.dificultad = {difficulty: 'Media'};
+  };
+  $scope.Dificil = function () {
+    $scope.dificultad = {difficulty: 'Difícil'};
+  };
 });

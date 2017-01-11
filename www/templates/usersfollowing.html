@@ -11,6 +11,13 @@
 
       </ion-item>
     </ion-list>
+    <div ng-if="following.length == 0">
+      <div class="row" style="padding-top: 3em">
+        <div class="col text-center">
+          <h4 style = "color: dimgrey"> {{name}} no sigue a ningún usuario </h4>
+        </div>
+      </div>
+    </div>
   </ion-content>
 </ion-view>
 
