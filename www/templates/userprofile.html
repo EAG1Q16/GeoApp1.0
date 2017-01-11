@@ -43,15 +43,15 @@
       </a>
 
 
-      <a style="color: black" class="item item-icon-left" href="#">
+      <a style="color: black" class="item item-icon-left" href="#/app/adventurescreated/{{UserProfileInfo._id}}">
         <i class="icon ion-map"></i>
         Aventuras creadas
-        <span class="badge badge-positive">{{UserProfileInfo.adventures.played.length}}</span>
+        <span class="badge badge-positive">{{UserProfileInfo.adventures.created.length}}</span>
       </a>
-      <a style="color: black" class="item item-icon-left" href="#">
+      <a style="color: black" class="item item-icon-left"href="#/app/adventuresplayed/{{UserProfileInfo._id}}">
         <i class="icon ion-play"></i>
         Aventuras jugadas
-        <span class="badge badge-positive">{{UserProfileInfo.adventures.created.length}}</span>
+        <span class="badge badge-positive">{{UserProfileInfo.adventures.played.length}}</span>
       </a>
     </div>
   </ion-content>

@@ -9,8 +9,7 @@ app.controller('UsersfollowersCtrl', function ($scope, $http ,$rootScope, $ionic
 
     $http.get(base_url + '/user/my/' + puserID)
       .success(function(data) {
-        console.log("entro en el iiiifff my perfil");
-        console.log(data.followers)
+        $scope.name = data.username;
         $scope.followers = data.followers;
 
       })

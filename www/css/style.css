@@ -17,13 +17,6 @@
   max-height: 300px
 }
 
-.item.item-input{
-  border-color: white;
-  border-width: 3px;
-  background-color: white;
-  opacity: 0.8;
-}
-
 .textarea {
   background-color: whitesmoke;
   width: 95%;

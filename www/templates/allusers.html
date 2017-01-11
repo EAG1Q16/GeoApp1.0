@@ -3,19 +3,19 @@
 
     <div class="bar bar-header item-input-inset">
       <i class="icon ion-ios-search placeholder-icon"></i>
-      <input type="search" style="width: 100%" ng-model="busqueda.username" placeholder="Buscar una aventura">
-      <button class="button button-clear button-icon" style="alignment: right" ng-click="busequeda = null">
+      <input type="search" style="width: 100%" ng-model="input.busqueda" placeholder="Buscar un aventurero">
+      <button class="button button-clear button-icon" style="alignment: right" ng-click="deleteInputForm()">
         <i class="ion-close-round" style="color: dimgrey"></i>
       </button>
     </div>
 
     <ion-list>
-      <ion-item ng-repeat="user in users | filter:busqueda | orderBy:user.followers.length"  href=#/app/userprofile/{{user._id}} class="item item-thumbnail-left">
+      <ion-item ng-repeat="user in users | filter:input.busqueda | orderBy:user.followers.length"  href=#/app/userprofile/{{user._id}} class="item item-thumbnail-left">
 
         <img ng-src={{user.photo}}>
         <br>
         <h2>{{ user.name }}</h2>
-        <h4>{{ user.description }}</h4>
+        <p>{{ user.description }}</p>
         <br>
 
       </ion-item>
