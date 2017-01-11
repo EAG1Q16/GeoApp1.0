@@ -16,9 +16,9 @@
 
     <ion-side-menu side="left">
         <ion-content class="positive">
-            <a class="item item-avatar" style="align-content: center" href="#/app/userprofile/{{UserID}}">
-              <img src={{user.photo}}>
-              <h2>{{user.username}}</h2>
+            <a menu-close class="item item-avatar" style="align-content: center"  href="#/app/userprofile/{{UserID}}">
+              <img src={{User.photo}}>
+              <h2 style="padding-top: 0.7em">{{User.username}}</h2>
             </a>
             <ion-list>
                 <ion-item nav-clear menu-close style="color: black" href="#/app/main">
@@ -35,24 +35,12 @@
 
                   <i class="ion-person"></i> Perfil
                 </ion-item>
-                <ion-item nav-clear menu-close style="color: black" href="#/app/search">
-                  <i class="ion-search"></i> Buscar
-                </ion-item>
+
                 <ion-item nav-clear menu-close style="color: black" href="#/app/position">
-                  <i class="ion-search"></i> Geolocalizacion
+                  <i class="ion-ios-location"></i> Geolocalizacion
                 </ion-item>
             </ion-list>
-          <ion-footer-bar>
-              <div class="row" style="border-color: transparent">
-                <div class="col item item-avatar" style="border-color: transparent">
-                  <img src={{user.photo}}>
-                </div>
-                <div class="col text-center">
-                  <h3>{{user.username}}</h3>
-                </div>
-              </div>
 
-          </ion-footer-bar>
         </ion-content>
     </ion-side-menu>
 </ion-side-menus>

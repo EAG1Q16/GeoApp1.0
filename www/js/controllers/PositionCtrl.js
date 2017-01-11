@@ -1,19 +1,10 @@
-/**
- * Created by Andrea on 05/12/2016.
- */
 
-app.controller('PositionCtrl', function ($scope, $http,$rootScope, $ionicPopup, $stateParams, $state, $timeout) {
-
-
-  //Make sure to get at least one GPS coordinate in the foreground before starting background services
-  navigator.geolocation.getCurrentPosition(function() {
-    console.log("Succesfully retreived our GPS position, we can now start our background tracker.");
-  }, function(error) {
-    console.error(error);
-  });
+app.controller('PositionCtrl', function($scope,$http, $cordovaGeolocation, $state, $ionicLoading, $compile, $rootScope, $ionicPopup) {
 
 //Get plugin
   var bgLocationServices =  window.plugins.backgroundLocationServices;
+  $scope.position ="";
+  var idbueno ='0';
 
 //Congfigure Plugin
   bgLocationServices.configure({
@@ -21,41 +12,99 @@ app.controller('PositionCtrl', function ($scope, $http,$rootScope, $ionicPopup, 
     desiredAccuracy: 20, // Desired Accuracy of the location updates (lower means more accurate but more battery consumption)
     distanceFilter: 5, // (Meters) How far you must move from the last point to trigger a location update
     debug: true, // <-- Enable to show visual indications when you receive a background location update
-    interval: 9000, // (Milliseconds) Requested Interval in between location updates.
-    useActivityDetection: true, // Uses Activitiy detection to shut off gps when you are still (Greatly enhances Battery Life)
+    interval: 5000, // (Milliseconds) Requested Interval in between location updates.
+    useActivityDetection: false, // Uses Activitiy detection to shut off gps when you are still (Greatly enhances Battery Life)
 
     //Android Only
     notificationTitle: 'BG Plugin', // customize the title of the notification
     notificationText: 'Tracking', //customize the text of the notification
-    fastestInterval: 5000 // <-- (Milliseconds) Fastest interval your app / server can handle updates
+    fastestInterval: 1000 // <-- (Milliseconds) Fastest interval your app / server can handle updates
 
   });
+
 
 //Register a callback for location updates, this is where location objects will be sent in the background
   bgLocationServices.registerForLocationUpdates(function(location) {
     console.log("We got an BG Update" + JSON.stringify(location));
+    track.push(location);
+    console.log("Track" + location.latitude + ',' + location.longitude);
+    $scope.position = location;
+    $scope.cordenada = {
+      latitude: location.latitude,
+      longitude: location.longitude,
+      advid: $rootScope.advid
+    };
+
+    $http.post(base_url+'/adventures/hintnear/', $scope.cordenada)
+      .success(function (data) {
+        //$scope.probando = (data);
+
+        console.log("cercanas", data.text);
+
+        var id = data._id;
+        console.log('id' , id)
+        console.log('idbueno' , idbueno)
+        if (id != idbueno){
+          $ionicPopup.alert({
+            title: 'Pista!',
+            template: data.text
+          });
+          console.log('para el map');
+          console.log(data.location.coordinates[0]);
+          console.log(data.location.coordinates[1]);
+          var marker = new google.maps.Marker({
+            position: new google.maps.LatLng(data.location.coordinates[1],data.location.coordinates[0]),
+            title:"Hello World!"
+          });
+          
+          marker.setMap(map);
+          idbueno = id;
+        }
+      })
+      .error(function (data) {
+        console.log('Error: ' + data);
+      });
+
   }, function(err) {
     console.log("Error: Didnt get an update", err);
   });
 
-//Register for Activity Updates
+    var map;
+    var myLatlng = new google.maps.LatLng(43.07493,-89.381388);
 
-//Uses the Detected Activies / CoreMotion API to send back an array of activities and their confidence levels
-//See here for more information:
-//https://developers.google.com/android/reference/com/google/android/gms/location/DetectedActivity
-  bgLocationServices.registerForActivityUpdates(function(activities) {
-    console.log("We got an activity update" + activities);
-  }, function(err) {
-    console.log("Error: Something went wrong", err);
-  });
+    var mapOptions = {
+      center: myLatlng,
+      zoom: 16,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    map = new google.maps.Map(document.getElementById("map"),
+      mapOptions);
 
-//Start the Background Tracker. When you enter the background tracking will start, and stop when you enter the foreground.
-  bgLocationServices.start();
 
+
+    $scope.map = map;
+
+  google.maps.event.addDomListener(window, 'load');
+
+  track = [];
+  $cordovaGeolocation.getCurrentPosition().then(
+    function (position) {
+      console.log("TENGO LA POSICION!" + position.coords.latitude);
+      map.setCenter(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));
+      var myLocation = new google.maps.Marker({
+        position: new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
+        map: map,
+        title: "My Location"
+      });
+
+      track = [];
+      bgLocationServices.start();
+    });
 
 ///later, to stop
-  bgLocationServices.stop();
-
-
+  //bgLocationServices.stop();
+ console.log('rootscopeeee' , $rootScope.advid);
 
 });
+
+

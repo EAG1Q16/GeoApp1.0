@@ -30,7 +30,7 @@
             </div>-->
           </div>
           </div>
-        <button class="button button-block button-energized">JUGAR</button>
+        <button class="button button-block button-energized" ng-click="jugar()">JUGAR</button>
         </div>
     </div>
 
@@ -46,7 +46,7 @@
         </div>
 
         <ion-list>
-          <ion-item ng-repeat="comment in comments" style="padding: 0px"  class="item-text-wrap">
+          <ion-item ng-repeat="comment in comments | orderBy:'-'" style="padding: 0px"  class="item-text-wrap">
             <div class="row">
               <div class="col col-82">
                 <div class="row">

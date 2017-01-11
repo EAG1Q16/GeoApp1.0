@@ -2,28 +2,26 @@
  * Created by Marta_ on 28/11/2016.
  */
 
-
-
-
-
-
 app.controller('EditUserCtrl', function ($scope, $rootScope, $ionicPopup, $http, $stateParams, $timeout, $state) {
 
+// when landing on the page get user
+  $scope.load = function() {
 
-  $scope.UpdatedUser = {};
+    $http.get(base_url + '/user/my/' + $rootScope.UserID)
+      .success(function(data) {
+        $scope.UserProfileInfo = data;
+        $scope.UserProfileInfo.registerdate = moment($scope.UserProfileInfo.registerdate, "").fromNow();
+        //$scope.FollowingUsers = data.following;
+        console.log($scope.UserProfileInfo);
+        console.log($scope.UserProfileInfo.username);
+        $scope.UpdatedUser = $scope.UserProfileInfo;
+      })
+      .error(function(data) {
+        console.log('Error: ' + data);
+      });
+    console.log("LOAD", $scope.UpdatedUser);
+  }
 
-  // when landing on the page get user
-  $http.get(base_url + '/user/my/' + $rootScope.UserID)
-    .success(function(data) {
-      $scope.UserProfileInfo = data;
-      //$scope.FollowingUsers = data.following;
-      console.log($scope.UserProfileInfo);
-      console.log($scope.UserProfileInfo.username);
-
-    })
-    .error(function(data) {
-      console.log('Error: ' + data);
-    });
 
   $scope.EditUser = function() {
     console.log('modificamos usuario');

@@ -1,8 +1,5 @@
 ﻿//var base_url = "http://localhost:3000";
 
-
-
-
 app.controller('AppCtrl', function ($scope, $state, $http, $ionicModal, $rootScope, $ionicPopover, $timeout, $ionicPopup) {
     // Form data for the login modal
 
@@ -35,9 +32,10 @@ app.controller('AppCtrl', function ($scope, $state, $http, $ionicModal, $rootSco
         $scope.popover.remove();
     });
 
-
-    $scope.SearchView = function(){
+    $scope.SearchView = function () {
+      console.log("Search view Click");
       $state.go('app.search')
-    }
+    };
+
 })
 

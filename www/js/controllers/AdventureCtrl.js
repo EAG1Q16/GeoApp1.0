@@ -8,6 +8,7 @@
 app.controller('AdventureCtrl', function ($scope, $ionicPopup, $http, $rootScope, $stateParams, $timeout, $state){
   console.log("rootscope: "+$rootScope.UserID);
   var adventureID = window.location.href.split("/").pop();
+  $rootScope.advid = adventureID;
   console.log("AdventureID: " + adventureID);
 
   //Obtener los datos para mostrar detalles de una aventura
@@ -78,6 +79,11 @@ app.controller('AdventureCtrl', function ($scope, $ionicPopup, $http, $rootScope
       });
   };
 
+  $scope.jugar = function () {
+    $state.go('app.position')
+    //href="#/app/position"
+  };
+
   //Tweet
   $scope.AddTweet = function () {
 
@@ -115,7 +121,7 @@ app.controller('AdventureCtrl', function ($scope, $ionicPopup, $http, $rootScope
   //Eliminar un comentario
   $scope.deletecomment = function (cmd_id) {
     var ConfirmPopup = $ionicPopup.confirm({
-      title: 'Esta seguro que quiere eliminar este comentario?'
+      title: 'Está seguro que quiere eliminar este comentario?'
     });
     ConfirmPopup.then(function (res) {
       if(res){
