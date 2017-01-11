@@ -67,11 +67,19 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
 
     .state('app.user', {
       url: '/user',
+      cache:false,
       views: {
         'menuContent': {
           templateUrl: 'templates/edituser.html',
           controller: 'EditUserCtrl'
         }
+      }
+    })
+    .state('modal', {
+      url: '/user/newpassword',
+      views: {
+        templateUrl: 'templates/newpassword.html',
+        controller: 'EditUserCtrl'
       }
     })
     .state('app.userprofile', {
@@ -94,7 +102,26 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
         }
       }
     })
-
+    .state('app.adventurescreated', {
+      url: '/adventurescreated/:id',
+      cache: false,
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/adventuresCreated.html',
+          controller: 'AdventuresCreatedCtrl'
+        }
+      }
+    })
+    .state('app.adventuresplayed', {
+    url: '/adventuresplayed/:id',
+    cache: false,
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/adventuresPlayed.html',
+        controller: 'AdventuresPlayedCtrl'
+      }
+    }
+  })
     .state('app.usersfollowing', {
       url: '/usersfollowing/:id',
       cache: false,
