@@ -1,10 +1,11 @@
 
-app.controller('PositionCtrl', function($scope,$http, $cordovaGeolocation, $state, $ionicLoading, $compile, $rootScope, $ionicPopup) {
+app.controller('PositionCtrl', function($scope, $http, $cordovaGeolocation, $state, $ionicLoading, $compile, $rootScope, $ionicPopup, $ionicModal) {
 
 //Get plugin
   var bgLocationServices =  window.plugins.backgroundLocationServices;
   $scope.position ="";
   var idbueno ='0';
+  var pistas_modal=[];
 
 //Congfigure Plugin
   bgLocationServices.configure({
@@ -39,16 +40,19 @@ app.controller('PositionCtrl', function($scope,$http, $cordovaGeolocation, $stat
       .success(function (data) {
         //$scope.probando = (data);
 
-        console.log("cercanas", data.text);
+        console.log("cercanas", data);
 
         var id = data._id;
         console.log('id' , id)
         console.log('idbueno' , idbueno)
+        
         if (id != idbueno){
           $ionicPopup.alert({
             title: 'Pista!',
             template: data.text
           });
+          pistas_modal.push(data);
+          $scope.hints=pistas_modal;
           console.log('para el map');
           console.log(data.location.coordinates[0]);
           console.log(data.location.coordinates[1]);
@@ -56,7 +60,7 @@ app.controller('PositionCtrl', function($scope,$http, $cordovaGeolocation, $stat
             position: new google.maps.LatLng(data.location.coordinates[1],data.location.coordinates[0]),
             title:"Hello World!"
           });
-          
+
           marker.setMap(map);
           idbueno = id;
         }
@@ -101,9 +105,33 @@ app.controller('PositionCtrl', function($scope,$http, $cordovaGeolocation, $stat
       bgLocationServices.start();
     });
 
+
+  $scope.showConfirm = function() {
+      var confirmPopup = $ionicPopup.confirm({
+        title: 'AVISO!',
+        template: 'Está seguro de que quiere abandonar esta aventura?'
+      });
+
+      confirmPopup.then(function(res) {
+        if(res) {
+          $state.go("app.main");
+          bgLocationServices.stop();
+          /*state.go("app.adventures"+'/'+ $rootScope.advid);*/
+        } else {
+          console.log('You are not sure');
+        }
+      });
+    };
+
 ///later, to stop
   //bgLocationServices.stop();
  console.log('rootscopeeee' , $rootScope.advid);
+
+  $ionicModal.fromTemplateUrl('templates/hints.html', {
+    scope: $scope
+  }).then(function(modal) {
+    $scope.modal = modal;
+  });
 
 });
 

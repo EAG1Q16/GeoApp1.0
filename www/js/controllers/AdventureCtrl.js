@@ -76,9 +76,31 @@ app.controller('AdventureCtrl', function ($scope, $ionicPopup, $http, $rootScope
       });
   };
 
+ 
+  
   $scope.jugar = function () {
-    $state.go('app.position')
-    //href="#/app/position"
+    $scope.cordenada = {
+      latitude: location.latitude,
+      longitude: location.longitude,
+      advid: $rootScope.advid
+    };
+    $http.post(base_url+'/adventures/posicion/', $scope.cordenada)
+      .success(function (data) {
+        console.log('data',data);
+        if(data == false){
+          $ionicPopup.alert({
+            title: 'AVISO!',
+            template: 'Dirígete a la localización de la aventura!'
+          });
+          $state.go("app.main");
+        }
+        if(data ==true){
+          $state.go('app.position');
+        }
+      })
+      .error(function (data) {
+        console.log('Error: ' + data);
+      });
   };
 
   //Tweet

@@ -5,8 +5,8 @@
 //var base_url = "http://localhost:3000";
 
 //var base_url="http://10.193.82.130:3000";
-var base_url="http://147.83.7.156:3000"; //server
-//var base_url="http://192.168.1.40:3000";
+//var base_url="http://147.83.7.156:3000"; //server
+var base_url="http://192.168.1.40:3000";
 
 
 
