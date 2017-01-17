@@ -76,8 +76,8 @@ app.controller('AdventureCtrl', function ($scope, $ionicPopup, $http, $rootScope
       });
   };
 
- 
-  
+
+
   $scope.jugar = function () {
     $scope.cordenada = {
       latitude: location.latitude,
@@ -118,6 +118,7 @@ app.controller('AdventureCtrl', function ($scope, $ionicPopup, $http, $rootScope
         $scope.bodycomment = data;
         $scope.NewComment = {};
         console.log($scope.bodycomment);
+        $
         $http.post(base_url + '/comments/addtoadventure/' + adventureID, $scope.bodycomment)
           .success(function (data) {
             console.log("entro en el success");

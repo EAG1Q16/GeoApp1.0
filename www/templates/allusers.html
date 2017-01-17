@@ -10,12 +10,13 @@
     </div>
 
     <ion-list>
-      <ion-item ng-repeat="user in users | filter:input.busqueda | orderBy:user.followers.length"  href=#/app/userprofile/{{user._id}} class="item item-thumbnail-left">
+      <ion-item ng-repeat="user in users | orderBy: '-score'|filter:input.busqueda | orderBy:user.followers.length"  href=#/app/userprofile/{{user._id}} class="item item-thumbnail-left">
 
         <img ng-src={{user.photo}}>
         <br>
         <h2>{{ user.name }}</h2>
         <p>{{ user.description }}</p>
+        <p>Puntos: {{ user.score }}</p>
         <br>
 
       </ion-item>
