@@ -17,20 +17,20 @@ app.controller('PositionCtrl', function($scope, $http, $cordovaGeolocation, $sta
     useActivityDetection: false, // Uses Activitiy detection to shut off gps when you are still (Greatly enhances Battery Life)
 
     //Android Only
-    notificationTitle: 'BG Plugin', // customize the title of the notification
-    notificationText: 'Tracking', //customize the text of the notification
+    notificationTitle: 'Geofinder', // customize the title of the notification
+    notificationText: 'Estas jugando una aventura', //customize the text of the notification
     fastestInterval: 1000 // <-- (Milliseconds) Fastest interval your app / server can handle updates
 
   });
-
-
+  bgLocationServices.start();
+  
 //Register a callback for location updates, this is where location objects will be sent in the background
   bgLocationServices.registerForLocationUpdates(function(location) {
     console.log("We got an BG Update" + JSON.stringify(location));
-    track.push(location);
+    //track.push(location);
     console.log("Track" + location.latitude + ',' + location.longitude);
     $scope.position = location;
-    $scope.cordenada = {
+    $rootScope.cordenada = {
       latitude: location.latitude,
       longitude: location.longitude,
       advid: $rootScope.advid
@@ -38,14 +38,11 @@ app.controller('PositionCtrl', function($scope, $http, $cordovaGeolocation, $sta
 
     $http.post(base_url+'/adventures/hintnear/', $scope.cordenada)
       .success(function (data) {
-        //$scope.probando = (data);
-
         console.log("cercanas", data);
-
         var id = data._id;
         console.log('id' , id)
         console.log('idbueno' , idbueno)
-        
+
         if (id != idbueno){
           $ionicPopup.alert({
             title: 'Pista!',
@@ -53,12 +50,10 @@ app.controller('PositionCtrl', function($scope, $http, $cordovaGeolocation, $sta
           });
           pistas_modal.push(data);
           $scope.hints=pistas_modal;
-          console.log('para el map');
-          console.log(data.location.coordinates[0]);
-          console.log(data.location.coordinates[1]);
           var marker = new google.maps.Marker({
             position: new google.maps.LatLng(data.location.coordinates[1],data.location.coordinates[0]),
-            title:"Hello World!"
+            title:"Hello World!",
+            icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
           });
 
           marker.setMap(map);
@@ -100,9 +95,7 @@ app.controller('PositionCtrl', function($scope, $http, $cordovaGeolocation, $sta
         map: map,
         title: "My Location"
       });
-
-      track = [];
-      bgLocationServices.start();
+      //bgLocationServices.start();
     });
 
 

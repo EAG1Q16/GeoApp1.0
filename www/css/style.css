@@ -32,4 +32,39 @@
   height: 100%;
 }
 
+.nav-bar-block, .bar {
+  background-color: deepskyblue;
+  color: white;
+}
+
+.custom {
+  background-color: white !important; /* This sets the background color*/
+}
+
+/*Set the background to transparent for ion-item*/
+.custom .item {
+  background-color: transparent;
+  border:none;   /*Removes all borders*/
+  border-top: 1px solid;   /*Top Border for each menu item*/
+  border-bottom:1px solid;   /*Bottom border for each menu item*/
+  border-color: lightgrey;   /*Sets colors for top and bottom border*/
+  color: black;    /*Text color for each item*/
+  font-size: 25px;
+}
+
+/*Changes the border for the last item*/
+.custom .item:last-child {
+  border-bottom: 1px solid lightgrey;
+}
+
+.custom .item-complex .item-content, .dark .item-radio .item-content {
+  background-color: transparent;
+}
+
+/*Just makes the type white*/
+.custom h3,
+.custom p{
+  color: white;  /*Text color for each item, overrides the color property above*/
+}
+
 
