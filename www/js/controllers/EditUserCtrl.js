@@ -2,7 +2,7 @@
  * Created by Marta_ on 28/11/2016.
  */
 
-app.controller('EditUserCtrl', function ($scope, $rootScope, $ionicModal, $ionicPopup, $http, $stateParams, $timeout, $state,  $cordovaCamera) {
+app.controller('EditUserCtrl', function ($scope, $rootScope, $ionicModal, $ionicPopup, $http, $stateParams, $timeout, $state,  $cordovaCamera, $cordovaImagePicker) {
 
 // when landing on the page get user
   $scope.load = function() {
@@ -52,6 +52,37 @@ app.controller('EditUserCtrl', function ($scope, $rootScope, $ionicModal, $ionic
     }, function(err) {
       // error
       console.log("camara", err)
+    });
+  }
+
+  $scope.gallery = function () {
+    var options = {
+      maximumImagesCount: 10,
+      width: 800,
+      height: 800,
+      quality: 80
+    };
+
+    $cordovaImagePicker.getPictures(options)
+      .then(function (results) {
+        for (var i = 0; i < results.length; i++) {
+          console.log('Image URI: ' + results[i]);
+          $scope.UpdatedUser.photo = results[i];
+        }
+      $http.put(base_url +'/user/update/photo/' + $rootScope.UserID, $scope.UpdatedUser)
+        .success(function(data){
+          console.log(data);
+          $scope.UserProfileInfo = data;
+          console.log($scope.UserProfileInfo);
+          $scope.UpdatedUser = {};
+        })
+        .error(function(data) {
+          console.log('Error' + data);
+          $scope.UpdatedUser = {};
+        });
+    }, function(error) {
+      // error
+      console.log("camara", error)
     });
   }
 
@@ -177,5 +208,5 @@ app.controller('EditUserCtrl', function ($scope, $rootScope, $ionicModal, $ionic
       })
     }
   };
-  
+
 });
