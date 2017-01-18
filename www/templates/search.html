@@ -8,28 +8,21 @@
         </button>
     </div>
     <div class="padding text-center">
-      <button class="button button-small button-positive tagged" ng-click="Facil()">
-        <i class="icon ion-at placeholder-icon" style="color: greenyellow"></i>Fácil &nbsp;
-      </button>
-      <button class="button button-small button-positive tagged" ng-click="Media()">
-        <i class="icon ion-clock placeholder-icon" style="color: yellow"></i>Media &nbsp;
-      </button>
-      <button class="button button-small button-positive tagged" ng-click="Dificil()">
-        &nbsp;<i class="icon ion-arrow-up-c placeholder-icon" style="color: red"></i>&nbsp;Difícil
-      </button>
+      <button class="button button-outline button-balanced button-small icon ion-bug tagged" ng-click="Facil()">&nbsp;Fácil</button>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <button class="button button-outline button-energized button-small icon ion-ios-paw tagged" ng-click="Media()">&nbsp;Media</button>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <button class="button button-small button button-outline button-assertive ion-fireball tagged" ng-click="Dificil()">&nbsp;Difícil</button>
     </div>
-   <!-- <label class="item item-input item-select">
-      <div class="input-label">
-        Dificultad
-      </div>
-      <select ng-model="dificultad.difficulty">
-        <option value="Fácil">Fácil</option>
-        <option value="Media">Media</option>
-        <option value="Difícil">Difícil</option>
-        <option value="">Todas</option>
-      </select>
-    </label>-->
 
+    <!--<div class="button-bar">
+      <button class="button button-outline button-balanced icon ion-bug"   ng-click="Facil()"> Fácil
+      </button>
+      <button class="button button-outline button-energized icon ion-ios-paw" ng-click="Media()"> Media
+      </button>
+      <button class="button button-outline button-assertive icon ion-ios-sunny" ng-click="Dificil()"> Difícil
+      </button>
+    </div>-->
 
     <ion-list>
       <ion-item ng-repeat="item in items | filter:input.busqueda | filter:dificultad" href="#/app/adventures/{{item._id}}" class=" item-thumbnail-left">
@@ -38,7 +31,7 @@
         <br>
         <h2>{{ item.name }}</h2>
         <h3>{{ item.description }}</h3>
-        <h4>Dificultad: {{item.difficulty}}</h4>
+        <h4>{{item.difficulty}}</h4>
         <br>
 
       </ion-item>

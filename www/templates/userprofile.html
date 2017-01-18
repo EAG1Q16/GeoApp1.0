@@ -1,6 +1,6 @@
 <ion-view view-title="Perfil">
   <ion-content>
-    <div class="list card">
+    <div class="list card" ng-init="loadinfo()">
         <div class="row">
         <div class="col col-75">
           <div class="row">
@@ -13,17 +13,26 @@
              </div>
           </div>
         </div>
-        <div class="col col-25 col-center">
-              <button ng-if="UserProfileInfo._id != UserID && isfollowing == 'false'" class="button button-block button-small button-outline button-positive" ng-click="followUser()"><b>Seguir</b></button>
-              <button ng-if="UserProfileInfo._id != UserID && isfollowing == 'true'" class="button button-block button-small button-outline button-assertive" ng-click="stopfollowUser()"><b>Dejar</b></button>
-              <a href="#/app/user"><button ng-if="UserProfileInfo._id == UserID" class="button button-light"><i class="icon ion-gear-a"></i></button></a>
+        <div class="col col-25 col-center" ng-if="UserProfileInfo._id != UserID">
+          <div ng-if="isfollowing == 'false'">
+            <button class="button button-block button-small button-outline button-positive" ng-click="followUser()"><b>Seguir</b></button>
+          </div>
+          <div ng-if="isfollowing == 'true'">
+            <button class="button button-block button-small button-outline button-assertive" ng-click="stopfollowUser()"><b>Dejar</b></button>
+          </div>
         </div>
+          <div class="col col-25 col-center" ng-if="UserProfileInfo._id == UserID">
+            <button class="button button-light icon ion-gear-a" ng-click="EditProfile()">
+          </div>
+
         </div>
       <div class="item item-body text-center">
+
         <img ng-if="AdventuresLength >=0 && AdventuresLength <3" height="70px" width="70px" src="img/CAmpista.png">
         <img ng-if="AdventuresLength >= 3 && AdventuresLength <10" height="70px" width="70px" src="img/Navegante.png">
         <img ng-if="AdventuresLength >= 10 && AdventuresLength<20" height="70px" width="70px" src="img/Montañero.png">
-        <img ng-if="AdventuresLength >= 20 " height="70px" width="70px" src="../img/Aventurero.png">
+        <img ng-if="AdventuresLength >= 20 " height="70px" width="70px" src="img/Aventurero.png">
+
         <p class="text-left">
           {{ UserProfileInfo.description}}
         </p>

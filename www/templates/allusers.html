@@ -10,14 +10,22 @@
     </div>
 
     <ion-list>
-      <ion-item ng-repeat="user in users | filter:input.busqueda | orderBy:user.followers.length"  href=#/app/userprofile/{{user._id}} class="item item-thumbnail-left">
-
-        <img ng-src={{user.photo}}>
-        <br>
-        <h2>{{ user.name }}</h2>
-        <p>{{ user.description }}</p>
-        <br>
-
+      <ion-item ng-repeat="user in users | orderBy: '-score'|filter:input.busqueda"  href=#/app/userprofile/{{user._id}}>
+        <div class="row" style="padding: 0px">
+          <div class="col col-25">
+            <img ng-src={{user.photo}} class="image-avatar" style="width: 60px; height: 60px">
+          </div>
+          <div class="col col-55">
+            <h2>{{ user.name }}</h2>
+            <p>Puntos: {{ user.score }}</p>
+          </div>
+          <div class="col col-20" style="padding-left: 2em; padding-top: 1em">
+            <img ng-if="user.score >=0 && user.score <150" height="40px" width="40px" src="img/CAmpista.png">
+            <img ng-if="user.score >= 150 && user.score <300" height="40px" width="40px" src="img/Navegante.png">
+            <img ng-if="user.score >= 300 && user.score<450" height="40px" width="40px" src="img/Montañero.png">
+            <img ng-if="user.score >= 450 " height="40px" width="40px" src="../img/Aventurero.png">
+          </div>
+        </div>
       </ion-item>
     </ion-list>
   </ion-content>

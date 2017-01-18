@@ -24,12 +24,14 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
 
     .state('app', {
       url: '/app',
+      cache: false,
       abstract: true,
       templateUrl: 'templates/menu.html',
       controller: 'AppCtrl'
     })
     .state('app.main', {
       url: '/main',
+      cache: false,
       views: {
         'menuContent': {
           templateUrl: 'templates/mainpage.html',
@@ -39,6 +41,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
     })
     .state('app.search', {
       url: '/search',
+      cache: false,
       views: {
         'menuContent': {
           templateUrl: 'templates/search.html',
@@ -48,6 +51,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
     })
     .state('app.myadventures', {
       url: '/myadventures',
+      cache: false,
       views: {
         'menuContent': {
           templateUrl: 'templates/myadventures.html',
@@ -57,6 +61,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
     })
     .state('app.adventures', {
       url: '/adventures/:id',
+      cache: false,
       views: {
         'menuContent': {
           templateUrl: 'templates/adventure.html',
@@ -75,15 +80,9 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
         }
       }
     })
-    /*.state('modal', {
-      url: '/user/newpassword',
-      views: {
-        templateUrl: 'templates/newpassword.html',
-        controller: 'EditUserCtrl'
-      }
-    })*/
     .state('app.userprofile', {
       url: '/userprofile/:id',
+      cache: false,
       views: {
         'menuContent': {
           templateUrl: 'templates/userprofile.html',

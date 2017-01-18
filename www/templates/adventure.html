@@ -1,4 +1,4 @@
-<ion-view  no-shadow view-title="Aventura" style="color: black" >
+<ion-view  no-shadow view-title="Aventura">
   <ion-nav-view></ion-nav-view>
 
   <ion-content>
@@ -6,67 +6,69 @@
 
       <div align="center">
         <h1>{{AdventureProfile.name}}</h1>
-        <p>Dificultad: {{AdventureProfile.difficulty}}</p>
       </div>
-
 
       <div class="item item-body">
         <img class="image-adventure" src={{AdventureProfile.image}}>
         <p>{{AdventureProfile.description}}</p>
-        <div class="row">
-          <div class="col">
-              <p>{{AdventureProfile.favs}}<small>        Favoritos </small></p>
-
-              <p >{{AdventureProfile.comments.length}}<small>      Comentarios</small> </p>
-          </div>
-          <div class="col">
-            <div class="row"></div>
-            <button ng-if="isfav == 'false'" style="color: grey; background-color: transparent" class="button icon ion-ios-heart" ng-click="FavAdventure()"></button>
-            <button ng-if="isfav == 'true'" style="color: red; background-color: transparent"  class="button icon ion-ios-heart" ng-click="UnfavAdventure()"></button>
-
-           <!-- <div class="row">
-              <button class="button button-positive button-small button-outline ion-social-twitter" ng-click="AddTweet()"> Tweet              </button>
-            </div>-->
-          </div>
-          </div>
         <button class="button button-block button-energized" ng-click="jugar()">JUGAR</button>
-        </div>
       </div>
 
-      <div>
-        <h4 style="padding-left: 1em">Comentarios</h4>
-        <div class="row">
-          <div class="col">
-            <textarea class="textarea" placeholder="&nbsp; Escriba un comentario" rows="1" ng-model = "NewComment.text"></textarea>
-            <br>
+      <div class="item item-body" style="padding: 0px">
+        <div class="row" ng-if="isfav=='false'">
+          <div class="col col-20">
+              <div class="row">
+                <p>{{AdventureProfile.favs}}</p>
+                <button style="background-color: transparent" class="button icon ion-ios-heart" ng-click="FavAdventure()"></button>
+              </div>
+          </div>
+          <div class="col col-20">
+            <div class="row">
+              <p>{{AdventureProfile.comments.length}}</p>
+              <button class="button" style="background-color: transparent" ng-click="modal.show()">
+                <i class="icon ion-chatbubble"></i>
+              </button>
+            </div>
+          </div>
 
-            <button style="width: 30%" class="button button-dark button-small ion-compose" ng-click="PostComment()">      Comentar</button>
+          <div class="col col-40"></div>
+          <div class="col col-20">
+              <p>{{AdventureProfile.difficulty}}</p>
           </div>
         </div>
-
-        <ion-list>
-          <ion-item ng-repeat="comment in comments | orderBy:'-'" style="padding: 0px"  class="item-text-wrap">
+        <div class="row" ng-if="isfav=='true'">
+          <div class="col col-20">
+            <div class = "row">
+              <p>{{AdventureProfile.favs}}</p>
+              <button style="color: red; background-color: transparent"  class="button icon ion-ios-heart" ng-click="UnfavAdventure()"></button>
+            </div>
+          </div>
+          <div class="col col-20">
             <div class="row">
-              <div class="col col-82">
-                <div class="row">
-                  <div class="col col-28">
-                    <img style="width: 60px; height: 60px" ng-src="{{ comment.user.photo }}">
-                  </div>
-                  <div class="col col-75">
-                     <p><b>{{ comment.user.name }}</b></p>
-                     <h3>{{ comment.text }}</h3>
-                      <p><small>{{comment.commentdate}}</small></p>
-                  </div>
-                </div>
-              </div>
-            <div class="col col-25 col-top">
-              <button class="button button-clear button-small button-dark" ng-show=(UserID==comment.user._id) ng-click="deletecomment(comment._id)"><i class="icon ion-close-round"></i></button>
+              <p>{{AdventureProfile.comments.length}}</p>
+              <button class="button" style="background-color: transparent" ng-click="modal.show()">
+                <i class="icon ion-chatbubble"></i>
+              </button>
             </div>
-            </div>
-          </ion-item>
-        </ion-list>
+          </div>
+          <div class="col col-40"></div>
+          <div class="col col-20">
+            <p>{{AdventureProfile.difficulty}}</p>
+          </div>
+        </div>
       </div>
+
+      <div class="item item-body" style="padding: 0px">
+            <textarea class="textarea" placeholder="&nbsp; Añade un comentario" row="1" ng-model = "NewComment.text"></textarea>
+            <button style="width: 30%" class="button button-dark button-small ion-compose" ng-click="PostComment()">Comentar</button>
+      </div>
+    </div>
+
   </ion-content>
 </ion-view>
 
-
+<!--
+<div class="row">
+  <button class="button button-positive button-small button-outline ion-social-twitter" ng-click="AddTweet()"> Tweet              </button>
+</div>
+-->

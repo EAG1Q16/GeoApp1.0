@@ -1,7 +1,7 @@
 /**
  * Created by Marta_ on 28/11/2016.
  */
-app.controller('AdventureCtrl', function ($scope, $cordovaGeolocation, $ionicPopup, $http, $rootScope, $stateParams, $timeout, $state){
+app.controller('AdventureCtrl', function ($scope, $cordovaGeolocation, $ionicModal, $ionicPopup, $http, $rootScope, $stateParams, $timeout, $state){
   console.log("rootscope: "+$rootScope.UserID);
   var adventureID = window.location.href.split("/").pop();
   $rootScope.advid = adventureID;
@@ -110,8 +110,22 @@ app.controller('AdventureCtrl', function ($scope, $cordovaGeolocation, $ionicPop
               user_id: $rootScope.UserID,
               adventure_id: $rootScope.advid
             };
-            
+
+
             $http.post(base_url+'/user/aplayedadv/', played)
+              .success(function (data) {
+                console.log(data);
+                $state.go('position');
+              }).error(function (err) {
+              $ionicPopup.alert({
+                title: 'AVISO!',
+                template: 'Algo ha ocurrido mal vuelve a intentarlo!'
+              });
+            });
+            var playedadv = {
+              adventure_id: $rootScope.advid
+            };
+            $http.post(base_url+'/adventures/timeplayed/', playedadv)
               .success(function (data) {
                 console.log(data);
                 $state.go('position');
@@ -138,6 +152,16 @@ app.controller('AdventureCtrl', function ($scope, $cordovaGeolocation, $ionicPop
   //Tweet
   $scope.AddTweet = function () {
   };
+
+  //Comments modal
+  $scope.CommentsModal = function () {
+
+  }
+  $ionicModal.fromTemplateUrl('templates/comments.html', {
+    scope: $scope
+  }).then(function(modal) {
+    $scope.modal = modal;
+  });
 
 
   //Comentar una aventura
