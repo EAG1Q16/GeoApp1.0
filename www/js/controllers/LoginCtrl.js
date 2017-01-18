@@ -1,5 +1,5 @@
 ﻿
-app.controller('LoginCtrl',function ($scope, $http, $ionicPopup, $stateParams, $rootScope, $timeout, $state) {
+app.controller('LoginCtrl',function ($scope, $http, $ionicPopup, $stateParams, $rootScope, $timeout, $state,  $cordovaInAppBrowser) {
 
   $scope.user = {};
 
@@ -30,6 +30,15 @@ app.controller('LoginCtrl',function ($scope, $http, $ionicPopup, $stateParams, $
   $scope.main = function () {
     $state.go('app.main')
   };
+
+//----Test Oauth-----------------------------------------//
+ $scope.twitterLogin = function () {
+
+ };
+
+ $scope.facebookLogin = function () {
+
+ };
 })
 
 
