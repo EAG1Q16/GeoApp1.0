@@ -67,7 +67,7 @@ app.controller('EditUserCtrl', function ($scope, $rootScope, $ionicModal, $ionic
     $http.put(base_url + '/user/update/name/' + $rootScope.UserID, $scope.UpdatedUser)
       .success(function (data) {
         console.log(data);
-        $scope.UserProfileInfo = data;
+        $scope.UpdatedUser = data;
         console.log($scope.UserProfileInfo);
         //$scope.UpdatedUser = {};
       })
@@ -82,9 +82,9 @@ app.controller('EditUserCtrl', function ($scope, $rootScope, $ionicModal, $ionic
     $http.put(base_url + '/user/update/username/' + $rootScope.UserID, $scope.UpdatedUser)
       .success(function (data) {
         console.log(data);
-        $scope.UserProfileInfo = data;
+        $scope.UpdatedUser = data;
         console.log($scope.UserProfileInfo);
-        $scope.UpdatedUser = {};
+        //$scope.UpdatedUser = {};
       })
       .error(function (data) {
         console.log('Error' + data);
@@ -97,9 +97,9 @@ app.controller('EditUserCtrl', function ($scope, $rootScope, $ionicModal, $ionic
     $http.put(base_url + '/user/update/description/' + $rootScope.UserID, $scope.UpdatedUser)
       .success(function (data) {
         console.log(data);
-        $scope.UserProfileInfo = data;
+        $scope.UpdatedUser = data;
         console.log($scope.UserProfileInfo);
-        $scope.UpdatedUser = {};
+        //$scope.UpdatedUser = {};
       })
       .error(function (data) {
         console.log('Error' + data);
@@ -112,35 +112,16 @@ app.controller('EditUserCtrl', function ($scope, $rootScope, $ionicModal, $ionic
     $http.put(base_url + '/user/update/photo/' + $rootScope.UserID, $scope.UpdatedUser)
       .success(function (data) {
         console.log(data);
-        $scope.UserProfileInfo = data;
+        $scope.UpdatedUser = data;
         console.log($scope.UserProfileInfo);
-        $scope.UpdatedUser = {};
+        //$scope.UpdatedUser = {};
       })
       .error(function (data) {
         console.log('Error' + data);
         $scope.UpdatedUser = {};
       });
 
-/*
-    console.log($scope.UpdatedUser);
-    if ($scope.UpdatedUser.password == $scope.UpdatedUser.repnewpassword) {
-      $http.put(base_url + '/user/update/password/' + $rootScope.UserID, $scope.UpdatedUser)
-        .success(function (data) {
-          console.log(data);
-          $scope.UserProfileInfo = data;
-          console.log($scope.UserProfileInfo);
-          $scope.UpdatedUser = {};
-        })
-        .error(function (data) {
-          console.log('Error' + data);
-          $scope.UpdatedUser = {};
-        })
-    } else {
-      var errorPopup = $ionicPopup.alert({
-        title: 'Las contraseñas no coinciden'
-      })
-    }*/
-};
+  };
 /*
     console.log('Entra en el controller EditUserCtrl');
     console.log('Entra en el EditProfile del controller');
@@ -177,6 +158,7 @@ app.controller('EditUserCtrl', function ($scope, $rootScope, $ionicModal, $ionic
         .success(function (data) {
           console.log("success");
           console.log(data);
+          $scope.changePassword = {pass:'', repetir:''};
         })
         .error(function (data) {
           console.log('Error' + data);
@@ -184,6 +166,7 @@ app.controller('EditUserCtrl', function ($scope, $rootScope, $ionicModal, $ionic
             title: 'Error',
             template: 'No se ha podido modificar la contraseña'
           })
+          $scope.changePassword = {pass:'', repetir:''};
         })
       $scope.modal.hide();
     }

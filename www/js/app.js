@@ -136,8 +136,8 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
       cache: false,
       templateUrl: 'templates/position.html',
       controller: 'PositionCtrl'
-        
-      
+
+
     })
 
     .state('app.allusers', {

@@ -4,10 +4,15 @@
 
 //var base_url = "http://localhost:3000";
 
+
 var base_url="http://10.193.82.130:3000";
 //var base_url="http://147.83.7.156:3000"; //server
 //var base_url="http://192.168.1.40:3000";
 
+
+
+//var base_url="http://147.83.7.156:3000"; //server
+//var base_url="http://10.193.144.123:3000";
 
 
 app.controller('MainCtrl', function ($scope, $ionicPopup, $http, $rootScope, $stateParams, $timeout, $state, $cordovaGeolocation){
@@ -38,7 +43,7 @@ app.controller('MainCtrl', function ($scope, $ionicPopup, $http, $rootScope, $st
           //Por defecto en metros 30000m 30km
           radius: '30000'
         };
-        
+
         console.log('coooordeeee', $scope.coordenada);
         $http.post(base_url+'/adventures/near/', $scope.coordenada)
           .success(function (response) {
@@ -51,7 +56,7 @@ app.controller('MainCtrl', function ($scope, $ionicPopup, $http, $rootScope, $st
           .error(function(data) {
             console.log("Error: "+data);
           })
-        
+
       }, function(err) {
         console.log(err);
         $ionicPopup.alert({
@@ -108,7 +113,7 @@ app.controller('MainCtrl', function ($scope, $ionicPopup, $http, $rootScope, $st
     console.log("click")
     $state.go("app.adventures"+'/'+ id);
   };
-  
+
 
   /*$http.get(base_url + '/user/sessionid')
     .success(function(data) {
