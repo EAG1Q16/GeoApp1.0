@@ -40,8 +40,11 @@ app.controller('AppCtrl', function ($scope, $state, $http, $ionicModal, $rootSco
     $scope.Logout = function () {
       $rootScope.UserID = "";
       $rootScope.User = "";
+      window.localStorage.removeItem("userid");;
+      window.localStorage.removeItem("facebook");
+      window.localStorage.removeItem("twitter");
       $state.go('login');
-    }
+    };
 
     $scope.view = 'explorar';
 

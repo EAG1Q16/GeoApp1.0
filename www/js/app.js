@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 var app = angular.module('starter', ['ionic', 'ngCordova', 'ngCordovaOauth']);
 
-app.run(function ($ionicPlatform) {
+app.run(function ($ionicPlatform, $http, $state) {
     $ionicPlatform.ready(function () {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
@@ -16,6 +16,7 @@ app.run(function ($ionicPlatform) {
             StatusBar.styleDefault();
         }
     });
+
 })
 app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
   $ionicConfigProvider.tabs.position("bottom");
@@ -168,9 +169,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
       templateUrl: 'templates/register.html',
       controller: 'RegisterCtrl'
     });
-
-  // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/login');
+    $urlRouterProvider.otherwise('/login')
 });
 
 
