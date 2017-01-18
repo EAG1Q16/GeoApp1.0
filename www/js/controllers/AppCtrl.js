@@ -37,5 +37,13 @@ app.controller('AppCtrl', function ($scope, $state, $http, $ionicModal, $rootSco
       $state.go('app.search')
     };
 
+    $scope.Logout = function () {
+      $rootScope.UserID = "";
+      $rootScope.User = "";
+      $state.go('login');
+    }
+
+    $scope.view = 'explorar';
+
 })
 

@@ -1,20 +1,14 @@
 
 <ion-view hide-back-button="true" hide-nav-bar="true">
   <ion-content>
-    <ion-header-bar class="bar-dark" >
-      <h1 class="title">Encuentra la pista siguiente!</h1>
+    <ion-header-bar style="background-color: deepskyblue">
+      <!--<h1 class="title">Encuentra la pista siguiente!</h1>-->
       <!--ion-more-->
-      <button style="width: 20%" class="button" ng-click="modal.show()">Pistas</button>
+      <button style="width: 20%" class="button button-outline" ng-click="modal.show()"><i class="ion-navicon-round" style="color: white">Pistas</i></button>
+      <button style="width: 20%" class="button button-outline" ng-click="showConfirm()"><i class="ion-close-round" style="color: white"></i></button>
     </ion-header-bar>
     <ion-content>
       <div id="map" data-tap-disabled="true"></div>
     </ion-content>
-    <ion-footer-bar class="bar-dark" >
-      <div class="row">
-        <div class="text-center">
-          <button class="button button-assertive" ng-click="showConfirm()">Salir de la Aventura</button>
-        </div>
-      </div>
-    </ion-footer-bar>
   </ion-content>
 </ion-view>

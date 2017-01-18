@@ -1,0 +1,29 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <h3 style="color:white" class="title">Comentarios</h3>
+    <button class="button button-icon ion-ios-close-empty" style="color:white" ng-click="modal.hide()"></button>
+  </ion-header-bar>
+<ion-content>
+  <ion-list>
+    <ion-item ng-repeat="comment in comments | orderBy:'-'" style="padding: 0px"  class="item-text-wrap">
+      <div class="row">
+        <div class="col col-15">
+              <img class = "image-avatar" style="width: 40px; height: 40px" ng-src="{{ comment.user.photo }}">
+          </div>
+        <div class="col col-75">
+              <h3><b>{{ comment.user.name }}</b></h3>
+              <h3>{{ comment.text }}</h3>
+              <p><small>{{comment.commentdate}}</small></p>
+          </div>
+        <div class="col col-10 col-top">
+          <button class="button button-clear button-small button-dark" ng-show=(UserID==comment.user._id) ng-click="deletecomment(comment._id)">
+            <i class="icon ion-trash-a"></i>
+          </button>
+        </div>
+      </div>
+      </div>
+    </ion-item>
+  </ion-list>
+
+</ion-content>
+</ion-modal-view>

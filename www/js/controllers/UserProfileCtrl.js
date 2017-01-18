@@ -85,6 +85,8 @@ app.controller('UserProfileCtrl', function ($scope, $http ,$rootScope, $ionicPop
         console.log('Error' + data);
       });
   };
-
+  $scope.EditProfile = function () {
+    $state.go('app.user')
+  }
 
 });

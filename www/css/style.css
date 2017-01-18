@@ -1,14 +1,15 @@
 /* Empty. Add your own CSS if you like */
 .image-avatar {
   /* cambia estos dos valores para definir el tamaño de tu círculo */
-  height: 150px;
-  width: 150px;
+  height: 90px;
+  width: 90px;
   /* los siguientes valores son independientes del tamaño del círculo */
   background-repeat: no-repeat;
   background-position: 50%;
   border-radius: 50%;
   background-size: auto;
 }
+
 
 .image-adventure {
   height: auto;
@@ -20,7 +21,7 @@
 .textarea {
   background-color: whitesmoke;
   width: 95%;
-  height: 70px;
+  height: 30px;
 }
 
 .scroll {
@@ -30,6 +31,45 @@
 #map {
   width: 100%;
   height: 100%;
+}
+
+.nav-bar-block, .bar {
+  background-color: deepskyblue;
+  color: white;
+}
+
+.larger {
+  font-size: larger;
+}
+
+.custom {
+  background-color: white !important; /* This sets the background color*/
+}
+
+/*Set the background to transparent for ion-item*/
+.custom .item {
+  background-color: transparent;
+  border:none;   /*Removes all borders*/
+  border-top: 1px solid;   /*Top Border for each menu item*/
+  border-bottom:1px solid;   /*Bottom border for each menu item*/
+  border-color: lightgrey;   /*Sets colors for top and bottom border*/
+  color: black;    /*Text color for each item*/
+  font-size: 16px;
+}
+
+/*Changes the border for the last item*/
+.custom .item:last-child {
+  border-bottom: 1px solid lightgrey;
+}
+
+.custom .item-complex .item-content, .dark .item-radio .item-content {
+  background-color: transparent;
+}
+
+/*Just makes the type white*/
+.custom h3,
+.custom p{
+  color: white;  /*Text color for each item, overrides the color property above*/
 }
 
 

@@ -76,13 +76,6 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
         }
       }
     })
-    /*.state('modal', {
-      url: '/user/newpassword',
-      views: {
-        templateUrl: 'templates/newpassword.html',
-        controller: 'EditUserCtrl'
-      }
-    })*/
     .state('app.userprofile', {
       url: '/userprofile/:id',
       views: {
@@ -132,15 +125,13 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
         }
       }
     })
-    .state('app.position', {
+    .state('position', {
       url: '/position',
       cache: false,
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/position.html',
-          controller: 'PositionCtrl'
-        }
-      }
+      templateUrl: 'templates/position.html',
+      controller: 'PositionCtrl'
+
+
     })
 
     .state('app.allusers', {

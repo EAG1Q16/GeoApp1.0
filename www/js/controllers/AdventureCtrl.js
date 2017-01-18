@@ -1,7 +1,7 @@
 /**
  * Created by Marta_ on 28/11/2016.
  */
-app.controller('AdventureCtrl', function ($scope, $ionicPopup, $http, $rootScope, $stateParams, $timeout, $state){
+app.controller('AdventureCtrl', function ($scope, $cordovaGeolocation, $ionicModal, $ionicPopup, $http, $rootScope, $stateParams, $timeout, $state){
   console.log("rootscope: "+$rootScope.UserID);
   var adventureID = window.location.href.split("/").pop();
   $rootScope.advid = adventureID;
@@ -79,33 +79,75 @@ app.controller('AdventureCtrl', function ($scope, $ionicPopup, $http, $rootScope
 
 
   $scope.jugar = function () {
-    $scope.cordenada = {
-      latitude: location.latitude,
-      longitude: location.longitude,
-      advid: $rootScope.advid
-    };
-    $http.post(base_url+'/adventures/posicion/', $scope.cordenada)
-      .success(function (data) {
-        console.log('data',data);
-        if(data == false){
-          $ionicPopup.alert({
-            title: 'AVISO!',
-            template: 'Dirígete a la localización de la aventura!'
-          });
-          $state.go("app.main");
-        }
-        if(data ==true){
-          $state.go('app.position');
-        }
-      })
-      .error(function (data) {
-        console.log('Error: ' + data);
+    console.log('Estoy aquiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii');
+    //$state.go('app.position');
+    var posOptions = {timeout: 1000, enableHighAccuracy: false};
+    $cordovaGeolocation.getCurrentPosition(posOptions).then(
+      function (position) {
+      console.log('hi');
+     $rootScope.cordenada = {
+        latitude: position.coords.latitude,
+        longitude: position.coords.longitude,
+        advid: $rootScope.advid
+      };
+      console.log('coooordeeee', $scope.cordenada);
+
+      $http.post(base_url+'/adventures/posicion/', $scope.cordenada)
+        .success(function (data) {
+          console.log('data',data);
+          if(data == false){
+            $ionicPopup.alert({
+              title: 'AVISO!',
+              template: 'Dirígete a la localización de la aventura!'
+            });
+            $state.go('app.adventures', {
+              param1:  $rootScope.advid
+            });
+          }
+          if(data == true){
+            //here we make the post to add the adventure in the played array
+            var played = {
+              user_id: $rootScope.UserID,
+              adventure_id: $rootScope.advid
+            };
+
+            $http.post(base_url+'/user/aplayedadv/', played)
+              .success(function (data) {
+                console.log(data);
+                $state.go('position');
+              }).error(function (err) {
+              $ionicPopup.alert({
+                title: 'AVISO!',
+                template: 'Algo ha ocurrido mal vuelve a intentarlo!'
+              });
+            });
+          }
+        })
+        .error(function (data) {
+          console.log('Error: ' + data);
+        });
+      },function (err) {
+        console.log('error', err);
+        $ionicPopup.alert({
+          title: 'AVISO!',
+          template: 'Activa la ubicación en tu dispositivo!'
+        });
       });
   };
 
   //Tweet
   $scope.AddTweet = function () {
   };
+
+  //Comments modal
+  $scope.CommentsModal = function () {
+
+  }
+  $ionicModal.fromTemplateUrl('templates/comments.html', {
+    scope: $scope
+  }).then(function(modal) {
+    $scope.modal = modal;
+  });
 
 
   //Comentar una aventura
@@ -118,7 +160,6 @@ app.controller('AdventureCtrl', function ($scope, $ionicPopup, $http, $rootScope
         $scope.bodycomment = data;
         $scope.NewComment = {};
         console.log($scope.bodycomment);
-        $
         $http.post(base_url + '/comments/addtoadventure/' + adventureID, $scope.bodycomment)
           .success(function (data) {
             console.log("entro en el success");

@@ -2,43 +2,51 @@
     <ion-side-menu-content class="positive">
         <ion-nav-bar class="positive">
           <ion-nav-buttons side="left">
-            <button class="button button-icon button-dark ion-navicon" menu-toggle="left" style="color: black"></button>
+            <button class="button button-icon button-dark ion-navicon" menu-toggle="left" style="color: white"></button>
           </ion-nav-buttons>
           <ion-nav-buttons side="right">
-            <button class="button button-icon button-dark ion-android-search" menu-toggle="right" style="color: black" ng-click="SearchView()"></button>
+            <button class="button button-icon button-dark ion-android-search" menu-toggle="right" style="color: white" ng-click="SearchView()"></button>
           </ion-nav-buttons>
-          <ion-nav-back-button style="color: black">
+          <ion-nav-back-button style="color: white">
           </ion-nav-back-button>
         </ion-nav-bar>
 
         <ion-nav-view name="menuContent"></ion-nav-view>
     </ion-side-menu-content>
-
+z
     <ion-side-menu side="left">
-        <ion-content class="positive">
-            <a menu-close class="item item-avatar" style="align-content: center"  href="#/app/userprofile/{{UserID}}">
-              <img src={{User.photo}}>
-              <h2 style="padding-top: 0.7em">{{User.username}}</h2>
+        <ion-content class="custom">
+            <a menu-close style="align-content: center; color: inherit; text-decoration:none"  href="#/app/userprofile/{{UserID}}">
+              <div class="row" style="background: url(img/menu.png); text-decoration:none; height: 170px; padding-top: 2em">
+                  <div class="col-40"style="padding-top: 1em; padding-left:1em">
+                    <img src={{User.photo}} class="image-avatar" style="text-decoration:none">
+                  </div>
+                  <div class="col-50">
+                    <h4 style="text-decoration:none; padding-left: 1em; padding-top: 1.5em; font-size: 24px; color: white">{{User.username}}</h4>
+                  </div>
+              </div>
             </a>
-            <ion-list>
-                <ion-item nav-clear menu-close style="color: black" href="#/app/main">
-                   <i class="ion-bonfire"></i>  Explorar
-                </ion-item>
-                <ion-item nav-clear menu-close style="color: black" href="#/app/allusers">
-                  <i class="ion-ios-people"></i> Aventureros
-                </ion-item>
-                <ion-item nav-clear menu-close style="color: black" href="#/app/myadventures">
-                  <i class="ion-android-compass"></i>  Mis Aventuras
-                </ion-item>
-
-                <ion-item nav-clear menu-close class="letra" style="color: black" href=#/app/userprofile/{{UserID}}>
-
-                  <i class="ion-person"></i> Perfil
-                </ion-item>
-
-                <ion-item nav-clear menu-close style="color: black" href="#/app/position">
-                  <i class="ion-ios-location"></i> Geolocalizacion
-                </ion-item>
+            <ion-list >
+              <div class="item-content">
+                  <ion-item  menu-close href="#/app/main" style="border-color: transparent">
+                    <i class="icon ion-bonfire"></i>Explorar
+                  </ion-item>
+                  <ion-item menu-close href="#/app/myadventures" style="border-color: transparent">
+                    <i class="ion-android-compass"></i> Mis Aventuras
+                  </ion-item>
+                  <ion-item menu-close href="#/app/allusers" style="border-color: transparent">
+                    <i class="ion-ios-people"></i> Aventureros
+                  </ion-item>
+                  <ion-item menu-close class="letra" href=#/app/userprofile/{{UserID}} style="border-color: transparent">
+                    <i class="ion-person"></i> Perfil
+                  </ion-item>
+                  <ion-item menu-close class="letra" href=#/app/userprofile/{{UserID}} style="border-color: transparent">
+                    <i class="ion-help-circled"></i> Ayuda y sugerencias
+                  </ion-item>
+                  <ion-item menu-close class="letra" ng-click="Logout()" style="border-color: transparent">
+                    <i class="ion-log-out"></i> Cerrar sesión
+                  </ion-item>
+              </div>
             </ion-list>
 
         </ion-content>
