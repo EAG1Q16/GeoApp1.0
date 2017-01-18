@@ -5,9 +5,8 @@
 
 
 app.controller('UserProfileCtrl', function ($scope, $http ,$rootScope, $ionicPopup, $stateParams, $state, $timeout) {
-  
+    var puserID = window.location.href.split("/").pop();
     $scope.loadinfo = function () {
-      var puserID = window.location.href.split("/").pop();
       console.log(puserID);
       $http.get(base_url + '/user/my/' + puserID)
         .success(function(data) {
@@ -32,8 +31,8 @@ app.controller('UserProfileCtrl', function ($scope, $http ,$rootScope, $ionicPop
           console.log('Error: ' + data);
         });
     };
-  
-  
+
+
 
   $scope.followUser = function () {
     $http.post(base_url +'/user/follow/' + puserID, $rootScope.User)//user

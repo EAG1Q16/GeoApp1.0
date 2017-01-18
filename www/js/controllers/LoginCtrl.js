@@ -2,7 +2,61 @@
 app.controller('LoginCtrl',function ($scope, $http, $ionicPopup, $stateParams, $rootScope, $timeout, $state, $cordovaOauth) {
 
   $scope.user = {};
-
+  //---------------------Login as localstorage token------------------------------------------------------//
+  $scope.isLoggedIn = function() {
+    if(window.localStorage.getItem("userid") !== null) {
+      var usersaved = {
+        id: window.localStorage.getItem("userid")
+      };
+      console.log(usersaved);
+      $http.post(base_url + '/user/app/easy/login', usersaved)
+        .success(function (response) {
+          console.log(response);
+          $rootScope.UserID = response._id;
+          $rootScope.User = response;
+          $state.go('app.main');
+        })
+        .error(function (err) {
+          console.log('Error: '+err);
+        });
+    } else {
+      if(window.localStorage.getItem("facebook") !== null) {
+        var faceinfo ={
+          id: window.localStorage.getItem("facebook")
+        };
+        $http.post(base_url + '/user/app/facebook/login', faceinfo)
+          .success(function (response) {
+            console.log(response);
+            $rootScope.UserID = response._id;
+            $rootScope.User = response;
+            $state.go('app.main');
+          })
+          .error(function (err) {
+            console.log('Error: '+err);
+          });
+      }else{
+        if(window.localStorage.getItem("twitter") !== null) {
+          var twitterinfo ={
+            user_id: window.localStorage.getItem("twitter")
+          };
+          $http.post(base_url + '/user/app/twitter/login', twitterinfo)
+            .success(function (response) {
+              console.log(response);
+              $rootScope.UserID = response._id;
+              $rootScope.User = response;
+              $state.go('app.main');
+            })
+            .error(function (err) {
+              $ionicPopup.alert({
+                title: 'Error',
+                template: 'Usuario incorrecto'
+              });
+        });
+      }
+    }
+  }
+  };
+  //---------------------Login user normal strategy------------------------------------------------------//
   $scope.login = function () {
     console.log("Función de login");
     console.log('username: ' + $scope.user.username);
@@ -13,9 +67,9 @@ app.controller('LoginCtrl',function ($scope, $http, $ionicPopup, $stateParams, $
           console.log(response);
           $rootScope.UserID = response._id;
           $rootScope.User = response;
-
+          console.log($scope.user.username);
+          window.localStorage.setItem("userid", response._id);
           $state.go('app.main');
-
         })
         .error(function (err) {
           $ionicPopup.alert({
@@ -32,7 +86,7 @@ app.controller('LoginCtrl',function ($scope, $http, $ionicPopup, $stateParams, $
     $state.go('app.main')
   };
 
-//----Test Oauth-----------------------------------------//
+//-----------------Oauth social login strategy-----------------------------------------//
  $scope.twitterLogin = function () {
    $cordovaOauth.twitter("Rb30dgakrgaXEnf2GOhkviPjL", "wKylIDwtjpIHCjRpbJuIVWBm24QxJ9rDCgwCDgwFnmIZdzmjTn").then(function(result) {
      console.log(JSON.stringify(result));
@@ -42,6 +96,7 @@ app.controller('LoginCtrl',function ($scope, $http, $ionicPopup, $stateParams, $
            console.log(response);
            $rootScope.UserID = response._id;
            $rootScope.User = response;
+           window.localStorage.setItem("twitter", result.user_id);
            $state.go('app.main');
          })
          .error(function (err) {
@@ -78,6 +133,7 @@ app.controller('LoginCtrl',function ($scope, $http, $ionicPopup, $stateParams, $
            console.log(response);
            $rootScope.UserID = response._id;
            $rootScope.User = response;
+           window.localStorage.setItem("facebook", faceinfo.id);
            $state.go('app.main');
          })
          .error(function (err) {
