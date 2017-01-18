@@ -110,8 +110,22 @@ app.controller('AdventureCtrl', function ($scope, $cordovaGeolocation, $ionicPop
               user_id: $rootScope.UserID,
               adventure_id: $rootScope.advid
             };
-            
+           
+
             $http.post(base_url+'/user/aplayedadv/', played)
+              .success(function (data) {
+                console.log(data);
+                $state.go('position');
+              }).error(function (err) {
+              $ionicPopup.alert({
+                title: 'AVISO!',
+                template: 'Algo ha ocurrido mal vuelve a intentarlo!'
+              });
+            });
+            var playedadv = {
+              adventure_id: $rootScope.advid
+            };
+            $http.post(base_url+'/adventures/timeplayed/', playedadv)
               .success(function (data) {
                 console.log(data);
                 $state.go('position');

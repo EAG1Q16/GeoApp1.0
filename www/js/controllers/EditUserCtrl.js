@@ -2,7 +2,7 @@
  * Created by Marta_ on 28/11/2016.
  */
 
-app.controller('EditUserCtrl', function ($scope, $rootScope, $ionicModal, $ionicPopup, $http, $stateParams, $timeout, $state) {
+app.controller('EditUserCtrl', function ($scope, $rootScope, $ionicModal, $ionicPopup, $http, $stateParams, $timeout, $state,  $cordovaCamera) {
 
 // when landing on the page get user
   $scope.load = function() {
@@ -21,6 +21,39 @@ app.controller('EditUserCtrl', function ($scope, $rootScope, $ionicModal, $ionic
     console.log("LOAD", $scope.UpdatedUser);
   }
 
+  $scope.camera = function () {
+    var options = {
+      quality: 50,
+      destinationType: Camera.DestinationType.DATA_URL,
+      sourceType: Camera.PictureSourceType.CAMERA,
+      allowEdit: true,
+      encodingType: Camera.EncodingType.JPEG,
+      targetWidth: 100,
+      targetHeight: 100,
+      popoverOptions: CameraPopoverOptions,
+      saveToPhotoAlbum: false,
+      correctOrientation:true
+    };
+
+    $cordovaCamera.getPicture(options).then(function(imageData) {
+      var image = document.getElementById('myImage');
+      $scope.UpdatedUser.photo = "data:image/jpeg;base64," + imageData;
+      $http.put(base_url +'/user/update/photo/' + $rootScope.UserID, $scope.UpdatedUser)
+        .success(function(data){
+          console.log(data);
+          $scope.UserProfileInfo = data;
+          console.log($scope.UserProfileInfo);
+          $scope.UpdatedUser = {};
+        })
+        .error(function(data) {
+          console.log('Error' + data);
+          $scope.UpdatedUser = {};
+        });
+    }, function(err) {
+      // error
+      console.log("camara", err)
+    });
+  }
 
   $scope.EditUser = function() {
     console.log('modificamos usuario');
@@ -161,6 +194,5 @@ app.controller('EditUserCtrl', function ($scope, $rootScope, $ionicModal, $ionic
       })
     }
   };
-
-
+  
 });
