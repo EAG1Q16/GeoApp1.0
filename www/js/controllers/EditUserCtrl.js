@@ -25,7 +25,7 @@ app.controller('EditUserCtrl', function ($scope, $rootScope, $ionicModal, $ionic
     var options = {
       quality: 50,
       destinationType: Camera.DestinationType.DATA_URL,
-      sourceType: Camera.PictureSourceType.CAMERA,
+      sourceType: Camera.sourceType,
       allowEdit: true,
       encodingType: Camera.EncodingType.JPEG,
       targetWidth: 100,
@@ -57,18 +57,21 @@ app.controller('EditUserCtrl', function ($scope, $rootScope, $ionicModal, $ionic
 
   $scope.gallery = function () {
     var options = {
-      maximumImagesCount: 10,
-      width: 800,
-      height: 800,
-      quality: 80
+      quality: 50,
+      destinationType: Camera.DestinationType.DATA_URL,
+      sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+      allowEdit: true,
+      encodingType: Camera.EncodingType.JPEG,
+      targetWidth: 100,
+      targetHeight: 100,
+      popoverOptions: CameraPopoverOptions,
+      saveToPhotoAlbum: false,
+      correctOrientation:true
     };
 
-    $cordovaImagePicker.getPictures(options)
-      .then(function (results) {
-        for (var i = 0; i < results.length; i++) {
-          console.log('Image URI: ' + results[i]);
-          $scope.UpdatedUser.photo = results[i];
-        }
+    $cordovaCamera.getPicture(options).then(function(imageData) {
+      var image = document.getElementById('myImage');
+      $scope.UpdatedUser.photo = "data:image/jpeg;base64," + imageData;
       $http.put(base_url +'/user/update/photo/' + $rootScope.UserID, $scope.UpdatedUser)
         .success(function(data){
           console.log(data);
@@ -80,9 +83,9 @@ app.controller('EditUserCtrl', function ($scope, $rootScope, $ionicModal, $ionic
           console.log('Error' + data);
           $scope.UpdatedUser = {};
         });
-    }, function(error) {
+    }, function(err) {
       // error
-      console.log("camara", error)
+      console.log("camara", err)
     });
   }
 
