@@ -41,9 +41,10 @@ app.controller('EditUserCtrl', function ($scope, $rootScope, $ionicModal, $ionic
       $http.put(base_url +'/user/update/photo/' + $rootScope.UserID, $scope.UpdatedUser)
         .success(function(data){
           console.log(data);
+          $rootScope.User = data;
           $scope.UserProfileInfo = data;
           console.log($scope.UserProfileInfo);
-          $scope.UpdatedUser = {};
+          $scope.UpdatedUser = data;
         })
         .error(function(data) {
           console.log('Error' + data);
@@ -72,9 +73,10 @@ app.controller('EditUserCtrl', function ($scope, $rootScope, $ionicModal, $ionic
       $http.put(base_url +'/user/update/photo/' + $rootScope.UserID, $scope.UpdatedUser)
         .success(function(data){
           console.log(data);
+          $rootScope.User = data;
           $scope.UserProfileInfo = data;
           console.log($scope.UserProfileInfo);
-          $scope.UpdatedUser = {};
+          $scope.UpdatedUser = data;
         })
         .error(function(data) {
           console.log('Error' + data);
@@ -114,6 +116,7 @@ app.controller('EditUserCtrl', function ($scope, $rootScope, $ionicModal, $ionic
       .success(function (data) {
         console.log(data);
         $scope.UpdatedUser = data;
+        $rootScope.User = data;
         console.log($scope.UserProfileInfo);
         //$scope.UpdatedUser = {};
       })
