@@ -76,4 +76,5 @@
     <plugin name="cordova-plugin-geolocation" spec="~2.4.1" />
     <plugin name="cordova-plugin-inappbrowser" spec="https://git-wip-us.apache.org/repos/asf/cordova-plugin-inappbrowser.git" />
     <plugin name="org.flybuy.cordova.background-location-services" spec="https://github.com/pmwisdom/cordova-background-geolocation-services.git" />
+    <plugin name="cordova-plugin-whitelist" spec="~1.3.0" />
 </widget>

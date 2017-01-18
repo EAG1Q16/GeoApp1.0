@@ -5,7 +5,7 @@
 //var base_url = "http://localhost:3000";
 
 
-var base_url="http://10.192.48.239:3000";
+var base_url="http://192.168.1.36:3000";
 
 app.controller('MainCtrl', function ($scope, $ionicPopup, $http, $rootScope, $stateParams, $timeout, $state, $cordovaGeolocation){
 
