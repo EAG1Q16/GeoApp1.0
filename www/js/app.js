@@ -19,6 +19,7 @@ app.run(function ($ionicPlatform) {
 })
 app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
   $ionicConfigProvider.tabs.position("bottom");
+  //noinspection JSAnnotator
   $stateProvider
 
     .state('app', {
@@ -74,13 +75,13 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
         }
       }
     })
-    .state('modal', {
+    /*.state('modal', {
       url: '/user/newpassword',
       views: {
         templateUrl: 'templates/newpassword.html',
         controller: 'EditUserCtrl'
       }
-    })
+    })*/
     .state('app.userprofile', {
       url: '/userprofile/:id',
       views: {
@@ -90,7 +91,6 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
         }
       }
     })
-
     .state('app.usersfollowers', {
       url: '/usersfollowers/:id',
       cache: false,
@@ -131,16 +131,13 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
         }
       }
     })
-
-    .state('app.position', {
+    .state('position', {
       url: '/position',
       cache: false,
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/position.html',
-          controller: 'PositionCtrl'
-        }
-      }
+      templateUrl: 'templates/position.html',
+      controller: 'PositionCtrl'
+        
+      
     })
 
     .state('app.allusers', {
@@ -153,15 +150,19 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
         }
       }
     })
-
-
     .state('login', {
       url: '/login',
       cache: false,
       templateUrl: 'templates/login.html',
       controller: 'LoginCtrl'
     })
-
+   /* .state('modal', {
+      url: '/hints',
+      views: {
+        templateUrl: 'templates/hints.html',
+        controller: 'PositionCtrl'
+      }
+    })*/
     .state('createcount', {
       url: '/createcount',
       cache: false,

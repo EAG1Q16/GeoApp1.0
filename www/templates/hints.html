@@ -1,0 +1,20 @@
+<ion-modal-view>
+  <ion-header-bar style="background-color: deepskyblue">
+    <h3 style="color:white" class="title">Listado de pistas!</h3>
+    <button class="button button-icon ion-ios-close-empty" ng-click="modal.hide()"></button>
+  </ion-header-bar>
+
+  <ion-content>
+    <ion-item ng-repeat="hint in hints" class=" item-thumbnail-left">
+
+      <img ng-src={{hint.image}}>
+      <br>
+      <h2>Pista: {{ hint.text }}</h2>
+      <h3>Distancia: {{ hint.indication.distance }}</h3>
+      <h3>Sentido: {{ hint.indication.sense }}</h3>
+      <br>
+    </ion-item>
+  </ion-content>
+</ion-modal-view>
+
+

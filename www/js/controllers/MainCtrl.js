@@ -4,6 +4,7 @@
 
 //var base_url = "http://localhost:3000";
 
+
 var base_url="http://10.192.48.239:3000";
 
 app.controller('MainCtrl', function ($scope, $ionicPopup, $http, $rootScope, $stateParams, $timeout, $state, $cordovaGeolocation){
@@ -23,24 +24,50 @@ app.controller('MainCtrl', function ($scope, $ionicPopup, $http, $rootScope, $st
 
   $scope.showNear = function(){
     $scope.items = {};
+    //GPS
+    var posOptions = {timeout: 1000, enableHighAccuracy: false};
+    $cordovaGeolocation
+      .getCurrentPosition(posOptions)
+      .then(function (position) {
+        $scope.coordenada = {
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+          //Por defecto en metros 30000m 30km
+          radius: '30000'
+        };
 
-    $scope.coordenada = {
-      latitude: $scope.lat,
-      longitude: $scope.long,
-      //Por defecto en metros 30000m 30km
-      radius: '30000'
-    };
-    $http.post(base_url+'/adventures/near/', $scope.coordenada)
-      .success(function (response) {
-        console.log("todas las aventuras cercanas en 20km");
-        $scope.items = response;
-        $scope.Ball = 'false';
-        $scope.Bnear = 'true';
-        $scope.Bfriends = 'false';
-      })
-      .error(function(data) {
-        console.log("Error: "+data);
-      })
+        console.log('coooordeeee', $scope.coordenada);
+        $http.post(base_url+'/adventures/near/', $scope.coordenada)
+          .success(function (response) {
+            console.log("todas las aventuras cercanas en 20km");
+            $scope.items = response;
+            $scope.Ball = 'false';
+            $scope.Bnear = 'true';
+            $scope.Bfriends = 'false';
+          })
+          .error(function(data) {
+            console.log("Error: "+data);
+          })
+
+      }, function(err) {
+        console.log(err);
+        $ionicPopup.alert({
+          title: 'AVISO!',
+          template: 'Activa la ubicación en tu dispositivo!'
+        });
+        $http.get(base_url+'/adventures')
+          .success(function (response) {
+            console.log("todas las aventuras");
+            console.log(response);
+            $scope.items = response;
+            $scope.Ball = 'true';
+            $scope.Bnear = 'false';
+            $scope.Bfriends = 'false';
+          })
+          .error(function(data) {
+            console.log("Error: "+data);
+          })
+      });
   };
 
   $scope.showAll = function(){
@@ -79,34 +106,6 @@ app.controller('MainCtrl', function ($scope, $ionicPopup, $http, $rootScope, $st
     $state.go("app.adventures"+'/'+ id);
   };
 
-  //GPS
-  var posOptions = {timeout: 10000, enableHighAccuracy: false};
-  $cordovaGeolocation
-    .getCurrentPosition(posOptions)
-    .then(function (position) {
-      $scope.lat  = position.coords.latitude;
-      $scope.long = position.coords.longitude;
-      console.log($scope.lat + '   ' + $scope.long)
-    }, function(err) {
-      console.log(err)
-    });
-
-  var watchOptions = {timeout : 3000, enableHighAccuracy: false};
-  var watch = $cordovaGeolocation.watchPosition(watchOptions);
-
-  watch.then(
-    null,
-    function(err) {
-      console.log(err)
-    },
-    function(position) {
-      $scope.lat  = position.coords.latitude;
-      $scope.long = position.coords.longitude;
-      console.log($scope.lat + '' + $scope.long);
-    }
-  );
-
-  watch.clearWatch();
 
   /*$http.get(base_url + '/user/sessionid')
     .success(function(data) {
