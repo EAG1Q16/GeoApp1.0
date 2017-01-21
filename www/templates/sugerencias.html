@@ -1,0 +1,32 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <h3 style="color:white" class="title">Sugerencias</h3>
+    <button class="button button-icon ion-ios-close-empty" style="color:white" ng-click="modal.hide()"></button>
+  </ion-header-bar>
+  <ion-content>
+    <div class="card">
+      <div class="item item-divider">
+        Escriba su sugerencia
+      </div>
+      <div class="list">
+        <div class="item">
+          <label class="item item-input item-floating-label">
+            <span class="input-label">Email</span>
+            <input type="email" placeholder="Contraseña nueva" ng-model="changepassword.pass">
+          </label>
+          <label class="item item-input item-floating-label">
+            <span class="input-label">Repetir contraseña</span>
+            <input type="password" placeholder="Repetir contraseña" ng-model="changepassword.repetir">
+          </label>
+        </div>
+
+        <div align="center" style="padding-top: 2em">
+          <button class="button button-block button-balanced" ng-click="changePassword(changepassword)" ng-disabled="!changepassword.pass || !changepassword.repetir" >
+            Cambiar
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </ion-content>
+</ion-modal-view>
