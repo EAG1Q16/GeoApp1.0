@@ -23,7 +23,10 @@
       <button class="button button-outline button-assertive icon ion-ios-sunny" ng-click="Dificil()"> Difícil
       </button>
     </div>-->
-
+    <ion-refresher
+      pulling-text="Pull to refresh..."
+      on-refresh="doRefresh()">
+    </ion-refresher>
     <ion-list>
       <ion-item ng-repeat="item in items | filter:input.busqueda | filter:dificultad" href="#/app/adventures/{{item._id}}" class=" item-thumbnail-left">
 
