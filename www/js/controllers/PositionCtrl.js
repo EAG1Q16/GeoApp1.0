@@ -23,7 +23,7 @@ app.controller('PositionCtrl', function($scope, $http, $cordovaGeolocation, $sta
 
   });
   bgLocationServices.start();
-  
+
 //Register a callback for location updates, this is where location objects will be sent in the background
   bgLocationServices.registerForLocationUpdates(function(location) {
     console.log("We got an BG Update" + JSON.stringify(location));
@@ -44,10 +44,12 @@ app.controller('PositionCtrl', function($scope, $http, $cordovaGeolocation, $sta
         console.log('idbueno' , idbueno)
 
         if (id != idbueno){
+          navigator.vibrate(3000);
           $ionicPopup.alert({
             title: 'Pista!',
             template: data.text
           });
+          
           pistas_modal.push(data);
           $scope.hints=pistas_modal;
           var marker = new google.maps.Marker({

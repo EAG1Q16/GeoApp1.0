@@ -2,7 +2,10 @@
 <ion-view view-title="Explorar" >
 
   <ion-content>
-
+    <ion-refresher
+      pulling-text="Pull to refresh..."
+      on-refresh="doRefresh()">
+    </ion-refresher>
     <ion-list ng-if="Bfriends=='false'">
       <ion-item ng-repeat="item in items" href="#/app/adventures/{{item._id}}" class=" item-thumbnail-left">
 

@@ -1,6 +1,9 @@
 <ion-view view-title="Aventureros">
   <ion-content>
-
+    <ion-refresher
+      pulling-text="Pull to refresh..."
+      on-refresh="doRefresh()">
+    </ion-refresher>
     <div class="bar bar-header item-input-inset" style="background-color: white">
       <i class="icon ion-ios-search placeholder-icon"></i>
       <input type="search" style="width: 100%" ng-model="input.busqueda" placeholder="Buscar un aventurero">
@@ -23,7 +26,7 @@
             <img ng-if="user.score >=0 && user.score <150" height="40px" width="40px" src="img/CAmpista.png">
             <img ng-if="user.score >= 150 && user.score <300" height="40px" width="40px" src="img/Navegante.png">
             <img ng-if="user.score >= 300 && user.score<450" height="40px" width="40px" src="img/Montañero.png">
-            <img ng-if="user.score >= 450 " height="40px" width="40px" src="../img/Aventurero.png">
+            <img ng-if="user.score >= 450 " height="40px" width="40px" src="img/Aventurero.png">
           </div>
         </div>
       </ion-item>

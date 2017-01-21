@@ -1,4 +1,9 @@
-<ion-view view-title="Editar Perfil">
+<ion-view hide-back-button="true" hide-nav-bar="true">
+  <ion-content>
+    <ion-header-bar style="background-color: deepskyblue">
+      <a class="button icon-left ion-chevron-left button-clear button-dark" style="color: white"  ng-href="#/app/userprofile/{{UserID}}"></a></a>
+      <h1 class="title" style="color: white">Editar perfil!</h1>
+    </ion-header-bar>
     <ion-content>
 
     <div style="padding-top: 3em">
@@ -7,7 +12,8 @@
 
       </div>
       <div align="center">
-        <button class="button button-clear button-positive button-small">Cambiar foto</button>
+        <button class="button button-clear button-positive button-small" ng-click="camera()">Abrir camara</button>
+        <button class="button button-clear button-positive button-small" ng-click="gallery()">Abrir galeria</button>
       </div>
 
     </div>

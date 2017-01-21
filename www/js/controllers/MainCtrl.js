@@ -2,7 +2,8 @@
  * Created by Marta_ on 28/11/2016.
  */
 
-//var base_url = "http://localhost:3000";
+//var base_url="http://192.168.1.33:3000";
+
 var base_url="http://147.83.7.156:3000"; //server
 
 app.controller('MainCtrl', function ($scope, $ionicPopup, $http, $rootScope, $stateParams, $timeout, $state, $cordovaGeolocation){
@@ -104,27 +105,81 @@ app.controller('MainCtrl', function ($scope, $ionicPopup, $http, $rootScope, $st
     $state.go("app.adventures"+'/'+ id);
   };
 
-
-  /*$http.get(base_url + '/user/sessionid')
-    .success(function(data) {
-      $rootScope.UserSessionId = data;
-      $rootScope.UserSessionUri = data._id;
-      $scope.UserHome = data;
-      console.log("la dataaaa");
-      console.log(data);
-
-      // is logges in get users following adventures
-      $http.get(base_url + '/user/recomendedadv/' + $rootScope.UserSessionUri)
-        .success(function(data) {
-          $scope.FollowingAdvs = data.following;
-          console.log($scope.FollowingAdvs);
+  $scope.doRefresh = function() {
+    if ($scope.Bfriends == 'true'){
+      $http.get(base_url+'/user/recomendedadv/' + $rootScope.UserID)
+        .success(function (response) {
+          console.log("Muestra las aventuras de tus amigos");
+          console.log(response);
+          $scope.FollowAdvs = response.following;
+          $scope.Ball = 'false';
+          $scope.Bnear = 'false';
+          $scope.Bfriends = 'true';
         })
-        .error(function(data) {
-          console.log('not logged');
+        .error(function (data) {
+          console.log("Error");
+        })
+        .finally(function() {
+          // Stop the ion-refresher from spinning
+          $scope.$broadcast('scroll.refreshComplete');
         });
-    })
-    .error(function(data) {
-      console.log('not logged');
-    });*/
+    }else {
+      if ($scope.Bnear == 'true') {
+        $scope.items = {};
+        //GPS
+        var posOptions = {timeout: 1000, enableHighAccuracy: false};
+        $cordovaGeolocation
+          .getCurrentPosition(posOptions)
+          .then(function (position) {
+            $scope.coordenada = {
+              latitude: position.coords.latitude,
+              longitude: position.coords.longitude,
+              //Por defecto en metros 30000m 30km
+              radius: '30000'
+            };
+
+            console.log('coooordeeee', $scope.coordenada);
+            $http.post(base_url + '/adventures/near/', $scope.coordenada)
+              .success(function (response) {
+                console.log("todas las aventuras cercanas en 20km");
+                $scope.items = response;
+                $scope.Ball = 'false';
+                $scope.Bnear = 'true';
+                $scope.Bfriends = 'false';
+              })
+              .error(function (data) {
+                console.log("Error: " + data);
+              })
+              .finally(function () {
+                // Stop the ion-refresher from spinning
+                $scope.$broadcast('scroll.refreshComplete');
+              });
+
+          }, function (err) {
+            console.log(err);
+          });
+
+      } else {
+        if ($scope.Ball == 'true') {
+          $http.get(base_url + '/adventures')
+            .success(function (response) {
+              console.log("todas las aventuras");
+              $scope.items = response;
+              $scope.Ball = 'true';
+              $scope.Bnear = 'false';
+              $scope.Bfriends = 'false';
+
+            })
+            .error(function (data) {
+              console.log("Error: " + data);
+            })
+            .finally(function () {
+              // Stop the ion-refresher from spinning
+              $scope.$broadcast('scroll.refreshComplete');
+            });
+        }
+      }
+    }
+  };
 
 });

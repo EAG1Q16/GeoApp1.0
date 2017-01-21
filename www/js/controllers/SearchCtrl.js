@@ -31,4 +31,21 @@ app.controller('SearchCtrl',function ($scope, $http, $ionicPopup, $stateParams, 
   $scope.Dificil = function () {
     $scope.dificultad = {difficulty: 'Difícil'};
   };
+
+  $scope.doRefresh = function() {
+    $http.get(base_url+'/adventures')
+      .success(function (response) {
+        console.log("aventuriiiis");
+        $scope.items = response;
+        console.log(response);
+      })
+      .error(function(data) {
+        console.log('Error: '+data);
+      })
+      .finally(function() {
+        // Stop the ion-refresher from spinning
+        $scope.$broadcast('scroll.refreshComplete');
+      });
+  };
+  
 });

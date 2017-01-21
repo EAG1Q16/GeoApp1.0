@@ -1,5 +1,5 @@
 ﻿
-<ion-view view-title="Login">
+<ion-view view-title="Login" ng-init="isLoggedIn()">
 
     <ion-content style="background: url(img/splash.png) no-repeat center; background-size:cover; background-attachment:fixed;">
         <br>
@@ -36,10 +36,10 @@
       <br>
 
       <label style="color: whitesmoke" class="text-center">O entra con</label><br>
-      <button style="width: 80%" class="button  button-positive" ng-click="main()"> <i class="icon ion-social-facebook"></i></button>
+      <button style="width: 80%" class="button  button-positive" ng-click="facebookLogin()"> <i class="icon ion-social-facebook"></i></button>
       <br>
       <br>
-      <button style="width: 80%" class="button  button-calm" ng-click="main()"> <i class="icon ion-social-twitter"></i></button>
+      <button style="width: 80%" class="button  button-calm" ng-click="twitterLogin()"> <i class="icon ion-social-twitter"></i></button>
       <br><br>
       <label style="color: whitesmoke" class="text-center">Aún no tienes una cuenta?</label>
       <button style="width: 80%" class="button  button-energized" ng-click="Register()">Regístrate</button>

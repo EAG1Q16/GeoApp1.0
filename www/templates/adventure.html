@@ -57,13 +57,18 @@
           </div>
         </div>
       </div>
-
-      <div class="item item-body" style="padding: 0px">
-            <textarea class="textarea" placeholder="&nbsp; Añade un comentario" row="1" ng-model = "NewComment.text"></textarea>
-            <button style="width: 30%" class="button button-dark button-small ion-compose" ng-click="PostComment()">Comentar</button>
+      <br><br>
+      <div>
+        <ion-footer-bar keyboard-attach class="bar-stable item-input-inset" style="border-color: transparent">
+          <label class="item-input-wrapper">
+            <input type="text" placeholder="Escribe un comentario" ng-model="NewComment.text" />
+          </label>
+          <button class="button button-clear" ng-click="PostComment()">
+            <i class="ion-android-send" style="color: darkgrey"></i>
+          </button>
+        </ion-footer-bar>
       </div>
     </div>
-
   </ion-content>
 </ion-view>
 
