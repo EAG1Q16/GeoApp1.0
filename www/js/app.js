@@ -121,6 +121,13 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
       }
     }
   })
+    .state('app.help', {
+      url: '/help',
+      views: {
+        templateUrl: 'templates/help.html',
+        controller: 'HelpCtrl'
+      }
+    })
     .state('app.usersfollowing', {
       url: '/usersfollowing/:id',
       cache: false,
@@ -156,13 +163,6 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
       templateUrl: 'templates/login.html',
       controller: 'LoginCtrl'
     })
-   /* .state('modal', {
-      url: '/hints',
-      views: {
-        templateUrl: 'templates/hints.html',
-        controller: 'PositionCtrl'
-      }
-    })*/
     .state('createcount', {
       url: '/createcount',
       cache: false,
