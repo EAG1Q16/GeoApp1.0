@@ -5,7 +5,7 @@
 
 
 
-var base_url="http://192.168.1.36:3000";
+var base_url="http://10.192.82.104:3000";
 
 //var base_url="http://147.83.7.156:3000"; //server
 
