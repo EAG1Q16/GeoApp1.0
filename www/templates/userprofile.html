@@ -37,12 +37,6 @@
         </p>
       </div>
     </div>
-    <div class="list card">
-      <div class="item item-body">
-        <h2><i class="icon ion-link"></i>  Invita a tus amigos con este ID y gana puntos:</h2>
-        <h2>{{UserProfileInfo.referalid}}</h2>
-      </div>
-    </div>
 
     <div class="list card">
       <a style="color: black" class="item item-icon-left" href="#/app/usersfollowers/{{UserProfileInfo._id}}">
@@ -68,6 +62,13 @@
         Aventuras jugadas
         <span class="badge badge-positive">{{UserProfileInfo.adventures.played.length}}</span>
       </a>
+    </div>
+    <div class="list card">
+      <div class="item item-body">
+        <h2><b><i class="icon ion-link"></i>  Invita a tus amigos con este ID:</b></h2>
+        <h2>{{UserProfileInfo.referalid}}</h2>
+        <button class="button button-dark button-block padding-horizontal" ng-click="addFriend()">Seguir por QR</button>
+      </div>
     </div>
   </ion-content>
 </ion-view>
