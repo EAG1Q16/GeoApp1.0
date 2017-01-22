@@ -33,5 +33,9 @@ app.controller('AllusersCtrl', function ($scope, $http ,$rootScope, $ionicPopup,
         $scope.$broadcast('scroll.refreshComplete');
       });
   };
+  
+  $scope.goselprofileall = function (id) {
+    $state.go('app.userprofile', {obj: id});
+  }
 
 });

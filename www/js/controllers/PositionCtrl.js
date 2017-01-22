@@ -10,8 +10,8 @@ app.controller('PositionCtrl', function($scope, $http, $cordovaGeolocation,  $co
 //Congfigure Plugin
   bgLocationServices.configure({
     //Both
-    desiredAccuracy: 20, // Desired Accuracy of the location updates (lower means more accurate but more battery consumption)
-    distanceFilter: 5, // (Meters) How far you must move from the last point to trigger a location update
+    desiredAccuracy: 5, // Desired Accuracy of the location updates (lower means more accurate but more battery consumption)
+    distanceFilter: 1, // (Meters) How far you must move from the last point to trigger a location update
     debug: true, // <-- Enable to show visual indications when you receive a background location update
     interval: 5000, // (Milliseconds) Requested Interval in between location updates.
     useActivityDetection: false, // Uses Activitiy detection to shut off gps when you are still (Greatly enhances Battery Life)
@@ -29,22 +29,20 @@ app.controller('PositionCtrl', function($scope, $http, $cordovaGeolocation,  $co
 //Register a callback for location updates, this is where location objects will be sent in the background
   bgLocationServices.registerForLocationUpdates(function(location) {
 
-    //generamos los scopes
-    $scope.position = location;
-    $rootScope.cordenada = {
-      latitude: location.latitude,
-      longitude: location.longitude,
-      advid: $rootScope.advid
-    };
-
     //Post para buscar pistas cercanas a nuestra posicion
-    $http.post(base_url+'/adventures/hintnear/', $scope.cordenada)
+    $http.post(base_url+'/adventures/hintnear/',
+      {
+        latitude: location.latitude,
+        longitude: location.longitude,
+        advid: $rootScope.advid
+      })
       .success(function (data) {
 
         var id = data._id;
 
         if (id != idbueno){
           //si es la pista final
+          console.log("es la final?", data.final);
           if(data.final == true){
             navigator.vibrate(2000);
             $cordovaLocalNotification.schedule({
@@ -55,15 +53,12 @@ app.controller('PositionCtrl', function($scope, $http, $cordovaGeolocation,  $co
                 customProperty: 'custom value'
               }
             });
-            /*$ionicPopup.alert({
-              title: 'Felicidades!!!',
-              template:hint.image
-            });*/
+
 
             var played = {
               user_id: $rootScope.UserID
             };
-            
+
 
             pistas_modal.push(data);
             $scope.hints=pistas_modal;
@@ -83,7 +78,17 @@ app.controller('PositionCtrl', function($scope, $http, $cordovaGeolocation,  $co
             $http.post(base_url+'/user/advplay/', played)
               .success(function (data) {
                 console.log(data);
-                $state.go("app.gif");
+                console.log('esta vez etro en el modal si o si');
+                $scope.modal2.show();
+     /*           var alertPopup = $ionicPopup.alert({
+                  title: '¡Felicidades!',
+                  template: 'Has ganado 30 puntos por finalizar esta aventura'
+                });
+                alertPopup.then(function(res) {
+                  $state.go("app.main");
+
+                });*/
+
               }).error(function (err) {
               console.log(err);
             });
@@ -173,8 +178,27 @@ app.controller('PositionCtrl', function($scope, $http, $cordovaGeolocation,  $co
       });
     };
 
+  $scope.endgame = function() {
+    console.log("estamos en el endgame");
+    $cordovaLocalNotification.clearAll();
+    var alertPopup = $ionicPopup.alert({
+      title: '¡Felicidades!',
+      template: 'Has ganado 30 puntos por finalizar esta aventura'
+    });
+    alertPopup.then(function(res) {
+        $state.go("app.main");
+        $scope.modal2.remove();
+    });
+  };
+
 
  console.log('rootscopeeee' , $rootScope.advid);
+
+  $ionicModal.fromTemplateUrl('templates/gif.html', {
+    scope: $scope
+  }).then(function(modal) {
+    $scope.modal2 = modal;
+  });
 
   $ionicModal.fromTemplateUrl('templates/hints.html', {
     scope: $scope

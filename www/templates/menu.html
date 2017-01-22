@@ -14,7 +14,7 @@
 
     <ion-side-menu side="left">
         <ion-content class="custom">
-            <a menu-close style="align-content: center; color: inherit; text-decoration:none"  href="#/app/userprofile/{{UserID}}">
+            <a menu-close style="align-content: center; color: inherit; text-decoration:none"  ng-click="goprofile()">
               <div class="row" style="background: url(img/menu.png); text-decoration:none; height: 170px; padding-top: 2em">
                   <div class="col-40"style="padding-top: 1em; padding-left:1em">
                     <img src={{User.photo}} class="image-avatar" style="text-decoration:none">
@@ -35,7 +35,7 @@
                   <ion-item menu-close href="#/app/allusers" style="border-color: transparent">
                     <i class="ion-ios-people"></i> Clasificación
                   </ion-item>
-                  <ion-item menu-close class="letra" href="#/app/userprofile/{{UserID}}" style="border-color: transparent">
+                  <ion-item menu-close class="letra" ng-click="goprofile()" style="border-color: transparent">
                     <i class="ion-person"></i> Perfil
                   </ion-item>
                   <ion-item menu-close class="letra" href="#/app/help" style="border-color: transparent">

@@ -26,5 +26,4 @@ app.controller('HelpCtrl', function ($scope, $rootScope, $ionicModal, $ionicSlid
     $scope.modal = modal;
   });
 
-
-})
+});
