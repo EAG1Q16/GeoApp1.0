@@ -1,7 +1,7 @@
 <ion-view hide-back-button="true" hide-nav-bar="true">
   <ion-content>
     <ion-header-bar style="background-color: #00ADB5">
-      <a class="button icon-left ion-chevron-left button-clear button-dark" style="color: white"  ng-href="#/app/userprofile/{{UserID}}"></a></a>
+      <a class="button icon-left ion-android-arrow-back button-clear button-dark" style="color: white"  ng-href="#/app/userprofile/{{UserID}}"></a></a>
       <h1 class="title" style="color: white">Editar perfil</h1>
     </ion-header-bar>
     <ion-content>
@@ -47,17 +47,16 @@
       </div>
       <div class="col col-5"></div>
     </div>
-          <!--<div align="center" style="padding-top: 1em">
-            <p class="text-center"style="color: black"><small>Registered {{UserProfileInfo.registerdate}}</small></p>
-          </div>-->
-          <br>
+      <br>
+      <div align="center">
+        <button style="width: 80%" class="button button-outline button-dark button-small" ng-click="modal.show()">Cambiar contraseña</button>
+      </div>
+<br>
           <div align="center">
-            <button style="width: 80%" class="button button-small button-balanced" ng-click="EditUser()">Guardar</button>
+            <button style="width: 80%" class="button button-balanced" ng-click="EditUser()">Guardar</button>
           </div>
 
-    <div align="center">
-      <button style="width: 80%" class="button" ng-click="modal.show()">Cambiar contraseña</button>
-    </div>
+
     </ion-content>
 </ion-view>
 <!--
