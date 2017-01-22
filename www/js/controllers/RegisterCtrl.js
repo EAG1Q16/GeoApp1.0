@@ -4,6 +4,7 @@
 
 app.controller('RegisterCtrl', function ($scope, $http, $ionicPopup, $stateParams, $state, $timeout, $cordovaBarcodeScanner) {
 
+  $scope.NewUser = {};
   $scope.Register = function(){
 
     if($scope.NewUser.password == $scope.NewUser.repeat){
@@ -52,8 +53,10 @@ app.controller('RegisterCtrl', function ($scope, $http, $ionicPopup, $stateParam
     $cordovaBarcodeScanner.scan().then(function(imageData) {
       console.log("Barcode Format -> " + imageData.format);
       console.log("Cancelled -> " + imageData.cancelled);
-      $scope.ReadQR = (imageData.text);
-      console.log($scope.ReadQR);
+      var readQr = (imageData.text);
+      console.log(readQr);
+      $scope.NewUser.friendid = readQr;
+      console.log($scope.NewUser);
     }, function(error) {
       console.log("An error happened -> " + error);
     });
