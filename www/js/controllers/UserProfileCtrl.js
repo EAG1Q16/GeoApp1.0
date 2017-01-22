@@ -136,5 +136,7 @@ app.controller('UserProfileCtrl', function ($scope, $http ,$rootScope, $ionicPop
     $state.go('app.adventuresplayed', {obj: puserID});
   }
 
-
+  $scope.golistfavadv = function () {
+    $state.go('app.adventuresfavs', {obj: puserID});
+  }
 });

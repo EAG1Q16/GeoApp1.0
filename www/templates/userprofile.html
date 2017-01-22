@@ -62,7 +62,7 @@
         Aventuras jugadas
         <span class="badge badge-positive">{{UserProfileInfo.adventures.played.length}}</span>
       </a>
-      <a style="color: black" class="item item-icon-left"href="#/app/adventuresfavs/{{UserProfileInfo._id}}">
+      <a style="color: black" class="item item-icon-left" ng-click="golistfavadv()">
         <i class="icon ion-heart"></i>
         Aventuras favoritas
         <span class="badge badge-positive">{{UserProfileInfo.adventures.favs.length}}</span>
