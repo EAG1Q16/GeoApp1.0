@@ -129,5 +129,12 @@ app.controller('UserProfileCtrl', function ($scope, $http ,$rootScope, $ionicPop
   $scope.golistfollowing = function () {
     $state.go('app.usersfollowing', {obj: puserID});
   }
+  $scope.golistcreatedadv = function () {
+    $state.go('app.adventurescreated', {obj: puserID});
+  }
+  $scope.golisitplayedadv = function () {
+    $state.go('app.adventuresplayed', {obj: puserID});
+  }
+
 
 });

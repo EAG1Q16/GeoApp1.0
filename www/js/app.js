@@ -104,8 +104,9 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
       }
     })
     .state('app.adventurescreated', {
-      url: '/adventurescreated/:id',
+      url: '/adventurescreated',
       cache: false,
+      params:{obj: null},
       views: {
         'menuContent': {
           templateUrl: 'templates/adventuresCreated.html',
@@ -114,8 +115,9 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
       }
     })
     .state('app.adventuresplayed', {
-    url: '/adventuresplayed/:id',
-    cache: false,
+    url: '/adventuresplayed',
+    cache: false, 
+    params:{obj: null},
     views: {
       'menuContent': {
         templateUrl: 'templates/adventuresPlayed.html',
