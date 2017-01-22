@@ -178,6 +178,7 @@ app.controller('AdventureCtrl', function ($scope, $cordovaGeolocation, $ionicMod
           .success(function (data) {
             console.log("entro en el success");
             $scope.comments = data.comments;
+            $scope.AdventureProfile = data;
             angular.forEach($scope.comments, function (comment, key) {
               console.log(key);
               comment.commentdate = moment(comment.commentdate, "").fromNow();
@@ -224,5 +225,5 @@ app.controller('AdventureCtrl', function ($scope, $cordovaGeolocation, $ionicMod
     $state.go('app.gif');
   };*/
 
-
 });
+

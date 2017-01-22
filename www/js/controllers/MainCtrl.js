@@ -2,9 +2,12 @@
  * Created by Marta_ on 28/11/2016.
  */
 
+
 //var base_url="http://192.168.1.40:3000";
 var base_url="http://10.192.137.219:3000";
 //var base_url="http://147.83.7.156:3000"; //server
+
+
 
 app.controller('MainCtrl', function ($scope, $ionicPopup, $http, $rootScope, $stateParams, $timeout, $state, $cordovaGeolocation){
 

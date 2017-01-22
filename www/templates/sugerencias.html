@@ -12,17 +12,21 @@
         <div class="item">
           <label class="item item-input item-floating-label">
             <span class="input-label">Email</span>
-            <input type="email" placeholder="Contraseña nueva" ng-model="changepassword.pass">
+            <input type="email" placeholder="Email" ng-model="sug.email">
           </label>
           <label class="item item-input item-floating-label">
-            <span class="input-label">Repetir contraseña</span>
-            <input type="password" placeholder="Repetir contraseña" ng-model="changepassword.repetir">
+            <span class="input-label">Asunto</span>
+            <input type="text" placeholder="Asunto" ng-model="sug.subject">
+          </label>
+          <label class="item item-input item-floating-label">
+            <span class="input-label">Sugerencia</span>
+            <input type="text" placeholder="Sugerencia" ng-model="sug.text">
           </label>
         </div>
 
         <div align="center" style="padding-top: 2em">
-          <button class="button button-block button-balanced" ng-click="changePassword(changepassword)" ng-disabled="!changepassword.pass || !changepassword.repetir" >
-            Cambiar
+          <button class="button button-block button-balanced" ng-click="sendSuggest()" ng-disabled="!sug.email || !sug.text" >
+            Enviar
           </button>
         </div>
 

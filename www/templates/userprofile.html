@@ -22,9 +22,8 @@
           </div>
         </div>
           <div class="col col-25 col-center" ng-if="UserProfileInfo._id == UserID">
-            <button class="button button-light icon ion-gear-a" ng-click="EditProfile()">
+            <button class="button button-light icon ion-gear-a" ng-click="EditProfile()"></button>
           </div>
-
         </div>
       <div class="item item-body text-center">
 
@@ -38,6 +37,13 @@
         </p>
       </div>
     </div>
+    <div class="list card">
+      <div class="item item-body">
+        <h2><i class="icon ion-link"></i>  Invita a tus amigos con este ID y gana puntos:</h2>
+        <h2>{{UserProfileInfo.referalid}}</h2>
+      </div>
+    </div>
+
     <div class="list card">
       <a style="color: black" class="item item-icon-left" href="#/app/usersfollowers/{{UserProfileInfo._id}}">
         <i class="icon ion-person-stalker"></i>
