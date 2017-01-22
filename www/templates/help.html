@@ -1,62 +1,117 @@
-<!--<ion-view view-title="Ayuda y sugerencias">
-  <ion-content>
 
-    <button ng-click="modal.show()">Enviar sugerencia</button>
-
-  </ion-content>
-</ion-view>-->
 
 <ion-view view-title="Ayuda y sugerencias">
-  <ion-nav-buttons side="left">
-    <button class="button button-positive button-clear no-animation"
-            ng-click="startApp()" ng-show="!slideIndex">
-      Skip Intro
-    </button>
-    <button class="button button-positive button-clear no-animation"
-            ng-click="previous()" ng-show="slideIndex > 0">
-      Previous Slide
-    </button>
-  </ion-nav-buttons>
+    <ion-nav-buttons side="left">
+      <button class="button button-icon button-dark ion-navicon" menu-toggle="left" style="color: white"></button>
+    </ion-nav-buttons>
   <ion-nav-buttons side="right">
-    <button class="button button-positive button-clear no-animation"
-            ng-click="next()" ng-show="slideIndex != 2">
-      Next
-    </button>
-    <button class="button button-positive button-clear no-animation"
-            ng-click="startApp()" ng-show="slideIndex == 2">
-      Start using MyApp
-    </button>
+    <button class="button button-icon button-dark ion-paper-airplane" menu-toggle="right" style="color: white" ng-click="modal.show()"></button>
   </ion-nav-buttons>
-  <ion-slide-box on-slide-changed="slideChanged(index)">
-    <ion-slide>
-      <h3>Thank you for choosing the Awesome App!</h3>
-      <div id="logo">
-        <img src="http://code.ionicframework.com/assets/img/app_icon.png">
-      </div>
-      <p>
-        We've worked super hard to make you happy.
-      </p>
-      <p>
-        But if you are angry, too bad.
-      </p>
-    </ion-slide>
-    <ion-slide>
-      <h3>Using Awesome</h3>
 
-      <div id="list">
-        <h5>Just three steps:</h5>
-        <ol>
-          <li>Be awesome</li>
-          <li>Stay awesome</li>
-          <li>There is no step 3</li>
-        </ol>
+  <div class="row" style="padding-top: 3em; background-color: white">
+      <div class="col col-10">
+        <button class="button button-clear button-dark button-small icon ion-chevron-left" ng-click="previous()" ng-show="slideIndex > 0"></button>
+      </div>
+      <div class="col col-80 text-center">
+        <h3 ng-show="slideIndex == 0 || slideIndex == null">Puntación</h3>
+        <h4 ng-show="slideIndex == 1">Invita a tus amigos</h4>
+        <h4 ng-show="slideIndex == 2">Cómo jugar</h4>
+        <h4 ng-show="slideIndex == 3">Cómo crear una aventura</h4>
+      </div>
+      <div class="col col-10">
+        <button class="button button-clear button-dark button-small icon ion-chevron-right" ng-click="next()" ng-show="slideIndex != 3"></button>
+      </div>
+  </div>
+
+  <ion-slide-box on-slide-changed="slideChanged(index)">
+    <ion-slide style="padding-top: 0px">
+      <div class="list card" style="padding-top: 0px">
+        <div class="item item-divider">
+          Gana puntos por:
+        </div>
+        <div>
+          <div class="row" style="padding: 0.5em">
+            <p class="badge badge-dark">30 p</p>
+            <p style="color: black; padding-left: 0.5em">Jugar una partida</p>
+          </div>
+          <div class="row"  style="padding: 0.5em">
+            <p class="badge badge-dark">20p</p>
+            <p style="color: black; padding-left: 0.5em">Crear una aventura</p>
+          </div>
+          <div class="row"  style="padding: 0.5em">
+            <p class="badge badge-dark">10p</p>
+            <p style="color: black; padding-left: 0.5em">Invitar a un amigo con tu ID</p>
+          </div>
+          <div class="row"  style="padding: 0.5em">
+            <p class="badge badge-dark">1p</p>
+            <p style="color: black; padding-left: 0.5em">Comentar</p>
+          </div>
+        </div>
+        <div class="item item-divider">
+          Rango
+        </div>
+        <div class="item item-body">
+          <div class="row" style="padding: 0px">
+            <div class="col col-20">
+            <img height="50px" width="50px" src="img/CAmpista.png">
+            </div>
+            <div class="col col-30">
+              <p style="color: black; padding-left: 0.5em"> CAMPISTA</p>
+            </div>
+            <div class="col col-50">
+              <p style="color: black; padding-left: 0.5em"> 0 a 150 puntos </p>
+            </div>
+          </div>
+          <div class="row" style="padding: 0px">
+            <div class="col col-20">
+              <img height="50px" width="50px" src="img/Navegante.png">
+            </div>
+            <div class="col col-30">
+              <p style="color: black; padding-left: 0.5em"> NAVEGANTE</p>
+            </div>
+            <div class="col col-50">
+              <p style="color: black; padding-left: 0.5em"> 150 a 300 puntos </p>
+            </div>
+          </div>
+          <div class="row" style="padding: 0px">
+            <div class="col col-20">
+              <img height="50px" width="50px" src="img/Montañero.png">
+            </div>
+            <div class="col col-30">
+              <p style="color: black; padding-left: 0.5em"> MONTAÑERO </p>
+            </div>
+            <div class="col col-50">
+              <p style="color: black; padding-left: 0.5em"> 300 a 450 puntos </p>
+            </div>
+          </div>
+          <div class="row" style="padding: 0px">
+            <div class="col col-20">
+              <img height="50px" width="50px" src="img/Aventurero.png">
+            </div>
+            <div class="col col-30">
+              <p style="color: black; padding-left: 0.5em"> AVENTURERO </p>
+            </div>
+            <div class="col col-50">
+              <p style="color: black; padding-left: 0.5em"> Más de 450 puntos </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </ion-slide>
+    <ion-slide>
+      <h3>referal id</h3>
+      <div class="list card">
+        <div class="item item-body">
+          Una manera de
+        </div>
       </div>
     </ion-slide>
     <ion-slide>
-      <h3>Any questions?</h3>
-      <p>
-        Too bad!
-      </p>
+      <h3>CÓMO jugar</h3>
+    </ion-slide>
+    <ion-slide>
+      <h3>VIDEO DEL CREAR UNA AVENTURA</h3>
     </ion-slide>
   </ion-slide-box>
 </ion-view>
