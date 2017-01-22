@@ -6,6 +6,8 @@
 
 app.controller('UserProfileCtrl', function ($scope, $http ,$rootScope, $ionicPopup, $stateParams, $state, $timeout, $cordovaBarcodeScanner) {
     var puserID = window.location.href.split("/").pop();
+    $scope.qrinfo = $rootScope.User.referalid;
+
     $scope.loadinfo = function () {
       console.log(puserID);
       $http.get(base_url + '/user/my/' + puserID)
@@ -31,8 +33,6 @@ app.controller('UserProfileCtrl', function ($scope, $http ,$rootScope, $ionicPop
           console.log('Error: ' + data);
         });
     };
-
-
 
   $scope.followUser = function () {
     $http.post(base_url +'/user/follow/' + puserID, $rootScope.User)//user
