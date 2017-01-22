@@ -82,7 +82,8 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
       }
     })
     .state('app.userprofile', {
-      url: '/userprofile/:id',
+      url: '/userprofile',
+      params:{obj: null},
       cache: false,
       views: {
         'menuContent': {
@@ -92,7 +93,8 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
       }
     })
     .state('app.usersfollowers', {
-      url: '/usersfollowers/:id',
+      url: '/usersfollowers',
+      params:{obj: null},
       cache: false,
       views: {
         'menuContent': {
@@ -132,7 +134,8 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
       }
     })
     .state('app.usersfollowing', {
-      url: '/usersfollowing/:id',
+      url: '/usersfollowing',
+      params:{obj: null},
       cache: false,
       views: {
         'menuContent': {
@@ -146,7 +149,6 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
       cache: false,
       templateUrl: 'templates/position.html',
       controller: 'PositionCtrl'
-
 
     })
 
@@ -172,7 +174,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
       templateUrl: 'templates/register.html',
       controller: 'RegisterCtrl'
     });
-  
+
     $urlRouterProvider.otherwise('/login')
 });
 

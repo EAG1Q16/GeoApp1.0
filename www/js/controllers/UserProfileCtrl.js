@@ -5,7 +5,8 @@
 
 
 app.controller('UserProfileCtrl', function ($scope, $http ,$rootScope, $ionicPopup, $stateParams, $state, $timeout, $cordovaBarcodeScanner) {
-    var puserID = window.location.href.split("/").pop();
+    //var puserID = window.location.href.split("/").pop();
+    var puserID = ($state.params.obj);
     $scope.qrinfo = $rootScope.User.referalid;
 
     $scope.loadinfo = function () {
@@ -119,6 +120,14 @@ app.controller('UserProfileCtrl', function ($scope, $http ,$rootScope, $ionicPop
     }, function(error) {
       console.log("An error happened -> " + error);
     });
+  }
+
+  $scope.golistfollowers = function () {
+    $state.go('app.usersfollowers', {obj: puserID});
+  }
+
+  $scope.golistfollowing = function () {
+    $state.go('app.usersfollowing', {obj: puserID});
   }
 
 });
