@@ -1,7 +1,7 @@
 ﻿
 
 
-app.controller('RegisterCtrl', function ($scope, $http, $ionicPopup, $stateParams, $state, $timeout) {
+app.controller('RegisterCtrl', function ($scope, $http, $ionicPopup, $stateParams, $state, $timeout, $cordovaBarcodeScanner) {
   $scope.NewUser = {};
 
   $scope.Register = function(){
@@ -31,5 +31,16 @@ app.controller('RegisterCtrl', function ($scope, $http, $ionicPopup, $stateParam
     }
 
   };
+
+  $scope.qrcode = function () {
+    $cordovaBarcodeScanner.scan().then(function(imageData) {
+      console.log("Barcode Format -> " + imageData.format);
+      console.log("Cancelled -> " + imageData.cancelled);
+      $scope.ReadQR = (imageData.text);
+      console.log($scope.ReadQR);
+    }, function(error) {
+      console.log("An error happened -> " + error);
+    });
+  }
 
 });
