@@ -2,8 +2,24 @@
  * Created by Marta_ on 21/01/2017.
  */
 
-app.controller('HelpCtrl', function ($scope, $rootScope, $ionicModal, $ionicPopup, $http, $stateParams, $timeout, $state) {
+app.controller('HelpCtrl', function ($scope, $rootScope, $ionicModal, $ionicSlideBoxDelegate, $ionicPopup, $http, $stateParams, $timeout, $state) {
 
+  //Navigation throw the slides
+  $scope.next = function() {
+    $ionicSlideBoxDelegate.next();
+    console.log("next");
+  };
+  $scope.previous = function() {
+    $ionicSlideBoxDelegate.previous();
+    console.log("previous");
+  };
+
+  // Called each time the slide changes
+  $scope.slideChanged = function(index) {
+    $scope.slideIndex = index;
+  };
+
+  //SUGGESTIONS
   $ionicModal.fromTemplateUrl('templates/sugerencias.html', {
     scope: $scope
   }).then(function(modal) {

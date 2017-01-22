@@ -4,8 +4,10 @@
 
 
 
-app.controller('UserProfileCtrl', function ($scope, $http ,$rootScope, $ionicPopup, $stateParams, $state, $timeout) {
+app.controller('UserProfileCtrl', function ($scope, $http ,$rootScope, $ionicPopup, $stateParams, $state, $timeout, $cordovaBarcodeScanner) {
     var puserID = window.location.href.split("/").pop();
+    $scope.qrinfo = $rootScope.User.referalid;
+
     $scope.loadinfo = function () {
       console.log(puserID);
       $http.get(base_url + '/user/my/' + puserID)
@@ -31,8 +33,6 @@ app.controller('UserProfileCtrl', function ($scope, $http ,$rootScope, $ionicPop
           console.log('Error: ' + data);
         });
     };
-
-
 
   $scope.followUser = function () {
     $http.post(base_url +'/user/follow/' + puserID, $rootScope.User)//user
@@ -85,6 +85,40 @@ app.controller('UserProfileCtrl', function ($scope, $http ,$rootScope, $ionicPop
   };
   $scope.EditProfile = function () {
     $state.go('app.user')
+  }
+
+  $scope.addFriend = function () {
+    $cordovaBarcodeScanner.scan().then(function(imageData) {
+      console.log("Barcode Format -> " + imageData.format);
+      console.log("Cancelled -> " + imageData.cancelled);
+      var readQr = (imageData.text);
+      //follow user post
+      $http.post(base_url +'/user/follow/qr/' + readQr, $rootScope.User)//user
+        .success(function(data){
+          $http.get(base_url +'/user/isfollowing/' + puserID +'/'+ $rootScope.UserID)//userid
+            .success(function(data) {
+              $scope.isfollowing = data;
+              $http.get(base_url +'/user/my/' + puserID)
+                .success(function(data) {
+                  $scope.UserProfileInfo = data;
+                  $scope.CreatedAdventures = data.adventures.created;
+                  $scope.AdventuresLength = data.adventures.created.length;
+                })
+                .error(function(data) {
+                  console.log('Error: ' + data);
+                });
+            })
+            .error(function(data) {
+              console.log('Error: ' + data);
+            });
+        })
+        .error(function(data) {
+          console.log('Error' + data);
+        })
+
+    }, function(error) {
+      console.log("An error happened -> " + error);
+    });
   }
 
 });

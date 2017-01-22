@@ -21,7 +21,7 @@ app.controller('EditUserCtrl', function ($scope, $rootScope, $ionicModal, $ionic
     console.log("LOAD", $scope.UpdatedUser);
   }
 
-  $scope.camera = function () {
+   $scope.camera = function () {
     var options = {
       quality: 50,
       destinationType: Camera.DestinationType.DATA_URL,
