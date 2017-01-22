@@ -92,7 +92,7 @@ app.controller('AdventureCtrl', function ($scope, $cordovaGeolocation, $ionicMod
       };
       console.log('coooordeeee', $scope.cordenada);
 
-      $http.post(base_url+'/adventures/posicion/', $scope.cordenada)
+      $http.post(base_url+'/adventures/posicion/', $rootScope.cordenada)
         .success(function (data) {
           console.log('data',data);
           if(data == false){
@@ -220,10 +220,7 @@ app.controller('AdventureCtrl', function ($scope, $cordovaGeolocation, $ionicMod
     })
 
   };
-/*
-  $scope.gify = function (cmd_id) {
-    $state.go('app.gif');
-  };*/
+
 
 });
 

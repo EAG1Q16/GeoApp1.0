@@ -10,5 +10,4 @@ app.controller('HelpCtrl', function ($scope, $rootScope, $ionicModal, $ionicPopu
     $scope.modal = modal;
   });
 
-
-})
+});
