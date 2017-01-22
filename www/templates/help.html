@@ -8,12 +8,12 @@
     <button class="button button-icon button-dark ion-paper-airplane" menu-toggle="right" style="color: white" ng-click="modal.show()"></button>
   </ion-nav-buttons>
 
-  <div class="row" style="padding-top: 3em; background-color: white">
+  <div class="row" style="padding-top: 3em; background-color: white; padding-bottom: 0px">
       <div class="col col-10">
         <button class="button button-clear button-dark button-small icon ion-chevron-left" ng-click="previous()" ng-show="slideIndex > 0"></button>
       </div>
       <div class="col col-80 text-center">
-        <h3 ng-show="slideIndex == 0 || slideIndex == null">Puntación</h3>
+        <h4 ng-show="slideIndex == 0 || slideIndex == null">Puntación</h4>
         <h4 ng-show="slideIndex == 1">Invita a tus amigos</h4>
         <h4 ng-show="slideIndex == 2">Cómo jugar</h4>
         <h4 ng-show="slideIndex == 3">Cómo crear una aventura</h4>
@@ -30,20 +30,20 @@
           Gana puntos por:
         </div>
         <div>
-          <div class="row" style="padding: 0.5em">
+          <div class="row" style="padding: 0.3em">
             <p class="badge badge-dark">30 p</p>
             <p style="color: black; padding-left: 0.5em">Jugar una partida</p>
           </div>
-          <div class="row"  style="padding: 0.5em">
-            <p class="badge badge-dark">20p</p>
+          <div class="row"  style="padding: 0.3em">
+            <p class="badge badge-dark">20 p</p>
             <p style="color: black; padding-left: 0.5em">Crear una aventura</p>
           </div>
-          <div class="row"  style="padding: 0.5em">
-            <p class="badge badge-dark">10p</p>
+          <div class="row"  style="padding: 0.3em">
+            <p class="badge badge-dark">10 p</p>
             <p style="color: black; padding-left: 0.5em">Invitar a un amigo con tu ID</p>
           </div>
-          <div class="row"  style="padding: 0.5em">
-            <p class="badge badge-dark">1p</p>
+          <div class="row"  style="padding: 0.3em">
+            <p class="badge badge-dark">1 p</p>
             <p style="color: black; padding-left: 0.5em">Comentar</p>
           </div>
         </div>
@@ -53,7 +53,7 @@
         <div class="item item-body">
           <div class="row" style="padding: 0px">
             <div class="col col-20">
-            <img height="50px" width="50px" src="img/CAmpista.png">
+            <img height="45px" width="45px" src="img/CAmpista.png">
             </div>
             <div class="col col-30">
               <p style="color: black; padding-left: 0.5em"> CAMPISTA</p>
@@ -64,7 +64,7 @@
           </div>
           <div class="row" style="padding: 0px">
             <div class="col col-20">
-              <img height="50px" width="50px" src="img/Navegante.png">
+              <img height="45px" width="45px" src="img/Navegante.png">
             </div>
             <div class="col col-30">
               <p style="color: black; padding-left: 0.5em"> NAVEGANTE</p>
@@ -75,7 +75,7 @@
           </div>
           <div class="row" style="padding: 0px">
             <div class="col col-20">
-              <img height="50px" width="50px" src="img/Montañero.png">
+              <img height="45px" width="45px" src="img/Montañero.png">
             </div>
             <div class="col col-30">
               <p style="color: black; padding-left: 0.5em"> MONTAÑERO </p>
@@ -86,7 +86,7 @@
           </div>
           <div class="row" style="padding: 0px">
             <div class="col col-20">
-              <img height="50px" width="50px" src="img/Aventurero.png">
+              <img height="45px" width="45px" src="img/Aventurero.png">
             </div>
             <div class="col col-30">
               <p style="color: black; padding-left: 0.5em"> AVENTURERO </p>
@@ -100,29 +100,62 @@
 
     </ion-slide>
     <ion-slide>
-      <div class="list card">
-        <div class="item item-body">
-          Una manera de ganar puntos es invitando a amigos a que se unan a GeoFinder.
+      <p style="color: black; padding-left: 0.5em">Una manera de ganar puntos es invitando a amigos a que se unan a GeoFinder.</p>
+      <div style="padding-left: 1em">
+        <p style="color: black"><i class="icon ion-link"></i><b> Invita a tus amigos con este ID:</b> </p>
+        <p style="color: black">{{User.referalid}}</p>
+        <div class="text-center">
+          <qr text="qrinfo" type-number="8" correction-level="M" size="200" image="true"></qr>
         </div>
+      </div>
+
+      <div class="list card" style="padding: 0%">
         <div class="item item-divider">
           Identificador
         </div>
         <div>
-          En tu perfil de usuario encontrarás un identificador que tu amigo debe introducir al registrarse.
+
+          <p style="color: black; padding-left: 0.5em"> En tu perfil de usuario encontrarás un identificador que tu amigo debe introducir al registrarse.</p>
+
         </div>
         <div class="item item-divider">
           Código QR
         </div>
         <div>
-          En tu perfil de usuario encontrarás el código QR que tu amigo debe escanear al registrarse.
+          <p style="color: black; padding-left: 0.5em"> En tu perfil de usuario encontrarás el código QR que tu amigo debe escanear al registrarse.</p>
+
         </div>
       </div>
     </ion-slide>
     <ion-slide>
-      <h3>CÓMO jugar</h3>
+      <div class="list card"style="padding: 0px">
+        <div class="item item-body ">
+          <p style="color: black; text-align: justify">Para empezar a jugar haz click sobre el botón JUGAR que aparece en el perfil de todas las aventura. </p>
+          <div class="text-center">
+            <button class="button button-small button-energized">JUGAR</button>
+          </div>
+          </div>
+        <div class="item item-body">
+          <div class="row" style="padding: 0px">
+            <div class="col col-10" style="padding-top: 2em">
+              <i class="icon ion-information-circled" style="color: deepskyblue; font-size: 1.5em"></i>
+            </div>
+            <div class="col col-90">
+              <p style="color: black; padding: 0px; text-align:justify">Sólo puedes jugar una aventura si estas cerca de ella y tienes la ubicación del móvil activada</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="item item-body" >
+          <p style="color: black; text-align:justify">Verás el mapa y la primera pista para llegar al siguiente punto.</p>
+          <p style="color: black; text-align:justify" >Una vez has llegado a la ubicación de una pista te aparecerá la siguiente y así hasta completar la aventura.</p>
+        </div>
+      </div>
+
+
     </ion-slide>
     <ion-slide>
-      <h3>VIDEO DEL CREAR UNA AVENTURA</h3>
+      <h3>Vídeo</h3>
     </ion-slide>
   </ion-slide-box>
 </ion-view>

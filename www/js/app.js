@@ -111,6 +111,16 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
         }
       }
     })
+    .state('app.adventuresfavs', {
+      url: '/adventuresfavs/:id',
+      cache: false,
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/adventuresCreated.html',
+          controller: 'AdventuresFavsCtrl'
+        }
+      }
+    })
     .state('app.adventuresplayed', {
     url: '/adventuresplayed/:id',
     cache: false,
