@@ -1,7 +1,7 @@
 <ion-view view-title="Seguidores">
   <ion-content>
     <ion-list>
-      <ion-item ng-repeat="follower in followers | filter:busqueda" href="#/app/userprofile/{{follower._id}}" class="item item-thumbnail-left">
+      <ion-item ng-repeat="follower in followers | filter:busqueda" ng-click="goselprofile(follower._id)" class="item item-thumbnail-left">
 
         <img ng-src={{follower.photo}}>
         <br>

@@ -47,6 +47,10 @@ app.controller('AppCtrl', function ($scope, $state, $http, $ionicModal, $rootSco
     };
 
     $scope.view = 'explorar';
+  
+  $scope.goprofile = function () {
+    $state.go('app.userprofile', {obj: $rootScope.UserID});
+  }
 
 })
 

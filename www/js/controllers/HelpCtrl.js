@@ -29,3 +29,4 @@ app.controller('HelpCtrl', function ($scope, $rootScope, $ionicModal, $ionicSlid
   });
 
 })
+

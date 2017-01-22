@@ -13,7 +13,7 @@
     </div>
 
     <ion-list>
-      <ion-item ng-repeat="user in users | orderBy: '-score'|filter:input.busqueda"  href=#/app/userprofile/{{user._id}}>
+      <ion-item ng-repeat="user in users | orderBy: '-score'|filter:input.busqueda"  ng-click="goselprofileall(user._id)">
         <div class="row" style="padding: 0px">
           <div class="col col-25">
             <img ng-src={{user.photo}} class="image-avatar" style="width: 60px; height: 60px">

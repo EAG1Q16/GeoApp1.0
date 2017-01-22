@@ -39,25 +39,25 @@
     </div>
 
     <div class="list card">
-      <a style="color: black" class="item item-icon-left" href="#/app/usersfollowers/{{UserProfileInfo._id}}">
+      <a style="color: black" class="item item-icon-left" ng-click="golistfollowers()">
         <i class="icon ion-person-stalker"></i>
         Seguidores
         <span class="badge badge-positive">{{UserProfileInfo.followers.length}}</span>
       </a>
 
-      <a style="color: black" class="item item-icon-left" href="#/app/usersfollowing/{{UserProfileInfo._id}}">
+      <a style="color: black" class="item item-icon-left" ng-click="golistfollowing()">
         <i class="icon ion-person"></i>
         Seguidos
         <span class="badge badge-positive">{{UserProfileInfo.following.length}}</span>
       </a>
 
 
-      <a style="color: black" class="item item-icon-left" href="#/app/adventurescreated/{{UserProfileInfo._id}}">
+      <a style="color: black" class="item item-icon-left"  ng-click="golistcreatedadv()">
         <i class="icon ion-map"></i>
         Aventuras creadas
         <span class="badge badge-positive">{{UserProfileInfo.adventures.created.length}}</span>
       </a>
-      <a style="color: black" class="item item-icon-left"href="#/app/adventuresplayed/{{UserProfileInfo._id}}">
+      <a style="color: black" class="item item-icon-left" ng-click="golisitplayedadv()">
         <i class="icon ion-play"></i>
         Aventuras jugadas
         <span class="badge badge-positive">{{UserProfileInfo.adventures.played.length}}</span>

@@ -82,7 +82,8 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
       }
     })
     .state('app.userprofile', {
-      url: '/userprofile/:id',
+      url: '/userprofile',
+      params:{obj: null},
       cache: false,
       views: {
         'menuContent': {
@@ -92,7 +93,8 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
       }
     })
     .state('app.usersfollowers', {
-      url: '/usersfollowers/:id',
+      url: '/usersfollowers',
+      params:{obj: null},
       cache: false,
       views: {
         'menuContent': {
@@ -102,8 +104,9 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
       }
     })
     .state('app.adventurescreated', {
-      url: '/adventurescreated/:id',
+      url: '/adventurescreated',
       cache: false,
+      params:{obj: null},
       views: {
         'menuContent': {
           templateUrl: 'templates/adventuresCreated.html',
@@ -122,8 +125,9 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
       }
     })
     .state('app.adventuresplayed', {
-    url: '/adventuresplayed/:id',
-    cache: false,
+    url: '/adventuresplayed',
+    cache: false, 
+    params:{obj: null},
     views: {
       'menuContent': {
         templateUrl: 'templates/adventuresPlayed.html',
@@ -142,7 +146,8 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
       }
     })
     .state('app.usersfollowing', {
-      url: '/usersfollowing/:id',
+      url: '/usersfollowing',
+      params:{obj: null},
       cache: false,
       views: {
         'menuContent': {
@@ -156,7 +161,6 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
       cache: false,
       templateUrl: 'templates/position.html',
       controller: 'PositionCtrl'
-
 
     })
 
@@ -181,14 +185,8 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
       cache: false,
       templateUrl: 'templates/register.html',
       controller: 'RegisterCtrl'
-    })
-    .state('app.gif', {
-      url: '/gif',
-      views: {
-        templateUrl: 'templates/gif.html',
-        controller: 'AdventureCtrl'
-      }
     });
+
     $urlRouterProvider.otherwise('/login')
 });
 

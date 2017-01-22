@@ -240,4 +240,7 @@ app.controller('EditUserCtrl', function ($scope, $rootScope, $ionicModal, $ionic
     }
   };
 
+  $scope.gobackprofile = function () {
+    $state.go('app.userprofile', {obj: $rootScope.UserID});
+  }
 });
