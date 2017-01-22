@@ -123,9 +123,12 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
   })
     .state('app.help', {
       url: '/help',
+      cache:false,
       views: {
-        templateUrl: 'templates/help.html',
-        controller: 'HelpCtrl'
+        'menuContent': {
+          templateUrl: 'templates/help.html',
+          controller: 'HelpCtrl'
+        }
       }
     })
     .state('app.usersfollowing', {
@@ -168,6 +171,13 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
       cache: false,
       templateUrl: 'templates/register.html',
       controller: 'RegisterCtrl'
+    })
+    .state('app.gif', {
+      url: '/gif',
+      views: {
+        templateUrl: 'templates/gif.html',
+        controller: 'AdventureCtrl'
+      }
     });
     $urlRouterProvider.otherwise('/login')
 });

@@ -1,5 +1,5 @@
 
-app.controller('PositionCtrl', function($scope, $http, $cordovaGeolocation, $state, $ionicLoading, $compile, $rootScope, $ionicPopup, $ionicModal) {
+app.controller('PositionCtrl', function($scope, $http, $cordovaGeolocation,  $cordovaLocalNotification, $state, $ionicLoading, $compile, $rootScope, $ionicPopup, $ionicModal) {
 
 //Get plugin
   var bgLocationServices =  window.plugins.backgroundLocationServices;
@@ -22,13 +22,14 @@ app.controller('PositionCtrl', function($scope, $http, $cordovaGeolocation, $sta
     fastestInterval: 1000 // <-- (Milliseconds) Fastest interval your app / server can handle updates
 
   });
+
+  //Empieza el servicio
   bgLocationServices.start();
 
 //Register a callback for location updates, this is where location objects will be sent in the background
   bgLocationServices.registerForLocationUpdates(function(location) {
-    console.log("We got an BG Update" + JSON.stringify(location));
-    //track.push(location);
-    console.log("Track" + location.latitude + ',' + location.longitude);
+
+    //generamos los scopes
     $scope.position = location;
     $rootScope.cordenada = {
       latitude: location.latitude,
@@ -36,20 +37,75 @@ app.controller('PositionCtrl', function($scope, $http, $cordovaGeolocation, $sta
       advid: $rootScope.advid
     };
 
+    //Post para buscar pistas cercanas a nuestra posicion
     $http.post(base_url+'/adventures/hintnear/', $scope.cordenada)
       .success(function (data) {
-        console.log("cercanas", data);
+
         var id = data._id;
-        console.log('id' , id)
-        console.log('idbueno' , idbueno)
 
         if (id != idbueno){
-          navigator.vibrate(3000);
+          //si es la pista final
+          if(data.final == true){
+            navigator.vibrate(2000);
+            $cordovaLocalNotification.schedule({
+              id: 1,
+              title: 'Felicidades has finalizado esta aventura!',
+              text: data.text,
+              data: {
+                customProperty: 'custom value'
+              }
+            });
+            /*$ionicPopup.alert({
+              title: 'Felicidades!!!',
+              template:hint.image
+            });*/
+
+            var played = {
+              user_id: $rootScope.UserID
+            };
+            
+
+            pistas_modal.push(data);
+            $scope.hints=pistas_modal;
+
+            var marker = new google.maps.Marker({
+              position: new google.maps.LatLng(data.location.coordinates[1],data.location.coordinates[0]),
+              title:"Hello World!",
+              icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
+            });
+
+            marker.setMap(map);
+            idbueno = id;
+
+            //Para el servicio
+            bgLocationServices.stop();
+
+            $http.post(base_url+'/user/advplay/', played)
+              .success(function (data) {
+                console.log(data);
+                $state.go("app.gif");
+              }).error(function (err) {
+              console.log(err);
+            });
+
+
+
+          }else{
+
+          navigator.vibrate(2000);
+          $cordovaLocalNotification.schedule({
+            id: 1,
+            title: 'Pista!',
+            text: data.text,
+            data: {
+              customProperty: 'custom value'
+            }
+          });
           $ionicPopup.alert({
             title: 'Pista!',
             template: data.text
           });
-          
+
           pistas_modal.push(data);
           $scope.hints=pistas_modal;
           var marker = new google.maps.Marker({
@@ -60,6 +116,7 @@ app.controller('PositionCtrl', function($scope, $http, $cordovaGeolocation, $sta
 
           marker.setMap(map);
           idbueno = id;
+        }
         }
       })
       .error(function (data) {
@@ -87,7 +144,7 @@ app.controller('PositionCtrl', function($scope, $http, $cordovaGeolocation, $sta
 
   google.maps.event.addDomListener(window, 'load');
 
-  track = [];
+
   $cordovaGeolocation.getCurrentPosition().then(
     function (position) {
       console.log("TENGO LA POSICION!" + position.coords.latitude);
@@ -97,7 +154,6 @@ app.controller('PositionCtrl', function($scope, $http, $cordovaGeolocation, $sta
         map: map,
         title: "My Location"
       });
-      //bgLocationServices.start();
     });
 
 
@@ -111,15 +167,13 @@ app.controller('PositionCtrl', function($scope, $http, $cordovaGeolocation, $sta
         if(res) {
           $state.go("app.main");
           bgLocationServices.stop();
-          /*state.go("app.adventures"+'/'+ $rootScope.advid);*/
         } else {
           console.log('You are not sure');
         }
       });
     };
 
-///later, to stop
-  //bgLocationServices.stop();
+
  console.log('rootscopeeee' , $rootScope.advid);
 
   $ionicModal.fromTemplateUrl('templates/hints.html', {

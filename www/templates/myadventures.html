@@ -3,14 +3,16 @@
   <ion-content>
 
     <ion-list>
-      <ion-item ng-repeat="item in items" href="#/app/adventures/{{item._id}}" class=" item-thumbnail-left">
+      <ion-item ng-repeat="item in items track by $index" href="#/app/adventures/{{item._id}}" class=" item-thumbnail-left">
         <img ng-src={{item.image}}>
         <br>
         <h2>{{ item.name }}</h2>
         <h3>{{ item.description }}</h3>
         <h4>Dificultad: {{item.difficulty}}</h4>
         <br>
-
+        <div ng-show="$last">
+          <br>
+        </div>
       </ion-item>
     </ion-list>
 
