@@ -3,23 +3,25 @@
 
   <ion-content>
     <ion-refresher
-      pulling-text="Pull to refresh..."
+      pulling-text="Actualizar..."
       on-refresh="doRefresh()">
     </ion-refresher>
-    <ion-list ng-if="Bfriends=='false'">
-      <ion-item ng-repeat="item in items" href="#/app/adventures/{{item._id}}" class=" item-thumbnail-left">
+    <ion-list ng-if="Bfriends=='false'" >
+      <ion-item ng-repeat="item in items track by $index" href="#/app/adventures/{{item._id}}" class=" item-thumbnail-left">
 
           <img ng-src={{item.image}}>
           <br>
           <h2>{{ item.name }}</h2>
           <h3>{{ item.description }}</h3>
           <h4>Dificultad: {{item.difficulty}}</h4>
+          <div ng-show="$last">
+            <br>
+          </div>
           <br>
-
       </ion-item>
     </ion-list>
 
-    <ion-list ng-if="Bfriends=='true'">
+    <ion-list ng-if="Bfriends=='true'" style="padding-bottom: 2em">
       <div ng-repeat="FollowAdv in FollowAdvs">
         <ion-item ng-repeat="item in FollowAdv.adventures.created" href="#/app/adventures/{{item._id}}" class=" item-thumbnail-left">
 
@@ -29,19 +31,20 @@
           <h3>{{ item.description }}</h3>
           <h4>Dificultad: {{item.difficulty}}</h4>
           <br>
-
+          <div ng-show="$last">
+            <br>
+          </div>
         </ion-item>
       </div>
     </ion-list>
 
-    <div ng-if="items.length == 0">
+    <div ng-if="items.length == 0" track by $index>
       <div class="row" style="padding-top: 3em">
         <div class="col text-center">
           <h4 style = "color: dimgrey"> No hay aventuras para mostrar </h4>
         </div>
       </div>
     </div>
-
 
   </ion-content>
   <div style="position: absolute; bottom: 0px; width: 100%" class="button-bar">

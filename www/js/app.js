@@ -123,9 +123,12 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
   })
     .state('app.help', {
       url: '/help',
+      cache:false,
       views: {
-        templateUrl: 'templates/help.html',
-        controller: 'HelpCtrl'
+        'menuContent': {
+          templateUrl: 'templates/help.html',
+          controller: 'HelpCtrl'
+        }
       }
     })
     .state('app.usersfollowing', {
