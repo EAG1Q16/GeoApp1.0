@@ -171,6 +171,13 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
       cache: false,
       templateUrl: 'templates/register.html',
       controller: 'RegisterCtrl'
+    })
+    .state('app.gif', {
+      url: '/gif',
+      views: {
+        templateUrl: 'templates/gif.html',
+        controller: 'AdventureCtrl'
+      }
     });
     $urlRouterProvider.otherwise('/login')
 });

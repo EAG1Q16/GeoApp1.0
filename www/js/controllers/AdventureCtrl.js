@@ -220,6 +220,10 @@ app.controller('AdventureCtrl', function ($scope, $cordovaGeolocation, $ionicMod
     })
 
   };
+/*
+  $scope.gify = function (cmd_id) {
+    $state.go('app.gif');
+  };*/
 
+});
 
-})
