@@ -3,7 +3,7 @@
  */
 
 var base_url="http://147.83.7.156:3000"; //server
-//var base_url="http://localhost:3000";
+
 
 
 
