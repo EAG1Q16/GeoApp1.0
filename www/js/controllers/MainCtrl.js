@@ -2,8 +2,8 @@
  * Created by Marta_ on 28/11/2016.
  */
 
-//var base_url="http://147.83.7.156:3000"; //server
-var base_url="http://localhost:3000";
+var base_url="http://147.83.7.156:3000"; //server
+//var base_url="http://localhost:3000";
 
 
 
