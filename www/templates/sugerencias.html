@@ -8,29 +8,27 @@
       <div class="item item-divider">
         Escriba su sugerencia
       </div>
+      <form action="mailto: marta.couto.g@gmail.com" method="post" enctype="text/plain">
       <div class="list">
         <div class="item">
           <label class="item item-input item-floating-label">
-            <span class="input-label">Email</span>
-            <input type="email" placeholder="Email" ng-model="sug.email">
-          </label>
-          <label class="item item-input item-floating-label">
             <span class="input-label">Asunto</span>
-            <input type="text" placeholder="Asunto" ng-model="sug.subject">
+            <input type="text" placeholder="Asunto" ng-model="suggestion.subject">
           </label>
           <label class="item item-input item-floating-label">
             <span class="input-label">Sugerencia</span>
-            <input type="text" placeholder="Sugerencia" ng-model="sug.text">
+            <input type="text" placeholder="Sugerencia" ng-model="suggestion.body">
           </label>
         </div>
 
         <div align="center" style="padding-top: 2em">
-          <button class="button button-block button-balanced" ng-click="sendSuggest()" ng-disabled="!sug.email || !sug.text" >
+          <button class="button button-block button-balanced" ng-click="sendSuggestion()" ng-disabled="!sug.text" >
             Enviar
           </button>
         </div>
 
       </div>
+      </form>
     </div>
   </ion-content>
 </ion-modal-view>

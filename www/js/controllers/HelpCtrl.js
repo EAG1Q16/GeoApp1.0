@@ -19,6 +19,8 @@ app.controller('HelpCtrl', function ($scope, $rootScope, $ionicModal, $ionicSlid
     $scope.slideIndex = index;
   };
 
+  $scope.qrinfo = $rootScope.User.referalid;
+
   //SUGGESTIONS
   $ionicModal.fromTemplateUrl('templates/sugerencias.html', {
     scope: $scope
@@ -26,4 +28,5 @@ app.controller('HelpCtrl', function ($scope, $rootScope, $ionicModal, $ionicSlid
     $scope.modal = modal;
   });
 
-});
+})
+

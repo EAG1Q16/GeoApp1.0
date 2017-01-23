@@ -104,6 +104,10 @@ app.controller('UserProfileCtrl', function ($scope, $http ,$rootScope, $ionicPop
                   $scope.UserProfileInfo = data;
                   $scope.CreatedAdventures = data.adventures.created;
                   $scope.AdventuresLength = data.adventures.created.length;
+                  $ionicPopup.alert({
+                    title: 'Fantastico',
+                    template: 'Ahora ya sigues al aventurero'
+                  });
                 })
                 .error(function(data) {
                   console.log('Error: ' + data);
@@ -129,5 +133,14 @@ app.controller('UserProfileCtrl', function ($scope, $http ,$rootScope, $ionicPop
   $scope.golistfollowing = function () {
     $state.go('app.usersfollowing', {obj: puserID});
   }
+  $scope.golistcreatedadv = function () {
+    $state.go('app.adventurescreated', {obj: puserID});
+  }
+  $scope.golisitplayedadv = function () {
+    $state.go('app.adventuresplayed', {obj: puserID});
+  }
 
+  $scope.golistfavadv = function () {
+    $state.go('app.adventuresfavs', {obj: puserID});
+  }
 });
