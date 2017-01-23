@@ -170,8 +170,9 @@ app.controller('PositionCtrl', function($scope, $http, $cordovaGeolocation,  $co
 
       confirmPopup.then(function(res) {
         if(res) {
-          $state.go("app.main");
           bgLocationServices.stop();
+          $state.go("app.main");
+          
         } else {
           console.log('You are not sure');
         }
