@@ -104,6 +104,10 @@ app.controller('UserProfileCtrl', function ($scope, $http ,$rootScope, $ionicPop
                   $scope.UserProfileInfo = data;
                   $scope.CreatedAdventures = data.adventures.created;
                   $scope.AdventuresLength = data.adventures.created.length;
+                  $ionicPopup.alert({
+                    title: 'Fantastico',
+                    template: 'Ahora ya sigues al aventurero'
+                  });
                 })
                 .error(function(data) {
                   console.log('Error: ' + data);

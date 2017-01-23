@@ -28,5 +28,10 @@ app.controller('HelpCtrl', function ($scope, $rootScope, $ionicModal, $ionicSlid
     $scope.modal = modal;
   });
 
+  $scope.enviar = function () {
+    $scope.suggestion = {};
+    $scope.modal.hide();
+    $scope.suggestion =  {subject: '', body: ''};
+  }
 })
 
